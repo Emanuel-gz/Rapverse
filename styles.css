@@ -596,14 +596,16 @@ nav {
   color: var(--muted);
 }
 .artist-tabs {
-  display: flex;
-  gap: 23px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
   border-bottom: 1px solid var(--line);
   margin-bottom: 21px;
 }
 .artist-tabs button {
   font-size: 11px;
-  padding: 0 0 13px;
+  padding: 0 0 10px;
+  min-height: 38px;
   border: none;
   background: none;
   color: var(--muted);
@@ -675,6 +677,11 @@ nav {
   text-decoration: underline;
   text-underline-offset: 3px;
   margin-top: 12px;
+}
+.artist-sources {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 14px;
 }
 .notice {
   font-size: 13px;
@@ -1522,7 +1529,7 @@ tbody th {
     margin-bottom: 22px;
   }
   .artist-tabs {
-    gap: 24px;
+    gap: 8px;
   }
   .artist-tabs button {
     font-size: 11px;
@@ -1681,7 +1688,10 @@ tbody th {
     font-size: 9px;
   }
   .artist-tabs {
-    gap: 17px;
+    gap: 6px;
+  }
+  .artist-tabs button {
+    font-size: 10px;
   }
   .cochise-visual .artist-wordmark h3 {
     font-size: 61px;

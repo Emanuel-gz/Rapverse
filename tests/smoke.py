@@ -65,12 +65,12 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.locator('html').get_attribute('lang'), 'es')
         self.assertEqual(self.page.locator('h1').count(), 1)
         self.assertEqual(self.page.locator('.artist-card').count(), 2)
-        self.assertEqual(self.page.locator('.song-row').count(), 4)
+        self.assertEqual(self.page.locator('.song-row').count(), 8)
         self.assertTrue(self.page.evaluate("document.fonts.check('16px Anton')"))
         self.assertTrue(self.page.evaluate("document.fonts.check('16px \"Space Grotesk\"')"))
         self.assertTrue(all(url.startswith(self.url) for url in self.requests))
         self.assertEqual(self.page.locator('audio, video, iframe').count(), 0)
-        self.assertIn('archivo de terceros', self.page.locator('#source-list').inner_text())
+        self.assertIn('Archivo de terceros', self.page.locator('#source-list').inner_text())
 
     def test_artist_tabs_and_keyboard(self):
         for name in ('carti', 'cochise'):
@@ -83,26 +83,33 @@ class RapverseBrowserTests(unittest.TestCase):
             self.assertEqual(self.page.locator(f'#{name}-panel').get_attribute(
                 'aria-labelledby'), f'{name}-evolution-tab')
             self.page.keyboard.press('End')
-            self.assertIn('LECTURA EDITORIAL', card.get_by_role('tabpanel').inner_text())
+            self.assertEqual(card.get_by_role('tab', name='Influencias').get_attribute(
+                'aria-selected'), 'true')
+            self.assertIn('INFLUENCIAS', card.get_by_role('tabpanel').inner_text())
+            self.assertGreater(card.locator('.artist-sources a').count(), 0)
             self.page.keyboard.press('ArrowRight')
             self.assertEqual(history.get_attribute('aria-selected'), 'true')
             self.page.keyboard.press('ArrowLeft')
-            self.assertEqual(card.get_by_role('tab', name='Estilo y actitud').get_attribute(
+            self.assertEqual(card.get_by_role('tab', name='Influencias').get_attribute(
                 'aria-selected'), 'true')
+            card.get_by_role('tab', name='Estilo y actitud').click()
+            self.assertIn('LECTURA EDITORIAL', card.get_by_role('tabpanel').inner_text())
             self.page.keyboard.press('Home')
             self.assertEqual(card.locator('[tabindex="0"][role="tab"]').count(), 1)
             self.assertEqual(history.get_attribute('aria-selected'), 'true')
 
     def test_filters_and_track_credits(self):
         self.page.get_by_role('button', name='Cochise', exact=True).click()
-        self.assertEqual(self.page.locator('.song-row').count(), 1)
-        self.assertIn('Cochise & $NOT', self.page.locator('.song-credit').inner_text())
-        self.assertIn('1 CANCIÓN DOCUMENTADA', self.page.locator('#song-count').inner_text())
+        self.assertEqual(self.page.locator('.song-row').count(), 4)
+        self.assertIn('Cochise & $NOT', self.page.locator('.song-credit').all_inner_texts())
+        self.assertIn('4 CANCIONES DOCUMENTADAS', self.page.locator('#song-count').inner_text())
         self.page.get_by_role('button', name='Playboi Carti', exact=True).click()
-        self.assertEqual(self.page.locator('.song-row').count(), 3)
+        self.assertEqual(self.page.locator('.song-row').count(), 4)
         self.assertIn('Travis Scott', self.page.locator('.song-credit').all_inner_texts()[-1])
         self.page.get_by_role('button', name='Todos').click()
-        self.assertEqual(self.page.locator('.song-row').count(), 4)
+        self.assertEqual(self.page.locator('.song-row').count(), 8)
+        self.assertEqual(self.page.locator('.song-project[href^="https://music.apple.com/"]').count(), 4)
+        self.assertEqual(self.page.locator('.song-project[href^="https://github.com/"]').count(), 4)
         self.assertEqual(self.page.locator('[aria-pressed="true"]').count(), 1)
         for link in self.page.locator('.listen-link').all():
             self.assertTrue(link.get_attribute('href').startswith('https://open.spotify.com/search/'))

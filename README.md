@@ -48,44 +48,48 @@ Si usas otro ejecutable de Chromium, indica su ruta mediante `RAPVERSE_BROWSER_P
 
 ## Contenido y licencias
 
-Los datos publicados se verificaron contra registros históricos de un archivo independiente de Billboard Hot 100 y enlazan versiones fijas. Las interpretaciones están identificadas y no describen la personalidad privada. La selección no es un ranking actual ni una discografía completa. La biografía completa, la evolución de álbumes y las influencias declaradas quedan pendientes de acceso a las fuentes musicales bloqueadas por la red; no se rellenaron con afirmaciones sin verificar. Consulta [las fuentes y limitaciones](docs/SOURCES.md).
+Las fichas reúnen hitos biográficos y de discografía hasta 2026 con enlaces a Apple Music, Pitchfork, Billboard y un archivo histórico de listas. Las influencias se presentan según el alcance de cada fuente: mentoría, colaboraciones, antecedentes señalados por crítica o referencias culturales. Ninguna semejanza vocal se convierte en influencia personal atribuida. La tabla y las pestañas identifican por separado datos e interpretaciones; consulta [las fuentes y el criterio editorial](docs/SOURCES.md).
+
+La selección ofrece cuatro canciones por artista. Los puestos del Hot 100 corresponden a semanas concretas; las otras canciones aparecen en «Top Songs» de Apple Music al momento de la consulta. No es un ranking actual de reproducciones.
 
 Las imágenes son ilustraciones originales; no hay audio ni vídeo alojado o incrustado. Anton y Space Grotesk incluyen sus licencias SIL Open Font License 1.1. La página no carga fuentes remotas, analítica ni APIs. Los enlaces de Spotify abren búsquedas en otra pestaña y se identifican como tales.
 
 ## Revisar y subir desde Codex
 
-Estos comandos utilizan las herramientas Git disponibles en el entorno y no dependen de botones específicos de la interfaz. Los cambios se dejan sin commit ni push para revisión.
+El trabajo continúa en la rama `feat/rapverse-page`. Estos comandos se ejecutan en la terminal del entorno de Codex, dentro de `/workspace/Rapverse`. **No fusionan el Pull Request con `main`**.
 
-1. Inspecciona los archivos nuevos y las diferencias. `git diff` solo muestra cambios en archivos ya seguidos; abre también `index.html`, `styles.css`, `script.js`, `assets/`, `docs/` y `tests/` en el explorador de archivos.
+1. Revisa el estado y las diferencias de esta ampliación:
 
    ```bash
    cd /workspace/Rapverse
+   git branch --show-current
    git status --short
-   git diff -- README.md
+   git diff --check
+   git diff --stat
+   git diff
    ```
 
-2. Ejecuta las comprobaciones anteriores. Crea una rama para subir la funcionalidad sin enviar directamente a `main`:
+2. Ejecuta las comprobaciones:
 
    ```bash
-   git switch -c feat/rapverse-page
+   node --check script.js
+   python3 tests/smoke.py -v
    ```
 
-3. Prepara únicamente los archivos de esta funcionalidad y revisa lo que incluirá el commit:
+3. Si las diferencias son correctas, prepara solo los archivos modificados y revisa el contenido del commit:
 
    ```bash
-   git add .gitignore README.md index.html styles.css script.js assets docs tests
+   git add README.md index.html styles.css script.js docs/SOURCES.md tests/smoke.py
    git diff --cached --check
    git diff --cached --stat
    git diff --cached
    ```
 
-4. Confirma y sube la rama:
+4. Sube el nuevo commit a la **misma rama**:
 
    ```bash
-   git commit -m "feat: add Rapverse artist discovery page"
-   git push -u origin feat/rapverse-page
+   git commit -m "feat: complete sourced artist profiles and influences"
+   git push origin feat/rapverse-page
    ```
 
-5. Abre `Emanuel-gz/Rapverse` en GitHub y crea un Pull Request desde `feat/rapverse-page` hacia `main`. Revisa archivos, pruebas y las limitaciones documentales antes de fusionarlo. Se verificó acceso de lectura al repositorio; el push requiere que tu cuenta tenga permiso de escritura. Si falla, sigue el mecanismo de conexión/autorización de GitHub de Codex; no pegues tokens en archivos ni en el chat.
-
-Publicar el entorno de Codex y subir commits a GitHub son operaciones diferentes. Los cambios de red guardados en los ajustes del entorno requieren revisión, guardado y publicación para completar la investigación pendiente.
+5. Abre el Pull Request existente en GitHub y consulta **Files changed**. El nuevo commit aparecerá allí automáticamente. Revisa las fuentes y los límites de las influencias antes de decidir si fusionas el PR; este paso no es automático.

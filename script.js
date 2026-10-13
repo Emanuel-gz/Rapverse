@@ -1,70 +1,103 @@
 'use strict';
 
-// Research scope and exact source snapshots are documented in docs/SOURCES.md.
-// Editorial observations are deliberately separate from chart facts.
+// Research scope and exact sources are documented in docs/SOURCES.md.
+// A critic's description or a collaboration is not an artist-declared influence.
 const chartBase =
   'https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/';
+const appleCarti = 'https://music.apple.com/us/artist/playboi-carti/982372505';
+const appleCochise = 'https://music.apple.com/us/artist/cochise/163302681';
+const pitchforkCarti = 'https://pitchfork.com/artists/34362-playboi-carti/';
+const pitchforkDebut = 'https://pitchfork.com/reviews/albums/23196-playboi-carti/';
+const pitchforkDieLit = 'https://pitchfork.com/reviews/albums/playboi-carti-die-lit/';
+const pitchforkRed = 'https://pitchfork.com/reviews/albums/playboi-carti-whole-lotta-red/';
+const pitchforkMusic = 'https://pitchfork.com/reviews/albums/playboi-carti-music/';
+const pitchforkFreshmen = 'https://pitchfork.com/news/xxl-2022-freshman-class-babyface-ray-doechii-nardo-wick-babytron-sofaygo-and-more/';
+const billboardTurnItUp = 'https://www.billboard.com/music/rb-hip-hop/best-new-hip-hop-cochise-josh-levi-1235086388/';
+const billboardHydroplane = 'https://www.billboard.com/music/rb-hip-hop/best-new-hip-hop-songs-j-hus-kenny-mason-khamari-1235342926/';
+const source = (label, url) => ({ label, url });
 const artistContent = {
   carti: {
     history: {
       kind: 'fact',
-      label: 'DATO DOCUMENTADO',
-      title: 'Un recorrido a través de las listas.',
+      label: 'BIOGRAFÍA DOCUMENTADA',
+      title: 'De Atlanta a una voz propia.',
       paragraphs: [
-        '«Magnolia» y «Wokeuplikethis*», con Lil Uzi Vert, aparecen en el Billboard Hot 100 del 20 de mayo de 2017. «Magnolia» alcanza el puesto 29 en la lista del 8 de julio de ese año.',
-        'Es un hito documentado de su trayectoria, no una biografía completa ni la fecha de inicio de su carrera.',
+        'Jordan Carter nació en 1996. Según la biografía editorial de Apple Music, comenzó en el circuito underground de Atlanta y conoció a A$AP Rocky en un festival en 2015; aquella relación impulsó su proyección pública.',
+        'Pitchfork sitúa «Broke Boi» entre sus primeros temas destacados de 2015. Su mixtape homónima llegó en 2017 con «Magnolia» y «wokeuplikethis*», junto a Lil Uzi Vert. Después publicó Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
       ],
-      source: '2017-07-08',
+      sources: [source('Apple Music · biografía', appleCarti), source('Pitchfork · debut', pitchforkDebut), source('Pitchfork · discografía', pitchforkCarti)],
     },
     evolution: {
       kind: 'fact',
-      label: 'HITOS DOCUMENTADOS',
-      title: '2017 → 2025: distintas etapas.',
+      label: 'EVOLUCIÓN · CRÍTICA IDENTIFICADA',
+      title: 'Minimalismo, tensión y nuevas voces.',
       paragraphs: [
-        '«Magnolia» (2017), «Shoota» con Lil Uzi Vert (2018) y «FE!N» de Travis Scott con Carti (2023) ofrecen tres puntos de entrada. En 2025, «Evil J0rdan» figura en el puesto 2 del Hot 100 del 29 de marzo.',
-        'Las fechas describen presencia en listas. Los cambios de timbre, producción y energía son preguntas de escucha; no se deducen de una posición comercial.',
+        'Pitchfork describe la mixtape de 2017 mediante la repetición, las intervenciones vocales y las producciones de Pi’erre Bourne. En Die Lit (2018) observa un tratamiento más extremo de esas ideas; «Shoota» muestra además su colaboración con Lil Uzi Vert.',
+        'La misma publicación sitúa Whole Lotta Red (2020) en un sonido más áspero y acelerado, con registros vocales variados. Su reseña de MUSIC (2025) presenta un proyecto extenso que reúne varias de esas etapas. Son lecturas críticas del sonido, no datos sobre su carácter.',
       ],
-      source: '2025-03-29',
+      sources: [source('Pitchfork · debut', pitchforkDebut), source('Die Lit', pitchforkDieLit), source('Whole Lotta Red', pitchforkRed), source('MUSIC', pitchforkMusic)],
     },
     style: {
       kind: 'editorial',
       label: 'LECTURA EDITORIAL',
       title: 'La voz como parte del ritmo.',
       paragraphs: [
-        'Nuestra propuesta: escuchar «Magnolia» y «FE!N» prestando atención a la repetición, las intervenciones vocales y la energía que producen. «Intenso» describe aquí una impresión musical, no un rasgo psicológico.',
-        'No atribuimos influencias personales sin una declaración comprobada del artista. Compartir una colaboración tampoco demuestra una influencia.',
+        'Escucha «Magnolia», «Shoota» y «FE!N» atendiendo a cómo las repeticiones y los cambios de voz dialogan con cada producción. Nuestra impresión de intensidad describe el resultado musical; no pretende explicar su personalidad privada.',
+        'Apple Music habla de minimalismo trap y energía punk para caracterizar su obra. Son términos editoriales sobre la música y la imagen pública, no declaraciones del artista sobre sus fuentes de inspiración.',
       ],
+      sources: [source('Apple Music · lectura editorial', appleCarti)],
+    },
+    influences: {
+      kind: 'fact',
+      label: 'INFLUENCIAS · ALCANCE VERIFICADO',
+      title: 'Mentoría y antecedentes sonoros.',
+      paragraphs: [
+        'A$AP Rocky figura como mentor en la reseña de Pitchfork de 2017; Apple Music documenta su encuentro en 2015. Es una influencia en la trayectoria y la imagen pública, sin atribuirle una enseñanza musical concreta que las fuentes no detallan.',
+        'Pi’erre Bourne es un colaborador decisivo en las producciones de sus primeros proyectos, según Pitchfork. La reseña de Die Lit sitúa a Travis Porter y Rich Kidz como antecedentes de un estilo cercano. Esa genealogía la propone la crítica: no es una lista de ídolos declarada por Carti.',
+      ],
+      sources: [source('Pitchfork · debut', pitchforkDebut), source('Pitchfork · Die Lit', pitchforkDieLit), source('Apple Music', appleCarti)],
     },
   },
   cochise: {
     history: {
       kind: 'fact',
-      label: 'DATO DOCUMENTADO',
-      title: 'Una entrada con nombre propio.',
+      label: 'BIOGRAFÍA DOCUMENTADA',
+      title: 'De Palm Bay al alcance global.',
       paragraphs: [
-        '«Tell Em», acreditada a Cochise y $NOT, figura en el puesto 64 del Billboard Hot 100 del 12 de junio de 2021. Es un punto documentado de su visibilidad comercial.',
-        'Este dato no establece cuándo comenzó a hacer música. Tampoco convierte una colaboración en una canción exclusivamente suya.',
+        'Cochise creció en Palm Bay, Florida, con padres caribeños. Apple Music cuenta que, tras el instituto, recibió ofertas para jugar al fútbol universitario, pero siguió cerca de casa y publicaba música en línea mientras estudiaba en un community college.',
+        '«Moshi Moshi» obtuvo atención en 2017; «Hatchback» amplió su visibilidad en 2019. En 2020 firmó con Columbia Records, según la biografía de Apple Music. «Tell Em», junto a $NOT, entró en el Hot 100 en 2021; Pitchfork informó de su inclusión en la promoción XXL Freshman de 2022.',
       ],
-      source: '2021-06-12',
+      sources: [source('Apple Music · biografía', appleCochise), source('Hot 100 · 12 jun 2021', `${chartBase}2021-06-12.json`), source('Pitchfork · XXL 2022', pitchforkFreshmen)],
     },
     evolution: {
       kind: 'fact',
-      label: 'ALCANCE DOCUMENTAL',
-      title: 'Una canción no cuenta toda la historia.',
+      label: 'DISCOGRAFÍA DOCUMENTADA',
+      title: 'Más allá de un solo viral.',
       paragraphs: [
-        '«Tell Em» aparece en cuatro listas semanales de junio y julio de 2021 en el archivo consultado. Ese registro documenta un hito, no toda su discografía.',
-        'La ausencia de otros títulos en esta selección no significa menor valor artístico. Ampliar su biografía y evolución requiere verificar discografía y entrevistas adicionales.',
+        'Apple Music lista Pulp (2018), «Hatchback» (2019), Benbow Crescent y «POCKET ROCKET» (2021), y «TURN IT UP» en THE INSPECTION (2022). El catálogo continúa con NO ONE’S NICE TO ME (2023), WHY ALWAYS ME? (2024) y TRENCH TOWN (2026).',
+        'Billboard describe «TURN IT UP» como una producción compartida por Cochise, Nonbruh y Ransom. Su reseña de «Hydroplane» (2023) observa una dicción distinta a la habitual. Son ejemplos concretos de su trabajo y de la lectura crítica de su evolución, no una jerarquía definitiva de sus discos.',
       ],
-      source: '2021-07-03',
+      sources: [source('Apple Music · catálogo', appleCochise), source('Billboard · TURN IT UP', billboardTurnItUp), source('Billboard · Hydroplane', billboardHydroplane)],
     },
     style: {
       kind: 'editorial',
       label: 'LECTURA EDITORIAL',
-      title: 'El contraste también tiene personalidad.',
+      title: 'Una energía que cambia de forma.',
       paragraphs: [
-        'En «Tell Em», proponemos comparar los fraseos de Cochise y $NOT y escuchar cómo cambia la sensación de movimiento entre ambos. «Juguetón» es una posibilidad de lectura del sonido, no una afirmación sobre su vida privada.',
-        'No presentamos a Carti como influencia confirmada de Cochise. Un parecido que perciba el oyente no prueba una relación artística ni una declaración del músico.',
+        'En «Tell Em», «Hatchback» y «TURN IT UP» proponemos escuchar el fraseo, la voz aguda y el ritmo de las intervenciones. Apple Music destaca su variedad de registros y Billboard describe la energía de «TURN IT UP».',
+        '«Juguetón» puede describir una impresión de escucha, no su personalidad fuera de la música. Tampoco presentamos un parecido vocal con Carti como prueba de una influencia directa.',
       ],
+      sources: [source('Apple Music · biografía', appleCochise), source('Billboard · TURN IT UP', billboardTurnItUp)],
+    },
+    influences: {
+      kind: 'fact',
+      label: 'INFLUENCIAS · ALCANCE VERIFICADO',
+      title: 'Cine, videojuegos y referencias pop.',
+      paragraphs: [
+        'La biografía de Apple Music explica que su nombre artístico rinde homenaje a The Warriors, película de 1979, y al videojuego basado en ella. Esa es una referencia cultural documentada, no una hipótesis construida a partir de su sonido.',
+        'Apple Music describe referencias a la cultura popular en «Hatchback» y documenta su crianza en una familia caribeña. Esos datos dan contexto a su obra; la fuente no afirma qué músicos lo inspiraron ni que Carti sea una influencia declarada.',
+      ],
+      sources: [source('Apple Music · biografía', appleCochise)],
     },
   },
 };
@@ -79,12 +112,11 @@ const songs = [
     position: 29,
   },
   {
-    title: 'Tell Em',
+    title: 'Hatchback',
     artist: 'cochise',
-    credit: 'Cochise & $NOT',
-    year: '2021',
-    chart: '2021-06-12',
-    position: 64,
+    credit: 'Cochise',
+    year: '2019',
+    catalog: appleCochise,
   },
   {
     title: 'Shoota',
@@ -95,6 +127,28 @@ const songs = [
     position: 46,
   },
   {
+    title: 'Tell Em',
+    artist: 'cochise',
+    credit: 'Cochise & $NOT',
+    year: '2021',
+    chart: '2021-06-12',
+    position: 64,
+  },
+  {
+    title: 'Sky',
+    artist: 'carti',
+    credit: 'Playboi Carti',
+    year: '2020',
+    catalog: appleCarti,
+  },
+  {
+    title: 'POCKET ROCKET',
+    artist: 'cochise',
+    credit: 'Cochise',
+    year: '2021',
+    catalog: appleCochise,
+  },
+  {
     title: 'FE!N',
     artist: 'carti',
     credit: 'Travis Scott feat. Playboi Carti',
@@ -102,28 +156,35 @@ const songs = [
     chart: '2023-08-12',
     position: 5,
   },
+  {
+    title: 'TURN IT UP',
+    artist: 'cochise',
+    credit: 'Cochise',
+    year: '2022',
+    catalog: appleCochise,
+  },
 ];
 
 const comparisons = [
   [
-    'Punto de partida',
-    '«Magnolia» y «FE!N»: compara la función de la voz en dos momentos distintos.',
-    '«Tell Em»: compara el fraseo de Cochise con el de $NOT dentro de la misma canción.',
+    'Trayectoria · dato',
+    'Atlanta: mixtape Playboi Carti (2017), Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
+    'Palm Bay: «Moshi Moshi» (2017), «Hatchback» (2019), «Tell Em» (2021) y TRENCH TOWN (2026).',
   ],
   [
-    'Energía · interpretación',
-    'Una invitación a escuchar repetición, tensión y fuerza rítmica.',
-    'Una invitación a escuchar contraste, movilidad y ligereza en el fraseo.',
+    'Sonido · lectura crítica',
+    'Pitchfork destaca el minimalismo y las intervenciones vocales; luego describe la intensidad de Whole Lotta Red.',
+    'Apple Music describe una voz aguda y múltiples registros; Billboard destaca la energía de «TURN IT UP».',
+  ],
+  [
+    'Influencias · alcance',
+    'Pitchfork llama mentor a A$AP Rocky y sitúa a Travis Porter y Rich Kidz como antecedentes sonoros.',
+    'Apple Music documenta el homenaje de su nombre a The Warriors y su videojuego; no confirma una influencia musical de Carti.',
   ],
   [
     'Actitud · interpretación',
-    'La intensidad puede ser una lectura del sonido. No equivale a describir su carácter privado.',
-    'Lo juguetón puede ser una lectura del sonido. No equivale a describir su carácter privado.',
-  ],
-  [
-    'Influencias personales',
-    'Sin atribuciones: falta una entrevista directa verificada para documentarlas.',
-    'Sin atribuciones: el parecido vocal no demuestra que Carti sea una influencia declarada.',
+    'La intensidad puede ser una lectura del sonido; no describe su carácter privado.',
+    'Lo juguetón puede ser una lectura del sonido; no describe su carácter privado.',
   ],
 ];
 
@@ -147,21 +208,18 @@ function renderArtist(card, view) {
   const content = artistContent[artist][view];
   const panel = card.querySelector('[role="tabpanel"]');
   panel.replaceChildren();
-  panel.setAttribute(
-    'aria-labelledby',
-    `${artist}-${view === 'history' ? 'history' : view === 'evolution' ? 'evolution' : 'style'}-tab`,
-  );
+  panel.setAttribute('aria-labelledby', `${artist}-${view}-tab`);
   panel.append(element('span', `content-kind ${content.kind}`, content.label));
   panel.append(element('h4', '', content.title));
   content.paragraphs.forEach((text) => panel.append(element('p', '', text)));
-  if (content.source) {
-    panel.append(
-      externalLink(
-        `${chartBase}${content.source}.json`,
-        'Consultar el registro ↗ (nueva pestaña)',
-        'inline-source',
-      ),
-    );
+  if (content.sources) {
+    const links = element('div', 'artist-sources');
+    content.sources.forEach(({ label, url }) => {
+      const link = externalLink(url, `${label} ↗`, 'inline-source');
+      link.setAttribute('aria-label', `${label}, abrir fuente en nueva pestaña`);
+      links.append(link);
+    });
+    panel.append(links);
   }
   card.querySelectorAll('[role="tab"]').forEach((tab) => {
     const selected = tab.dataset.view === view;
@@ -209,13 +267,15 @@ function renderSongs(filter) {
     title.append(element('p', 'song-credit', song.credit));
     row.append(title);
     const chart = externalLink(
-      `${chartBase}${song.chart}.json`,
-      `HOT 100 · #${song.position}`,
+      song.chart ? `${chartBase}${song.chart}.json` : song.catalog,
+      song.chart ? `HOT 100 · #${song.position}` : 'APPLE MUSIC · DESTACADA',
       'song-project',
     );
     chart.setAttribute(
       'aria-label',
-      `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`,
+      song.chart
+        ? `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`
+        : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`,
     );
     row.append(chart, element('span', 'song-year', song.year));
     const query = encodeURIComponent(`${song.title} ${song.credit}`);
@@ -263,7 +323,7 @@ sourceList.append(
   element(
     'p',
     '',
-    'Selección histórica de entradas en el Billboard Hot 100 estadounidense, entre 2017 y 2025. No es un ranking de reproducciones actuales ni una discografía completa.',
+    'Biografías y catálogos de Apple Music, reseñas de Pitchfork, notas de Billboard y una selección histórica del Hot 100. Las fichas enlazan los textos consultados.',
   ),
 );
 const archive = element('div', 'source-item');
@@ -277,17 +337,27 @@ archive.append(
   element(
     'small',
     '',
-    'Datos consultados el 12 de octubre de 2026. Es un archivo de terceros; las listas originales pertenecen a Billboard. Las fichas enlazan cada registro utilizado.',
+    'Archivo de terceros consultado el 12 de octubre de 2026; las listas originales pertenecen a Billboard. Cada posición mostrada enlaza su registro semanal.',
   ),
 );
 sourceList.append(archive);
+[
+  ['02 / Apple Music · Playboi Carti ↗', appleCarti],
+  ['03 / Apple Music · Cochise ↗', appleCochise],
+  ['04 / Pitchfork · Playboi Carti ↗', pitchforkCarti],
+  ['05 / Pitchfork · XXL Freshmen 2022 ↗', pitchforkFreshmen],
+].forEach(([label, url]) => {
+  const item = element('div', 'source-item');
+  item.append(externalLink(url, label));
+  sourceList.append(item);
+});
 const scope = element('p', 'source-item');
 scope.textContent =
-  'La posición indicada pertenece a una lista semanal concreta. La selección no es proporcional entre artistas: una lista estadounidense no mide toda su relevancia artística ni documenta todas sus canciones.';
+  '«Top Songs» de Apple Music es una selección editorial de la plataforma; el puesto del Hot 100 pertenece a una semana concreta. Ninguno es un ranking actual de toda la música de ambos artistas.';
 sourceList.append(scope);
 const status = element('p', 'source-item research-status');
 status.textContent =
-  'Esta edición se concentra en hitos de las listas. No incluye biografías completas ni influencias personales: esos apartados quedan pendientes de contrastar con discografías y entrevistas directas.';
+  'Las biografías cubren los hitos documentados hasta 2026. «Influencia» se usa con precisión: mentoría, antecedentes descritos por críticos o referencias culturales verificadas; no se presenta una lista de inspiraciones musicales declaradas sin entrevista directa.';
 sourceList.append(status);
 
 const menuButton = document.querySelector('.menu-toggle');

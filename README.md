@@ -23,7 +23,8 @@ Abre http://127.0.0.1:8000 en tu navegador. También puedes abrir `index.html` d
 - `assets/`: gráficos, fuentes locales y sus licencias.
 - `docs/SOURCES.md`: fuentes, criterio de selección y alcance editorial.
 - `tools/sync-fallback.mjs`: sincroniza el contenido inicial del HTML con los datos de JavaScript.
-- `tools/import-photos.py` y `tools/photos.json`: descargan e integran las catorce fotografías seleccionadas.
+- `assets/photos/`: las catorce fotografías originales y su registro de procedencia.
+- `tools/import-photos.py` y `tools/photos.json`: validan e integran la selección fotográfica.
 - `tools/finish.sh`: ejecuta la integración, las comprobaciones y el empaquetado.
 - `tools/package.py`: comprueba los recursos locales y genera un ZIP completo.
 - `tests/smoke.py`: comprobaciones funcionales con Playwright y Chromium.
@@ -42,14 +43,14 @@ Dentro del proyecto, ejecuta:
 bash tools/finish.sh
 ```
 
-Este script descarga las catorce fotos de los enlaces facilitados para el proyecto, valida sus archivos y activa la portada fotográfica, las fichas y la galería. Después comprueba JavaScript, ejecuta las pruebas y genera `../Rapverse-mejorado.zip`. Se detiene si un paso falla.
+Las catorce fotos ya están incluidas en `assets/photos/`. Este script valida los archivos locales y sincroniza su presentación en la portada, las fichas y la galería. Después comprueba JavaScript, ejecuta las pruebas y genera `../Rapverse-mejorado.zip`. Se detiene si un paso falla.
 
-La configuración de red de Codex debe permitir `encrypted-tbn0.gstatic.com`, `www.masqueradeatlanta.com`, `resources.tidal.com` y `m.media-amazon.com`. Un error 403 del proxy se resuelve en la configuración del entorno; editar archivos del proyecto no cambia ese permiso. Si la descarga falla, el importador conserva la página actual y sus recursos.
+La página y este flujo usan las fotografías incluidas en el proyecto. Las URL de procedencia se conservan como referencia; no es necesario descargarlas de nuevo ni configurar permisos de red para mostrar las imágenes.
 
 Puedes revisar el plan sin descargar ni modificar nada:
 
 ```bash
-python3 tools/import-photos.py --dry-run
+python3 tools/import-photos.py --from-directory assets/photos --dry-run
 ```
 
 Si ya tienes los originales guardados, nómbralos según `tools/photos.json` y usa:

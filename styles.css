@@ -2191,6 +2191,9 @@ html:not(.js) .gallery-filters {
     height: auto;
     aspect-ratio: 1.15;
   }
+  .hero-art:has(.hero-portraits) .art-side {
+    display: none;
+  }
   .photo-visual .artist-wordmark h3 {
     font-size: clamp(59px, 17vw, 81px);
   }

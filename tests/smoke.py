@@ -102,14 +102,15 @@ class RapverseBrowserTests(unittest.TestCase):
             self.assertEqual(history.get_attribute('aria-selected'), 'true')
 
     def test_filters_and_track_credits(self):
-        self.page.get_by_role('button', name='Cochise', exact=True).click()
+        filters = self.page.get_by_role('group', name='Filtrar canciones por artista')
+        filters.get_by_role('button', name='Cochise', exact=True).click()
         self.assertEqual(self.page.locator('.song-row').count(), 4)
         self.assertIn('Cochise & $NOT', self.page.locator('.song-credit').all_inner_texts())
         self.assertIn('4 CANCIONES DOCUMENTADAS', self.page.locator('#song-count').inner_text())
-        self.page.get_by_role('button', name='Playboi Carti', exact=True).click()
+        filters.get_by_role('button', name='Playboi Carti', exact=True).click()
         self.assertEqual(self.page.locator('.song-row').count(), 4)
         self.assertIn('Travis Scott', self.page.locator('.song-credit').all_inner_texts()[-1])
-        self.page.get_by_role('button', name='Todos').click()
+        filters.get_by_role('button', name='Todos').click()
         self.assertEqual(self.page.locator('.song-row').count(), 8)
         self.assertEqual(self.page.locator('.song-project[href^="https://music.apple.com/"]').count(), 4)
         self.assertEqual(self.page.locator('.song-project[href^="https://github.com/"]').count(), 4)
@@ -279,8 +280,7 @@ class RapverseBrowserTests(unittest.TestCase):
             context.close()
 
     def test_photo_gallery_filters_and_dialog(self):
-        if not self.page.locator('#galeria').count():
-            self.skipTest('Photographs have not been imported')
+        expect(self.page.locator('#galeria')).to_have_count(1)
         links = self.page.locator('#galeria .photo-link:visible')
         for artist in ('carti', 'cochise'):
             self.page.locator(f'.gallery-filter[data-gallery-filter="{artist}"]').click()
@@ -328,8 +328,7 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('document.body.style.overflow'), original_overflow)
 
     def test_photo_gallery_local_images_and_no_javascript_links(self):
-        if not self.page.locator('#galeria').count():
-            self.skipTest('Photographs have not been imported')
+        expect(self.page.locator('#galeria')).to_have_count(1)
         self.page.locator('.gallery-filter[data-gallery-filter="all"]').click()
         links = self.page.locator('#galeria .photo-link')
         expect(links).to_have_count(14)

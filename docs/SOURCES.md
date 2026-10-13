@@ -41,6 +41,7 @@ Las pestañas «Estilo y actitud» son invitaciones propias a escuchar fraseos, 
 | Recurso | Procedencia y permiso |
 | --- | --- |
 | `assets/universe.svg`, `carti.svg`, `cochise.svg`, `favicon.svg` | Ilustraciones originales creadas para Rapverse. No reproducen fotografías, retratos ni portadas oficiales. |
+| `assets/photos/*.jpg` | Catorce fotografías aportadas en `imagenes.zip`, conservadas con sus bytes originales. Consulta [su procedencia y huellas SHA-256](../assets/photos/SOURCES.md). |
 | Anton | [Google Fonts, Anton](https://github.com/google/fonts/tree/main/ofl/anton). SIL Open Font License 1.1, incluida en `assets/fonts/Anton-OFL.txt`. Archivo sin modificar. |
 | Space Grotesk | [Google Fonts, Space Grotesk](https://github.com/google/fonts/tree/main/ofl/spacegrotesk). SIL Open Font License 1.1, incluida en `assets/fonts/SpaceGrotesk-OFL.txt`. Archivo sin modificar. |
 | Audio y vídeo | No se alojan, incrustan ni reproducen grabaciones. Los botones abren búsquedas externas en Spotify. |
@@ -49,8 +50,8 @@ Los recursos visuales y tipográficos se sirven localmente; la página no carga 
 
 ## Selección fotográfica y colección local
 
-Los catorce enlaces fotográficos facilitados para esta revisión están registrados en [tools/photos.json](../tools/photos.json), con artista, descripción y nombre de archivo. Proceden de miniaturas de Google, The Masquerade, Tidal e IMDb/Amazon. El registro identifica la URL de procedencia; no atribuye una autoría ni una licencia fotográfica que no haya sido facilitada.
+Las catorce fotografías se incorporaron desde el archivo `imagenes.zip` aportado por el usuario. [tools/photos.json](../tools/photos.json) relaciona sus nombres originales con los nombres locales, el artista, la descripción y las URL de procedencia previamente facilitadas. Estas URL apuntan a miniaturas de Google, The Masquerade, Tidal e IMDb/Amazon; el registro no atribuye una autoría ni una licencia fotográfica que no haya sido facilitada.
 
-`tools/import-photos.py` conserva los bytes JPEG descargados, verifica el formato y utiliza las dimensiones del archivo. Tras una importación completa genera `assets/photos/SOURCES.md` con fecha, origen y huella SHA-256 de cada fotografía, y activa sus rutas locales en la portada, las fichas y la galería. Los SVG y las licencias tipográficas se conservan. El proyecto no depende de los servidores de origen para mostrar las imágenes una vez importadas.
+`tools/import-photos.py` conserva los bytes JPEG aportados, verifica el formato y utiliza las dimensiones del archivo. El registro en `assets/photos/SOURCES.md` documenta fecha de importación, nombre original, procedencia y huella SHA-256 de cada fotografía. Las fotos se muestran mediante rutas locales en la portada, las fichas y la galería. Los SVG y las licencias tipográficas se conservan. El proyecto no depende de los servidores de origen para mostrar las imágenes.
 
 Las canciones guardadas se almacenan en el navegador bajo `rapverse:saved-songs`; no se envían a ningún servicio. Si ese almacenamiento está bloqueado, la selección funciona durante la visita.

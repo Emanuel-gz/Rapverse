@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Complete the photo integration and create the downloadable project in Codex.
+# Validate the bundled photographs and package the complete project in Codex.
 set -euo pipefail
 
 RAPVERSE_PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd -- "$RAPVERSE_PROJECT_DIR"
 
-python3 tools/import-photos.py
+python3 tools/import-photos.py --from-directory assets/photos
 node --check script.js
 node --check gallery.js
 node --check tools/sync-fallback.mjs

@@ -360,10 +360,9 @@ def render_html(document, photos):
     document = replace_block(document, "cochise", image(by_name["cochise-trench.jpg"]))
     document = replace_block(document, "gallery", gallery_markup(by_name))
     license_note = (
-        '<p>Las fotografías proceden de la selección de enlaces facilitada por el usuario. '
+        '<p>Las fotografías forman parte de la selección facilitada para Rapverse. '
         'Su procedencia figura en <a href="assets/photos/SOURCES.md">el registro de imágenes</a> '
-        'y en <a href="tools/photos.json">el manifiesto de fotografías</a>. '
-        'Las fuentes proporcionadas no confirman una licencia de uso; no se les atribuye una. '
+        'junto con los archivos originales utilizados. '
         'Las ilustraciones SVG originales y las composiciones gráficas creadas para Rapverse '
         'se conservan en el proyecto.</p>'
     )
@@ -393,7 +392,7 @@ def render_sources(photos, imported_at, originals):
     local = originals is not None
     lines = [
         "# Procedencia de las fotografías de Rapverse", "",
-        "Selección de 14 enlaces proporcionados por el usuario; las URL se conservan en `tools/photos.json`.",
+        "Selección de 14 fotografías aportadas por el usuario; las URL de procedencia se conservan en `tools/photos.json`.",
         "No se conoce una licencia de uso confirmada para estas imágenes. No se atribuyen licencias ni autorías no verificadas.", "",
         f"Fecha de importación (UTC): {imported_at}.",
         "Método: originales locales renombrados; el script no descargó los recursos." if local else "Método: descarga HTTPS desde las URL del manifiesto.",
@@ -401,11 +400,16 @@ def render_sources(photos, imported_at, originals):
     ]
     for filename in GALLERY_ORDER:
         photo = next(photo for photo in photos if photo["filename"] == filename)
+        upload_lines = (
+            [f"- Archivo original aportado en `imagenes.zip`: `{photo['uploaded_filename']}`"]
+            if local and photo.get("uploaded_filename") else []
+        )
         lines.extend([
             f"## {filename}", "",
             f"- Artista: {ARTISTS[photo['artist']]}",
             f"- Descripción: {photo['alt']}",
             f"- Pie: {photo['caption']}",
+            *upload_lines,
             f"- Origen indicado: {photo['source']}",
             f"- URL proporcionada: {photo['url']}",
             f"- Dominio de origen: {urlsplit(photo['url']).hostname}",

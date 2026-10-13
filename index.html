@@ -45,6 +45,7 @@
           <a class="nav-link" href="#sonido">El sonido</a>
           <a class="nav-link" href="#comparativa">Cara a cara</a>
           <!-- photos:navigation -->
+          <a class="nav-link" href="#galeria">En imágenes</a>
         </nav>
         <a class="header-cta" href="#fuentes"
           >DETRÁS DEL CONTENIDO <span aria-hidden="true">↗</span></a
@@ -82,14 +83,11 @@
         </div>
         <div class="hero-art">
           <!-- photos:hero:start -->
-          <img
-            src="assets/universe.svg"
-            alt=""
-            width="760"
-            height="880"
-            fetchpriority="high"
-          />
-          <!-- photos:hero:end -->
+<div class="hero-portraits">
+  <figure><img src="assets/photos/carti-red-stage.jpg" alt="Playboi Carti actuando bajo luces rojas" width="466" height="658" class="hero-carti" fetchpriority="high" decoding="async" /></figure>
+  <figure><img src="assets/photos/cochise-feature.jpg" alt="Retrato de Cochise con gafas, joyas y abrigo blanco" width="2048" height="1152" class="hero-cochise" fetchpriority="high" decoding="async" /></figure>
+</div>
+<!-- photos:hero:end -->
           <div class="art-top">
             <span>FRECUENCIA: RAPVERSE</span><span>VOL. 001 ↗</span>
           </div>
@@ -130,16 +128,10 @@
         </div>
         <div class="artist-grid">
           <article class="artist-card" data-artist="carti">
-            <div class="artist-visual carti-visual">
+            <div class="artist-visual carti-visual photo-visual">
               <!-- photos:carti:start -->
-              <img
-                src="assets/carti.svg"
-                alt=""
-                width="800"
-                height="620"
-                loading="lazy"
-              />
-              <!-- photos:carti:end -->
+<img src="assets/photos/carti-beanie.jpg" alt="Playboi Carti cantando con micrófono y gorro negro" width="500" height="613" loading="lazy" decoding="async" />
+<!-- photos:carti:end -->
               <div class="artist-topline">
                 <span>UNIVERSO 01</span><span>↗</span>
               </div>
@@ -147,7 +139,7 @@
                 <span>PLAYBOI</span>
                 <h3>CARTI</h3>
               </div>
-              <span class="visual-label">ILUSTRACIÓN ORIGINAL</span>
+              <span class="visual-label">SERIE FOTOGRÁFICA</span>
             </div>
             <div class="artist-content">
               <div class="artist-meta">
@@ -209,16 +201,10 @@
             </div>
           </article>
           <article class="artist-card" data-artist="cochise">
-            <div class="artist-visual cochise-visual">
+            <div class="artist-visual cochise-visual photo-visual">
               <!-- photos:cochise:start -->
-              <img
-                src="assets/cochise.svg"
-                alt=""
-                width="800"
-                height="620"
-                loading="lazy"
-              />
-              <!-- photos:cochise:end -->
+<img src="assets/photos/cochise-trench.jpg" alt="Cochise con gabardina beige y guantes negros" width="447" height="447" loading="lazy" decoding="async" />
+<!-- photos:cochise:end -->
               <div class="artist-topline">
                 <span>UNIVERSO 02</span><span>↗</span>
               </div>
@@ -226,7 +212,7 @@
                 <span>EL UNIVERSO DE</span>
                 <h3>COCHISE</h3>
               </div>
-              <span class="visual-label">ILUSTRACIÓN ORIGINAL</span>
+              <span class="visual-label">SERIE FOTOGRÁFICA</span>
             </div>
             <div class="artist-content">
               <div class="artist-meta">
@@ -431,7 +417,130 @@
       </section>
 
       <!-- photos:gallery:start -->
-      <!-- photos:gallery:end -->
+<section class="gallery-section container section" id="galeria" aria-labelledby="gallery-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">04 / EN IMÁGENES</p><h2 id="gallery-title">OTRAS MIRADAS.<br />MISMA ENERGÍA.</h2></div>
+    <p class="section-description">Del escenario al retrato.<br />Dos universos vistos a través<br />de catorce fotografías.</p>
+  </div>
+  <div class="gallery-toolbar">
+    <div class="gallery-filters" role="group" aria-label="Filtrar fotografías por artista">
+      <button class="gallery-filter selected" type="button" data-gallery-filter="all" aria-pressed="true">Todas</button>
+      <button class="gallery-filter" type="button" data-gallery-filter="carti" aria-pressed="false">Playboi Carti</button>
+      <button class="gallery-filter" type="button" data-gallery-filter="cochise" aria-pressed="false">Cochise</button>
+    </div>
+    <span id="gallery-count" role="status" aria-live="polite">14 fotografías</span>
+  </div>
+  <div class="photo-grid">
+    <figure class="photo-card feature-photo" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-red-stage.jpg" data-artist="carti" data-caption="El escenario, en rojo" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti actuando bajo luces rojas">
+        <img src="assets/photos/carti-red-stage.jpg" alt="Playboi Carti actuando bajo luces rojas" width="466" height="658" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>El escenario, en rojo</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card feature-photo" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-feature.jpg" data-artist="cochise" data-caption="Brillo y actitud" data-title="Cochise" aria-label="Ver fotografía: Retrato de Cochise con gafas, joyas y abrigo blanco">
+        <img src="assets/photos/cochise-feature.jpg" alt="Retrato de Cochise con gafas, joyas y abrigo blanco" width="2048" height="1152" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Brillo y actitud</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-beanie.jpg" data-artist="carti" data-caption="La voz en directo" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti cantando con micrófono y gorro negro">
+        <img src="assets/photos/carti-beanie.jpg" alt="Playboi Carti cantando con micrófono y gorro negro" width="500" height="613" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>La voz en directo</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-trench.jpg" data-artist="cochise" data-caption="Una identidad propia" data-title="Cochise" aria-label="Ver fotografía: Cochise con gabardina beige y guantes negros">
+        <img src="assets/photos/cochise-trench.jpg" alt="Cochise con gabardina beige y guantes negros" width="447" height="447" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Una identidad propia</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-blue-portrait.jpg" data-artist="carti" data-caption="Entre música y estilo" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti con jersey azul">
+        <img src="assets/photos/carti-blue-portrait.jpg" alt="Playboi Carti con jersey azul" width="1365" height="2048" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>Entre música y estilo</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-blue-portrait.jpg" data-artist="cochise" data-caption="Su propio universo" data-title="Cochise" aria-label="Ver fotografía: Cochise con gorra negra ante un fondo azul">
+        <img src="assets/photos/cochise-blue-portrait.jpg" alt="Cochise con gorra negra ante un fondo azul" width="480" height="480" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Su propio universo</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-jersey.jpg" data-artist="carti" data-caption="Fuera del escenario" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti con camiseta de baloncesto y gorra roja">
+        <img src="assets/photos/carti-jersey.jpg" alt="Playboi Carti con camiseta de baloncesto y gorra roja" width="447" height="447" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>Fuera del escenario</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-red-jacket.jpg" data-artist="cochise" data-caption="Rojo en primer plano" data-title="Cochise" aria-label="Ver fotografía: Cochise con chaqueta y sombrero rojos">
+        <img src="assets/photos/cochise-red-jacket.jpg" alt="Cochise con chaqueta y sombrero rojos" width="378" height="529" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Rojo en primer plano</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-lounge.jpg" data-artist="carti" data-caption="Otra energía" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti sentado con una copa y chaqueta blanca">
+        <img src="assets/photos/carti-lounge.jpg" alt="Playboi Carti sentado con una copa y chaqueta blanca" width="640" height="480" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>Otra energía</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-point.jpg" data-artist="cochise" data-caption="Otra perspectiva" data-title="Cochise" aria-label="Ver fotografía: Cochise con gabardina beige y gafas oscuras">
+        <img src="assets/photos/cochise-point.jpg" alt="Cochise con gabardina beige y gafas oscuras" width="447" height="447" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Otra perspectiva</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-green-jacket.jpg" data-artist="carti" data-caption="Una voz, muchas formas" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti con chaqueta verde">
+        <img src="assets/photos/carti-green-jacket.jpg" alt="Playboi Carti con chaqueta verde" width="454" height="676" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>Una voz, muchas formas</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-suit.jpg" data-artist="cochise" data-caption="Estilo propio" data-title="Cochise" aria-label="Ver fotografía: Cochise con traje gris y gafas oscuras">
+        <img src="assets/photos/cochise-suit.jpg" alt="Cochise con traje gris y gafas oscuras" width="554" height="554" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Estilo propio</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="carti">
+      <a class="photo-link" href="assets/photos/carti-camo.jpg" data-artist="carti" data-caption="Romper el molde" data-title="Playboi Carti" aria-label="Ver fotografía: Playboi Carti con chaqueta de camuflaje">
+        <img src="assets/photos/carti-camo.jpg" alt="Playboi Carti con chaqueta de camuflaje" width="451" height="680" loading="lazy" decoding="async" />
+        <span class="photo-caption">Playboi Carti<small>Romper el molde</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <figure class="photo-card" data-artist="cochise">
+      <a class="photo-link" href="assets/photos/cochise-microphone.jpg" data-artist="cochise" data-caption="Energía en directo" data-title="Cochise" aria-label="Ver fotografía: Cochise cantando con una gorra negra en el escenario">
+        <img src="assets/photos/cochise-microphone.jpg" alt="Cochise cantando con una gorra negra en el escenario" width="399" height="501" loading="lazy" decoding="async" />
+        <span class="photo-caption">Cochise<small>Energía en directo</small></span>
+        <span class="photo-open" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+  </div>
+  <p class="gallery-note">Una selección de fotografías de ambos artistas. Consulta su procedencia en <a href="assets/photos/SOURCES.md">el registro de imágenes</a>.</p>
+</section>
+<dialog id="photo-dialog" aria-labelledby="photo-dialog-title">
+  <div class="photo-dialog-top"><p class="eyebrow">EN IMÁGENES</p><button id="photo-close" type="button" aria-label="Cerrar fotografía">×</button></div>
+  <img id="photo-full" alt="" />
+  <div class="photo-dialog-bottom">
+    <div><h3 id="photo-dialog-title">Fotografía</h3><span id="photo-position" aria-live="polite"></span></div>
+    <div class="photo-navigation"><button id="photo-prev" type="button" aria-label="Fotografía anterior">←</button><button id="photo-next" type="button" aria-label="Fotografía siguiente">→</button></div>
+  </div>
+</dialog>
+<!-- photos:gallery:end -->
 
       <section
         class="sources-section"
@@ -440,7 +549,7 @@
       >
         <div class="container section sources-layout">
           <div>
-            <p class="eyebrow">04 / DETRÁS DEL CONTENIDO</p>
+            <p class="eyebrow">05 / DETRÁS DEL CONTENIDO</p>
             <h2 id="sources-title">EL CONTEXTO<br />TAMBIÉN IMPORTA.</h2>
             <p>Una mirada musical con curiosidad y criterio.</p>
             <div class="source-legend">
@@ -469,12 +578,8 @@
               </summary>
               <div>
                 <!-- photos:license:start -->
-                <p>
-                  Las ilustraciones SVG y las composiciones gráficas se crearon
-                  para Rapverse. No son fotografías de los artistas ni
-                  reproducciones de portadas oficiales.
-                </p>
-                <!-- photos:license:end -->
+<p>Las fotografías forman parte de la selección facilitada para Rapverse. Su procedencia figura en <a href="assets/photos/SOURCES.md">el registro de imágenes</a> junto con los archivos originales utilizados. Las ilustraciones SVG originales y las composiciones gráficas creadas para Rapverse se conservan en el proyecto.</p>
+<!-- photos:license:end -->
                 <p>
                   No alojamos ni reproducimos grabaciones. Los enlaces a
                   plataformas son enlaces de navegación y no implican afiliación

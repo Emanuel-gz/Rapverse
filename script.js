@@ -1,5 +1,7 @@
 'use strict';
 
+document.documentElement.classList.add('js');
+
 // Research scope and exact sources are documented in docs/SOURCES.md.
 // A critic's description or a collaboration is not an artist-declared influence.
 const chartBase =
@@ -248,14 +250,66 @@ document.querySelectorAll('.artist-card').forEach((card) => {
   });
 });
 
-function renderSongs(filter) {
-  const list = document.querySelector('#songs');
-  const selection = songs.filter(
-    (song) => filter === 'all' || song.artist === filter,
-  );
+function normalizeSearch(value) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
+function songId(song) {
+  return `${song.artist}:${normalizeSearch(song.title)}`;
+}
+
+const savedSongsKey = 'rapverse:saved-songs';
+const knownSongIds = new Set(songs.map(songId));
+function parseSavedSongs(value) {
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return new Set();
+    return new Set(parsed.filter((id) => typeof id === 'string' && knownSongIds.has(id)));
+  } catch {
+    return new Set();
+  }
+}
+
+function readSavedSongs() {
+  try {
+    return parseSavedSongs(window.localStorage.getItem(savedSongsKey));
+  } catch {
+    return new Set();
+  }
+}
+
+let savedSongIds = readSavedSongs();
+let activeSongFilter = 'all';
+let songQuery = '';
+const songList = document.querySelector('#songs');
+const songSearch = document.querySelector('#song-search');
+const clearSearch = document.querySelector('#clear-search');
+const songEmpty = document.querySelector('#song-empty');
+const savedCount = document.querySelector('#saved-count');
+
+function persistSavedSongs() {
+  try {
+    window.localStorage.setItem(savedSongsKey, JSON.stringify([...savedSongIds]));
+  } catch {
+    // Favorites remain usable for this visit when browser storage is unavailable.
+  }
+}
+
+function renderSongs(filter = activeSongFilter) {
+  activeSongFilter = filter;
+  const query = normalizeSearch(songQuery);
+  const selection = songs.filter((song) => {
+    const matchesFilter = filter === 'all'
+      || (filter === 'saved' ? savedSongIds.has(songId(song)) : song.artist === filter);
+    const matchesQuery = normalizeSearch(`${song.title} ${song.credit} ${song.year}`).includes(query);
+    return matchesFilter && matchesQuery;
+  });
+  const list = songList;
   list.replaceChildren();
   selection.forEach((song, index) => {
     const row = element('article', 'song-row');
+    const id = songId(song);
+    row.dataset.songId = id;
     row.append(
       element('span', 'song-index', String(index + 1).padStart(2, '0')),
     );
@@ -293,6 +347,20 @@ function renderSongs(filter) {
     play.setAttribute('aria-hidden', 'true');
     listen.append(play);
     row.append(listen);
+    const saved = savedSongIds.has(id);
+    const save = element('button', 'save-song');
+    save.type = 'button';
+    save.dataset.songId = id;
+    save.setAttribute('aria-pressed', String(saved));
+    const saveLabel = saved
+      ? `Quitar ${song.title}, ${song.credit}, de guardadas`
+      : `Guardar ${song.title}, ${song.credit}`;
+    save.setAttribute('aria-label', saveLabel);
+    save.title = saveLabel;
+    const saveIcon = element('span', 'save-icon', saved ? '♥' : '♡');
+    saveIcon.setAttribute('aria-hidden', 'true');
+    save.append(saveIcon);
+    row.append(save);
     list.append(row);
   });
   document.querySelector('#song-count').textContent =
@@ -302,14 +370,72 @@ function renderSongs(filter) {
     button.classList.toggle('selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
+  if (savedCount) savedCount.textContent = String(savedSongIds.size);
+  if (clearSearch) clearSearch.hidden = songQuery.length === 0;
+  if (songEmpty) songEmpty.hidden = selection.length !== 0;
 }
 
 document.querySelectorAll('.filter-button').forEach((button) => {
   button.addEventListener('click', () => renderSongs(button.dataset.filter));
 });
+
+songSearch?.addEventListener('input', () => {
+  songQuery = songSearch.value;
+  renderSongs();
+});
+clearSearch?.addEventListener('click', () => {
+  songQuery = '';
+  songSearch.value = '';
+  renderSongs();
+  songSearch.focus();
+});
+document.querySelector('#reset-songs')?.addEventListener('click', () => {
+  songQuery = '';
+  if (songSearch) songSearch.value = '';
+  renderSongs('all');
+  if (songSearch) songSearch.focus();
+});
+songList.addEventListener('click', (event) => {
+  const button = event.target.closest('.save-song');
+  if (!button || !songList.contains(button)) return;
+  const previousButtons = [...songList.querySelectorAll('.save-song')];
+  const previousIndex = previousButtons.indexOf(button);
+  const id = button.dataset.songId;
+  if (!knownSongIds.has(id)) return;
+  if (savedSongIds.has(id)) savedSongIds.delete(id);
+  else savedSongIds.add(id);
+  persistSavedSongs();
+  renderSongs();
+  const buttons = [...songList.querySelectorAll('.save-song')];
+  const nextFocus = buttons.find((candidate) => candidate.dataset.songId === id)
+    || buttons[Math.min(previousIndex, buttons.length - 1)]
+    || document.querySelector('.filter-button[data-filter="saved"]');
+  nextFocus?.focus();
+});
+window.addEventListener('storage', (event) => {
+  if (event.key !== savedSongsKey && event.key !== null) return;
+  const focused = document.activeElement;
+  const focusedRow = songList.contains(focused) ? focused.closest('.song-row') : null;
+  const focusSelector = ['.listen-link', '.save-song', '.song-project']
+    .find((selector) => focused?.matches(selector));
+  const previousIndex = focusedRow
+    ? [...songList.querySelectorAll('.song-row')].indexOf(focusedRow)
+    : -1;
+  const focusedId = focusedRow?.dataset.songId;
+  savedSongIds = parseSavedSongs(event.newValue);
+  renderSongs();
+  if (!focusedRow || !focusSelector) return;
+  const rows = [...songList.querySelectorAll('.song-row')];
+  const nextRow = rows.find((row) => row.dataset.songId === focusedId)
+    || rows[Math.min(previousIndex, rows.length - 1)];
+  const nextFocus = nextRow?.querySelector(focusSelector)
+    || document.querySelector('.filter-button.selected');
+  nextFocus?.focus();
+});
 renderSongs('all');
 
 const comparisonBody = document.querySelector('#comparison-body');
+comparisonBody.replaceChildren();
 comparisons.forEach(([topic, carti, cochise]) => {
   const row = element('tr');
   const heading = element('th', '', topic);
@@ -319,6 +445,7 @@ comparisons.forEach(([topic, carti, cochise]) => {
 });
 
 const sourceList = document.querySelector('#source-list');
+sourceList.replaceChildren();
 sourceList.append(
   element(
     'p',
@@ -362,6 +489,7 @@ sourceList.append(status);
 
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
+const siteHeader = document.querySelector('.site-header');
 function closeMenu(returnFocus = false) {
   navigation.classList.remove('open');
   menuButton.setAttribute('aria-expanded', 'false');
@@ -388,6 +516,9 @@ document.addEventListener('click', (event) => {
   if (!navigation.contains(event.target) && !menuButton.contains(event.target))
     closeMenu();
 });
+document.addEventListener('focusin', (event) => {
+  if (!siteHeader.contains(event.target)) closeMenu();
+});
 const mobileBreakpoint = window.matchMedia('(max-width: 650px)');
 mobileBreakpoint.addEventListener('change', () => closeMenu());
 
@@ -395,10 +526,9 @@ const navLinks = [...navigation.querySelectorAll('.nav-link')];
 const navSections = navLinks.map((link) => document.querySelector(link.hash));
 let scheduled = false;
 function updateNavigation() {
-  const position = window.scrollY + 160;
   let active = navSections[0];
   navSections.forEach((section) => {
-    if (section.offsetTop <= position) active = section;
+    if (section.getBoundingClientRect().top <= 160) active = section;
   });
   navLinks.forEach((link) => {
     const current = link.hash === `#${active.id}`;

@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "destination": "assets/photos",
+  "photos": [
+    {
+      "filename": "cochise-red-jacket.jpg",
+      "artist": "cochise",
+      "caption": "Rojo en primer plano",
+      "alt": "Cochise con chaqueta y sombrero rojos",
+      "width": 378,
+      "height": 537,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnuwPqa-SoPLcXhy0BiDWtepthV0FN079Ra9oKry8C7A&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-point.jpg",
+      "artist": "cochise",
+      "caption": "Otra perspectiva",
+      "alt": "Cochise con gabardina beige y gafas oscuras",
+      "width": 447,
+      "height": 447,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQwXBttGR6EjIOwnHhiewfogZ4fs4-WT68CYVEU0h3thXp7tU2fFO5fw8&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-suit.jpg",
+      "artist": "cochise",
+      "caption": "Estilo propio",
+      "alt": "Cochise con traje gris y gafas oscuras",
+      "width": 554,
+      "height": 554,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY3ioW2nhNQTgxJko4sp1oKQdDLjf2cc3P7skVQ3IbqWFFA5BalkaW5U4&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-feature.jpg",
+      "artist": "cochise",
+      "caption": "Brillo y actitud",
+      "alt": "Retrato de Cochise con gafas, joyas y abrigo blanco",
+      "width": 2048,
+      "height": 1152,
+      "url": "https://www.masqueradeatlanta.com/wp-content/uploads/2024/11/032825_cochise_ForSite.jpg",
+      "source": "The Masquerade · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-blue-portrait.jpg",
+      "artist": "cochise",
+      "caption": "Su propio universo",
+      "alt": "Cochise con gorra negra ante un fondo azul",
+      "width": 480,
+      "height": 480,
+      "url": "https://resources.tidal.com/images/bfbbaf42/5865/4d2a/8440/89498eaa266a/480x480.jpg",
+      "source": "TIDAL · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-jersey.jpg",
+      "artist": "carti",
+      "caption": "Fuera del escenario",
+      "alt": "Playboi Carti con camiseta de baloncesto y gorra roja",
+      "width": 447,
+      "height": 447,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1j8BTefDdQKhVIueV3fRpa-0Y94EmPIfvxgnoKXkx02D4porgVJflvsQ&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-lounge.jpg",
+      "artist": "carti",
+      "caption": "Otra energía",
+      "alt": "Playboi Carti sentado con una copa y chaqueta blanca",
+      "width": 640,
+      "height": 480,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxY9atTvwH1fkMSs8VvNgaN3AdisaQ9vWYvpf5Bl9m2MyB8xVvSa37D2p1&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-green-jacket.jpg",
+      "artist": "carti",
+      "caption": "Una voz, muchas formas",
+      "alt": "Playboi Carti con chaqueta verde",
+      "width": 454,
+      "height": 676,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-hCi4KkQ8GbGeC1DbYltZ1AgL0yocMFUxseJkfM2qatsxIlC7DVQtjiM&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-blue-portrait.jpg",
+      "artist": "carti",
+      "caption": "Entre música y estilo",
+      "alt": "Playboi Carti con jersey azul",
+      "width": 1280,
+      "height": 1920,
+      "url": "https://m.media-amazon.com/images/M/MV5BMTE0MjE5NDAxMzBeQTJeQWpwZ15BbWU4MDE2OTA4ODMy._V1_.jpg",
+      "source": "Amazon Media · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-beanie.jpg",
+      "artist": "carti",
+      "caption": "La voz en directo",
+      "alt": "Playboi Carti cantando con micrófono y gorro negro",
+      "width": 500,
+      "height": 613,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2zdH4AxlJVB3cKD2gU2lg30U79OvmZHcihDqfRFpDgbC1Rg28TToVKWJ3&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-camo.jpg",
+      "artist": "carti",
+      "caption": "Romper el molde",
+      "alt": "Playboi Carti con chaqueta de camuflaje",
+      "width": 451,
+      "height": 680,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtrgohXryvQm11r7iss9tpEd5obDy85nELrdl8dHFSI-k0plVQk4RLrP_i&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "carti-red-stage.jpg",
+      "artist": "carti",
+      "caption": "El escenario, en rojo",
+      "alt": "Playboi Carti actuando bajo luces rojas",
+      "width": 466,
+      "height": 658,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN6EJ4th-vtVAnFqybIufGQQXFJKx8iVaq6Hy_6PrgmD2vyG5QWtGDh0E&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-trench.jpg",
+      "artist": "cochise",
+      "caption": "Una identidad propia",
+      "alt": "Cochise con gabardina beige y guantes negros",
+      "width": 447,
+      "height": 447,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEM3zRXyRrsirVM782XEaC48IqAwTM1inpKFb0OlrgOPmeTzcDEv_8xak&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    },
+    {
+      "filename": "cochise-microphone.jpg",
+      "artist": "cochise",
+      "caption": "Energía en directo",
+      "alt": "Cochise cantando con una gorra negra en el escenario",
+      "width": 399,
+      "height": 501,
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkt49a4m2RnpoOxid5ObD0FRbuh4bWV7Rr3IqL0r8uhpqgTDPidRG-BrM&s=10",
+      "source": "Google Images · enlace de imagen proporcionado por el usuario"
+    }
+  ]
+}

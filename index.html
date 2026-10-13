@@ -19,6 +19,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <script src="gallery.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -43,6 +44,7 @@
           <a class="nav-link" href="#artistas">Los artistas</a>
           <a class="nav-link" href="#sonido">El sonido</a>
           <a class="nav-link" href="#comparativa">Cara a cara</a>
+          <!-- photos:navigation -->
         </nav>
         <a class="header-cta" href="#fuentes"
           >DETRÁS DEL CONTENIDO <span aria-hidden="true">↗</span></a
@@ -79,6 +81,7 @@
           </div>
         </div>
         <div class="hero-art">
+          <!-- photos:hero:start -->
           <img
             src="assets/universe.svg"
             alt=""
@@ -86,6 +89,7 @@
             height="880"
             fetchpriority="high"
           />
+          <!-- photos:hero:end -->
           <div class="art-top">
             <span>FRECUENCIA: RAPVERSE</span><span>VOL. 001 ↗</span>
           </div>
@@ -127,6 +131,7 @@
         <div class="artist-grid">
           <article class="artist-card" data-artist="carti">
             <div class="artist-visual carti-visual">
+              <!-- photos:carti:start -->
               <img
                 src="assets/carti.svg"
                 alt=""
@@ -134,6 +139,7 @@
                 height="620"
                 loading="lazy"
               />
+              <!-- photos:carti:end -->
               <div class="artist-topline">
                 <span>UNIVERSO 01</span><span>↗</span>
               </div>
@@ -197,11 +203,14 @@
                 role="tabpanel"
                 aria-labelledby="carti-history-tab"
                 tabindex="0"
-              ></div>
+              >
+<!-- fallback:carti-panel:start --><span class="content-kind fact">BIOGRAFÍA DOCUMENTADA</span><h4>De Atlanta a una voz propia.</h4><p>Jordan Carter nació en 1996. Según la biografía editorial de Apple Music, comenzó en el circuito underground de Atlanta y conoció a A$AP Rocky en un festival en 2015; aquella relación impulsó su proyección pública.</p><p>Pitchfork sitúa «Broke Boi» entre sus primeros temas destacados de 2015. Su mixtape homónima llegó en 2017 con «Magnolia» y «wokeuplikethis*», junto a Lil Uzi Vert. Después publicó Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).</p><div class="artist-sources"><a class="inline-source" href="https://music.apple.com/us/artist/playboi-carti/982372505" target="_blank" rel="noopener noreferrer" aria-label="Apple Music · biografía, abrir fuente en nueva pestaña">Apple Music · biografía ↗</a><a class="inline-source" href="https://pitchfork.com/reviews/albums/23196-playboi-carti/" target="_blank" rel="noopener noreferrer" aria-label="Pitchfork · debut, abrir fuente en nueva pestaña">Pitchfork · debut ↗</a><a class="inline-source" href="https://pitchfork.com/artists/34362-playboi-carti/" target="_blank" rel="noopener noreferrer" aria-label="Pitchfork · discografía, abrir fuente en nueva pestaña">Pitchfork · discografía ↗</a></div><!-- fallback:carti-panel:end -->
+</div>
             </div>
           </article>
           <article class="artist-card" data-artist="cochise">
             <div class="artist-visual cochise-visual">
+              <!-- photos:cochise:start -->
               <img
                 src="assets/cochise.svg"
                 alt=""
@@ -209,6 +218,7 @@
                 height="620"
                 loading="lazy"
               />
+              <!-- photos:cochise:end -->
               <div class="artist-topline">
                 <span>UNIVERSO 02</span><span>↗</span>
               </div>
@@ -272,14 +282,16 @@
                 role="tabpanel"
                 aria-labelledby="cochise-history-tab"
                 tabindex="0"
-              ></div>
+              >
+<!-- fallback:cochise-panel:start --><span class="content-kind fact">BIOGRAFÍA DOCUMENTADA</span><h4>De Palm Bay al alcance global.</h4><p>Cochise creció en Palm Bay, Florida, con padres caribeños. Apple Music cuenta que, tras el instituto, recibió ofertas para jugar al fútbol universitario, pero siguió cerca de casa y publicaba música en línea mientras estudiaba en un community college.</p><p>«Moshi Moshi» obtuvo atención en 2017; «Hatchback» amplió su visibilidad en 2019. En 2020 firmó con Columbia Records, según la biografía de Apple Music. «Tell Em», junto a $NOT, entró en el Hot 100 en 2021; Pitchfork informó de su inclusión en la promoción XXL Freshman de 2022.</p><div class="artist-sources"><a class="inline-source" href="https://music.apple.com/us/artist/cochise/163302681" target="_blank" rel="noopener noreferrer" aria-label="Apple Music · biografía, abrir fuente en nueva pestaña">Apple Music · biografía ↗</a><a class="inline-source" href="https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/2021-06-12.json" target="_blank" rel="noopener noreferrer" aria-label="Hot 100 · 12 jun 2021, abrir fuente en nueva pestaña">Hot 100 · 12 jun 2021 ↗</a><a class="inline-source" href="https://pitchfork.com/news/xxl-2022-freshman-class-babyface-ray-doechii-nardo-wick-babytron-sofaygo-and-more/" target="_blank" rel="noopener noreferrer" aria-label="Pitchfork · XXL 2022, abrir fuente en nueva pestaña">Pitchfork · XXL 2022 ↗</a></div><!-- fallback:cochise-panel:end -->
+</div>
             </div>
           </article>
         </div>
         <noscript
           ><p class="notice">
-            Activa JavaScript para explorar las fichas y filtrar canciones. La
-            metodología y las fuentes están disponibles al final de la página.
+            Estás viendo la selección completa. Activa JavaScript para cambiar
+            las pestañas, buscar y guardar canciones.
           </p></noscript
         >
       </section>
@@ -297,6 +309,14 @@
               Una puerta de entrada a sus catálogos.<br />Escucha en tu
               plataforma favorita y<br />descubre qué universo va contigo.
             </p>
+          </div>
+          <div class="song-search">
+            <label for="song-search">ENCUENTRA TU PRÓXIMA CANCIÓN</label>
+            <div class="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input id="song-search" type="search" placeholder="Busca una canción, artista o año…" autocomplete="off" aria-controls="songs" />
+              <button id="clear-search" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+            </div>
           </div>
           <div class="song-toolbar">
             <div
@@ -323,10 +343,21 @@
               >
                 Cochise
               </button>
+              <button class="filter-button" data-filter="saved" aria-pressed="false">
+                Guardadas <span id="saved-count">0</span>
+              </button>
             </div>
-            <p class="song-count" id="song-count" role="status"></p>
+            <p class="song-count" id="song-count" role="status">8 CANCIONES DOCUMENTADAS</p>
           </div>
-          <div id="songs" class="songs-list"></div>
+          <div id="songs" class="songs-list">
+<!-- fallback:songs:start --><article class="song-row"><span class="song-index">01</span><div class="song-art carti" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">Magnolia</h3><p class="song-credit">Playboi Carti</p></div><a class="song-project" href="https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/2017-07-08.json" target="_blank" rel="noopener noreferrer" aria-label="Magnolia: puesto 29 en la lista del 2017-07-08, consultar fuente en nueva pestaña">HOT 100 · #29</a><span class="song-year">2017</span><a class="listen-link" href="https://open.spotify.com/search/Magnolia%20Playboi%20Carti" target="_blank" rel="noopener noreferrer" aria-label="Buscar Magnolia, Playboi Carti, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">02</span><div class="song-art cochise" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">Hatchback</h3><p class="song-credit">Cochise</p></div><a class="song-project" href="https://music.apple.com/us/artist/cochise/163302681" target="_blank" rel="noopener noreferrer" aria-label="Hatchback: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña">APPLE MUSIC · DESTACADA</a><span class="song-year">2019</span><a class="listen-link" href="https://open.spotify.com/search/Hatchback%20Cochise" target="_blank" rel="noopener noreferrer" aria-label="Buscar Hatchback, Cochise, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">03</span><div class="song-art carti" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">Shoota</h3><p class="song-credit">Playboi Carti feat. Lil Uzi Vert</p></div><a class="song-project" href="https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/2018-05-26.json" target="_blank" rel="noopener noreferrer" aria-label="Shoota: puesto 46 en la lista del 2018-05-26, consultar fuente en nueva pestaña">HOT 100 · #46</a><span class="song-year">2018</span><a class="listen-link" href="https://open.spotify.com/search/Shoota%20Playboi%20Carti%20feat.%20Lil%20Uzi%20Vert" target="_blank" rel="noopener noreferrer" aria-label="Buscar Shoota, Playboi Carti feat. Lil Uzi Vert, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">04</span><div class="song-art cochise" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">Tell Em</h3><p class="song-credit">Cochise &amp; $NOT</p></div><a class="song-project" href="https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/2021-06-12.json" target="_blank" rel="noopener noreferrer" aria-label="Tell Em: puesto 64 en la lista del 2021-06-12, consultar fuente en nueva pestaña">HOT 100 · #64</a><span class="song-year">2021</span><a class="listen-link" href="https://open.spotify.com/search/Tell%20Em%20Cochise%20%26%20%24NOT" target="_blank" rel="noopener noreferrer" aria-label="Buscar Tell Em, Cochise &amp; $NOT, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">05</span><div class="song-art carti" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">Sky</h3><p class="song-credit">Playboi Carti</p></div><a class="song-project" href="https://music.apple.com/us/artist/playboi-carti/982372505" target="_blank" rel="noopener noreferrer" aria-label="Sky: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña">APPLE MUSIC · DESTACADA</a><span class="song-year">2020</span><a class="listen-link" href="https://open.spotify.com/search/Sky%20Playboi%20Carti" target="_blank" rel="noopener noreferrer" aria-label="Buscar Sky, Playboi Carti, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">06</span><div class="song-art cochise" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">POCKET ROCKET</h3><p class="song-credit">Cochise</p></div><a class="song-project" href="https://music.apple.com/us/artist/cochise/163302681" target="_blank" rel="noopener noreferrer" aria-label="POCKET ROCKET: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña">APPLE MUSIC · DESTACADA</a><span class="song-year">2021</span><a class="listen-link" href="https://open.spotify.com/search/POCKET%20ROCKET%20Cochise" target="_blank" rel="noopener noreferrer" aria-label="Buscar POCKET ROCKET, Cochise, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">07</span><div class="song-art carti" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">FE!N</h3><p class="song-credit">Travis Scott feat. Playboi Carti</p></div><a class="song-project" href="https://github.com/mhollingshead/billboard-hot-100/blob/abefdd18eaf587c102bda9b0f2bc11aa9ae250d5/date/2023-08-12.json" target="_blank" rel="noopener noreferrer" aria-label="FE!N: puesto 5 en la lista del 2023-08-12, consultar fuente en nueva pestaña">HOT 100 · #5</a><span class="song-year">2023</span><a class="listen-link" href="https://open.spotify.com/search/FE!N%20Travis%20Scott%20feat.%20Playboi%20Carti" target="_blank" rel="noopener noreferrer" aria-label="Buscar FE!N, Travis Scott feat. Playboi Carti, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><article class="song-row"><span class="song-index">08</span><div class="song-art cochise" aria-hidden="true"></div><div class="song-info"><h3 class="song-title">TURN IT UP</h3><p class="song-credit">Cochise</p></div><a class="song-project" href="https://music.apple.com/us/artist/cochise/163302681" target="_blank" rel="noopener noreferrer" aria-label="TURN IT UP: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña">APPLE MUSIC · DESTACADA</a><span class="song-year">2022</span><a class="listen-link" href="https://open.spotify.com/search/TURN%20IT%20UP%20Cochise" target="_blank" rel="noopener noreferrer" aria-label="Buscar TURN IT UP, Cochise, en Spotify (nueva pestaña)"><span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></article><!-- fallback:songs:end -->
+</div>
+          <div id="song-empty" class="empty-state" hidden>
+            <span class="empty-symbol" aria-hidden="true">↗</span>
+            <h3>Hay más sonido por descubrir.</h3>
+            <p>Prueba otra búsqueda o guarda canciones con el corazón para encontrarlas aquí.</p>
+            <button id="reset-songs" class="button button-dark" type="button">Ver todas las canciones <span aria-hidden="true">→</span></button>
+          </div>
           <p class="sound-note">
             <span aria-hidden="true">↗</span> Los enlaces abren búsquedas en
             Spotify. No se reproduce audio en esta página.
@@ -384,7 +415,9 @@
                 </th>
               </tr>
             </thead>
-            <tbody id="comparison-body"></tbody>
+            <tbody id="comparison-body">
+<!-- fallback:comparison-body:start --><tr><th scope="row">Trayectoria · dato</th><td>Atlanta: mixtape Playboi Carti (2017), Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).</td><td>Palm Bay: «Moshi Moshi» (2017), «Hatchback» (2019), «Tell Em» (2021) y TRENCH TOWN (2026).</td></tr><tr><th scope="row">Sonido · lectura crítica</th><td>Pitchfork destaca el minimalismo y las intervenciones vocales; luego describe la intensidad de Whole Lotta Red.</td><td>Apple Music describe una voz aguda y múltiples registros; Billboard destaca la energía de «TURN IT UP».</td></tr><tr><th scope="row">Influencias · alcance</th><td>Pitchfork llama mentor a A$AP Rocky y sitúa a Travis Porter y Rich Kidz como antecedentes sonoros.</td><td>Apple Music documenta el homenaje de su nombre a The Warriors y su videojuego; no confirma una influencia musical de Carti.</td></tr><tr><th scope="row">Actitud · interpretación</th><td>La intensidad puede ser una lectura del sonido; no describe su carácter privado.</td><td>Lo juguetón puede ser una lectura del sonido; no describe su carácter privado.</td></tr><!-- fallback:comparison-body:end -->
+</tbody>
           </table>
         </div>
         <div class="shared-note">
@@ -396,6 +429,9 @@
           </p>
         </div>
       </section>
+
+      <!-- photos:gallery:start -->
+      <!-- photos:gallery:end -->
 
       <section
         class="sources-section"
@@ -423,18 +459,22 @@
                 Fuentes y alcance de la selección
                 <span aria-hidden="true">+</span>
               </summary>
-              <div id="source-list"></div>
+              <div id="source-list">
+<!-- fallback:source-list:start --><p>Biografías y catálogos de Apple Music, reseñas de Pitchfork, notas de Billboard y una selección histórica del Hot 100. Las fichas enlazan los textos consultados.</p><div class="source-item"><a href="https://github.com/mhollingshead/billboard-hot-100" target="_blank" rel="noopener noreferrer">01 / Archivo independiente del Billboard Hot 100 ↗</a><small>Archivo de terceros consultado el 12 de octubre de 2026; las listas originales pertenecen a Billboard. Cada posición mostrada enlaza su registro semanal.</small></div><div class="source-item"><a href="https://music.apple.com/us/artist/playboi-carti/982372505" target="_blank" rel="noopener noreferrer">02 / Apple Music · Playboi Carti ↗</a></div><div class="source-item"><a href="https://music.apple.com/us/artist/cochise/163302681" target="_blank" rel="noopener noreferrer">03 / Apple Music · Cochise ↗</a></div><div class="source-item"><a href="https://pitchfork.com/artists/34362-playboi-carti/" target="_blank" rel="noopener noreferrer">04 / Pitchfork · Playboi Carti ↗</a></div><div class="source-item"><a href="https://pitchfork.com/news/xxl-2022-freshman-class-babyface-ray-doechii-nardo-wick-babytron-sofaygo-and-more/" target="_blank" rel="noopener noreferrer">05 / Pitchfork · XXL Freshmen 2022 ↗</a></div><p class="source-item">«Top Songs» de Apple Music es una selección editorial de la plataforma; el puesto del Hot 100 pertenece a una semana concreta. Ninguno es un ranking actual de toda la música de ambos artistas.</p><p class="source-item research-status">Las biografías cubren los hitos documentados hasta 2026. «Influencia» se usa con precisión: mentoría, antecedentes descritos por críticos o referencias culturales verificadas; no se presenta una lista de inspiraciones musicales declaradas sin entrevista directa.</p><!-- fallback:source-list:end -->
+</div>
             </details>
             <details>
               <summary>
                 Imágenes, audio y licencias <span aria-hidden="true">+</span>
               </summary>
               <div>
+                <!-- photos:license:start -->
                 <p>
                   Las ilustraciones SVG y las composiciones gráficas se crearon
                   para Rapverse. No son fotografías de los artistas ni
                   reproducciones de portadas oficiales.
                 </p>
+                <!-- photos:license:end -->
                 <p>
                   No alojamos ni reproducimos grabaciones. Los enlaces a
                   plataformas son enlaces de navegación y no implican afiliación

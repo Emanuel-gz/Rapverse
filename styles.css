@@ -92,13 +92,13 @@ h2 {
   padding-block: 96px;
 }
 .eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1.4;
 }
 .label {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   font-weight: 700;
 }
@@ -153,7 +153,7 @@ h2 {
   white-space: nowrap;
 }
 .brand-dot {
-  font-size: 10px;
+  font-size: 12px;
   align-self: flex-start;
   margin: 8px 0 0 3px;
   letter-spacing: 0;
@@ -183,7 +183,7 @@ nav {
   align-items: center;
 }
 .nav-link {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   padding-block: 12px;
   position: relative;
@@ -208,7 +208,7 @@ nav {
   transform: scaleX(1);
 }
 .header-cta {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   border: 1px solid var(--ink);
   border-radius: 6px;
@@ -263,7 +263,7 @@ nav {
 .hero-description {
   max-width: 465px;
   margin-top: 26px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -303,7 +303,7 @@ nav {
   line-height: 1;
 }
 .text-link {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -319,7 +319,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--muted);
   margin-top: 37px;
@@ -378,13 +378,13 @@ nav {
   display: flex;
   justify-content: space-between;
   color: #e7dcef;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 .art-side {
   position: absolute;
   color: #eee3f5;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   right: 20px;
   top: 42%;
@@ -416,7 +416,7 @@ nav {
   gap: 7px;
 }
 .art-artists span {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   border: 1px solid #f4f1ea66;
   padding: 6px 9px;
@@ -537,7 +537,7 @@ nav {
   inset: 21px 23px auto;
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.17em;
 }
 .artist-topline span:last-child {
@@ -569,7 +569,7 @@ nav {
   position: absolute;
   right: 27px;
   bottom: 20px;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.13em;
 }
 .artist-content {
@@ -582,7 +582,7 @@ nav {
   margin-bottom: 24px;
 }
 .tag {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   background: #eedfda;
   padding: 6px 9px;
@@ -592,7 +592,7 @@ nav {
   background: #e8dff8;
 }
 .artist-index {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .artist-tabs {
@@ -603,9 +603,9 @@ nav {
   margin-bottom: 21px;
 }
 .artist-tabs button {
-  font-size: 11px;
+  font-size: 12px;
   padding: 0 0 10px;
-  min-height: 38px;
+  min-height: 48px;
   border: none;
   background: none;
   color: var(--muted);
@@ -643,7 +643,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 0.09em;
   font-weight: 600;
   padding: 5px 7px;
@@ -669,7 +669,7 @@ nav {
   background: #f6ecd2;
 }
 .inline-source {
-  font-size: 9px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -716,7 +716,7 @@ nav {
   background: transparent;
   border: 1px solid #c7c2ba;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
   padding: 11px 17px;
   transition:
     background 0.2s,
@@ -734,15 +734,15 @@ nav {
   background: var(--paper);
 }
 .song-count {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.06em;
 }
 .song-row {
   display: grid;
   grid-template-columns:
-    37px 51px minmax(130px, 1fr) minmax(120px, 0.75fr)
-    75px 145px;
+    28px 51px minmax(130px, 1fr) minmax(120px, 0.75fr)
+    48px 145px 44px;
   align-items: center;
   gap: 20px;
   padding: 17px 12px;
@@ -755,7 +755,7 @@ nav {
   background: #f4f1ea66;
 }
 .song-index {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .song-art {
@@ -797,17 +797,17 @@ nav {
   letter-spacing: -0.02em;
 }
 .song-credit {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 5px;
 }
 .song-project {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.6;
 }
 .song-year {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .listen-link {
@@ -815,7 +815,7 @@ nav {
   align-items: center;
   justify-content: flex-end;
   gap: 13px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .play-icon {
   width: 29px;
@@ -825,7 +825,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 12px;
   padding-left: 2px;
 }
 .listen-link:hover .play-icon {
@@ -838,7 +838,7 @@ nav {
   text-underline-offset: 3px;
 }
 .sound-note {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 21px;
   line-height: 1.7;
@@ -873,7 +873,7 @@ nav {
 }
 .comparison-banner .label {
   color: var(--violet);
-  font-size: 8px;
+  font-size: 12px;
 }
 .comparison-banner h3 {
   font-size: 17px;
@@ -882,7 +882,7 @@ nav {
   font-weight: 600;
 }
 .comparison-banner p {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   color: #665d70;
   margin-top: 7px;
@@ -899,7 +899,7 @@ table {
   min-width: 610px;
 }
 th {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.04em;
   font-weight: 600;
   padding: 23px 20px;
@@ -908,7 +908,7 @@ th:first-child {
   padding-left: 0;
   width: 20%;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
 }
 th:nth-child(2),
 th:nth-child(3) {
@@ -937,7 +937,7 @@ td {
 }
 td:first-child {
   padding-left: 0;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink);
 }
@@ -952,7 +952,7 @@ td:first-child {
   font-size: 35px;
 }
 .shared-note p {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   color: var(--muted);
   max-width: 900px;
@@ -992,7 +992,7 @@ td:first-child {
   margin-top: 23px;
 }
 .sources-layout > div > .sources-small {
-  font-size: 10px;
+  font-size: 12px;
   max-width: 425px;
   margin-top: 20px;
 }
@@ -1045,7 +1045,7 @@ details[open] summary > span {
 }
 .source-item small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 4px;
   color: #aaa2b4;
 }
@@ -1095,18 +1095,18 @@ details[open] summary > span {
   font-size: 20px;
 }
 .site-footer > p {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
 .site-footer > span {
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   color: var(--muted);
 }
 tbody th {
   padding-left: 0;
-  font-size: 11px !important;
+  font-size: 12px !important;
   letter-spacing: 0;
   font-weight: 600;
   line-height: 1.75;
@@ -1133,7 +1133,7 @@ tbody th {
     gap: 21px;
   }
   .header-cta {
-    font-size: 8px;
+    font-size: 12px;
     padding: 10px;
   }
   .hero {
@@ -1148,11 +1148,11 @@ tbody th {
   }
   .button {
     padding: 16px;
-    font-size: 11px;
+    font-size: 12px;
     gap: 16px;
   }
   .text-link {
-    font-size: 10px;
+    font-size: 12px;
   }
   .hero-description {
     font-size: 12px;
@@ -1166,11 +1166,11 @@ tbody th {
     bottom: 25px;
   }
   .art-artists span {
-    font-size: 7px;
+    font-size: 12px;
     padding: 5px 7px;
   }
   .art-top {
-    font-size: 6px;
+    font-size: 12px;
     left: 22px;
     right: 22px;
   }
@@ -1185,8 +1185,8 @@ tbody th {
   }
   .song-row {
     grid-template-columns:
-      25px 47px minmax(120px, 1fr) minmax(100px, 0.6fr)
-      60px 123px;
+      25px 47px minmax(110px, 1fr) minmax(100px, 0.6fr)
+      45px 44px 44px;
     gap: 14px;
   }
   .sources-layout {
@@ -1221,7 +1221,7 @@ tbody th {
     font-size: 8.8vw;
   }
   .hero .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 20px;
   }
   .hero-actions {
@@ -1235,7 +1235,7 @@ tbody th {
   }
   .hero-footnote {
     margin-top: 24px;
-    font-size: 7px;
+    font-size: 12px;
   }
   .hero-art {
     aspect-ratio: 760/980;
@@ -1253,7 +1253,7 @@ tbody th {
     margin-top: 18px;
   }
   .art-sticker {
-    font-size: 11px;
+    font-size: 12px;
     padding: 13px 16px;
     left: -15px;
     top: 65px;
@@ -1266,7 +1266,7 @@ tbody th {
   }
   .section-description {
     max-width: 250px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .artist-grid {
     gap: 20px;
@@ -1290,17 +1290,18 @@ tbody th {
     gap: 15px;
   }
   .artist-tabs button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .artist-panel {
     min-height: 240px;
   }
   .song-row {
-    grid-template-columns: 24px 45px minmax(120px, 1fr) 50px 120px;
-    gap: 13px;
+    grid-template-columns: 24px 45px minmax(0, 1fr) 44px 44px;
+    grid-template-areas: 'index art info listen save' '. . project project year';
+    gap: 12px;
   }
   .song-project {
-    display: none;
+    display: block;
   }
   .sources-layout {
     gap: 35px;
@@ -1404,7 +1405,7 @@ tbody th {
     padding: 0;
   }
   .hero .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 23px;
   }
   .hero h1 {
@@ -1424,18 +1425,18 @@ tbody th {
     margin-top: 25px;
   }
   .button {
-    font-size: 10px;
+    font-size: 12px;
     gap: 13px;
     padding: 16px;
   }
   .text-link {
-    font-size: 9px;
+    font-size: 12px;
     white-space: normal;
     max-width: 105px;
     line-height: 1.5;
   }
   .hero-footnote {
-    font-size: 7px;
+    font-size: 12px;
     margin-top: 25px;
   }
   .hero-art {
@@ -1449,7 +1450,7 @@ tbody th {
   .art-top {
     flex-direction: row;
     top: 22px;
-    font-size: 6px;
+    font-size: 12px;
   }
   .art-bottom {
     display: flex;
@@ -1464,12 +1465,12 @@ tbody th {
     margin-top: 0;
   }
   .art-sticker {
-    font-size: 10px;
+    font-size: 12px;
     top: 57px;
     left: -12px;
   }
   .art-side {
-    font-size: 6px;
+    font-size: 12px;
   }
   .marquee {
     padding-block: 16px;
@@ -1478,7 +1479,7 @@ tbody th {
     gap: 26px;
     min-width: 950px;
     justify-content: flex-start;
-    font-size: 10px;
+    font-size: 12px;
     padding-inline: 20px;
   }
   .marquee span {
@@ -1494,14 +1495,14 @@ tbody th {
     margin-bottom: 27px;
   }
   .section-heading .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 17px;
   }
   h2 {
     font-size: 39px;
   }
   .section-description {
-    font-size: 11px;
+    font-size: 12px;
     max-width: 350px;
     line-height: 1.8;
   }
@@ -1532,7 +1533,7 @@ tbody th {
     gap: 8px;
   }
   .artist-tabs button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .artist-panel {
     min-height: 193px;
@@ -1544,7 +1545,7 @@ tbody th {
     font-size: 14px;
   }
   .content-kind {
-    font-size: 7px;
+    font-size: 12px;
   }
   .song-toolbar {
     flex-direction: column;
@@ -1557,15 +1558,16 @@ tbody th {
     gap: 6px;
   }
   .filter-button {
-    font-size: 9px;
+    font-size: 12px;
     padding: 11px 13px;
   }
   .song-count {
-    font-size: 8px;
+    font-size: 12px;
   }
   .song-row {
-    grid-template-columns: 16px 39px minmax(100px, 1fr) 33px;
-    gap: 11px;
+    grid-template-columns: 44px minmax(0, 1fr) 44px 44px;
+    grid-template-areas: 'art info listen save' '. project project project' '. year year year';
+    gap: 8px 10px;
     padding: 17px 0;
   }
   .song-art {
@@ -1579,12 +1581,12 @@ tbody th {
     font-size: 14px;
   }
   .song-credit {
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 5px;
     line-height: 1.6;
   }
   .song-year {
-    display: none;
+    display: block;
   }
   .listen-link {
     justify-content: center;
@@ -1597,7 +1599,7 @@ tbody th {
     height: 31px;
   }
   .sound-note {
-    font-size: 9px;
+    font-size: 12px;
     margin-top: 20px;
   }
   .comparison-banner {
@@ -1615,17 +1617,17 @@ tbody th {
     line-height: 1.5;
   }
   .comparison-banner p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .comparison-banner .label {
-    font-size: 7px;
+    font-size: 12px;
   }
   .shared-note {
     gap: 14px;
     align-items: flex-start;
   }
   .shared-note p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .sources-layout {
     grid-template-columns: 1fr;
@@ -1638,10 +1640,10 @@ tbody th {
     font-size: 12px;
   }
   .sources-layout > div > .sources-small {
-    font-size: 10px;
+    font-size: 12px;
   }
   .sources-layout .eyebrow {
-    font-size: 9px;
+    font-size: 12px;
   }
   .sources-details details > div {
     font-size: 12px;
@@ -1663,11 +1665,11 @@ tbody th {
   }
   .site-footer > p {
     max-width: 210px;
-    font-size: 8px;
+    font-size: 12px;
   }
   .site-footer > span {
     width: 100%;
-    font-size: 7px;
+    font-size: 12px;
   }
   .footer-brand {
     font-size: 18px;
@@ -1685,13 +1687,13 @@ tbody th {
   }
   .button {
     padding: 14px 12px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .artist-tabs {
     gap: 6px;
   }
   .artist-tabs button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .cochise-visual .artist-wordmark h3 {
     font-size: 61px;
@@ -1704,6 +1706,538 @@ tbody th {
   }
   .closing > p {
     font-size: 23px;
+  }
+}
+/* Search and collection controls use the same paper, ink and violet palette. */
+[hidden] {
+  display: none !important;
+}
+.song-search {
+  margin-bottom: 24px;
+}
+.song-search label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #c7c2ba;
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 4px 8px 4px 18px;
+  max-width: 640px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-field:focus-within {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px #7942d812;
+}
+.search-field > span {
+  font-size: 30px;
+  color: var(--violet);
+}
+.search-field input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-size: 14px;
+  border: 0;
+  background: transparent;
+  padding-block: 14px;
+}
+.search-field input:focus-visible {
+  outline: none;
+}
+.search-field input::-webkit-search-cancel-button {
+  display: none;
+}
+#clear-search {
+  flex: 0 0 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 25px;
+}
+#clear-search:hover {
+  background: #e8dff8;
+}
+.song-toolbar, .song-filters {
+  flex-wrap: wrap;
+}
+.filter-button {
+  min-height: 44px;
+}
+#saved-count {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 23px;
+  height: 23px;
+  margin-left: 7px;
+  border-radius: 50%;
+  background: #7942d81a;
+}
+.filter-button.selected #saved-count {
+  background: #ffffff26;
+}
+.song-info {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.song-project {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.song-project:hover {
+  color: var(--violet);
+}
+.save-song, .play-icon {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #bdb7b0;
+  border-radius: 50%;
+  background: transparent;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.save-song {
+  font-size: 25px;
+}
+.save-song:hover, .save-song[aria-pressed='true'] {
+  color: var(--violet);
+  border-color: var(--violet);
+  background: #e8dff8;
+}
+.play-icon {
+  font-size: 20px;
+}
+.empty-state {
+  padding: 36px;
+  text-align: center;
+}
+.empty-symbol {
+  display: inline-block;
+  color: var(--violet);
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+.empty-state h3 {
+  font-size: 23px;
+  margin-bottom: 9px;
+}
+.empty-state p {
+  color: var(--muted);
+}
+.empty-state .button {
+  border: 0;
+  margin-top: 24px;
+}
+.artist-panel {
+  min-height: 410px;
+}
+.artist-tabs button {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.artist-sources a {
+  min-height: 32px;
+  align-items: center;
+}
+html:not(.js) .song-search,
+html:not(.js) .song-filters,
+html:not(.js) .artist-tabs,
+html:not(.js) .menu-toggle {
+  display: none;
+}
+@media (max-width: 1150px) {
+  .listen-link > span:first-child {
+    display: none;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 900px) {
+  .song-index { grid-area: index; }
+  .song-art { grid-area: art; }
+  .song-info { grid-area: info; }
+  .song-project { grid-area: project; }
+  .song-year { grid-area: year; }
+  .listen-link { grid-area: listen; }
+  .save-song { grid-area: save; }
+  .artist-panel {
+    min-height: 550px;
+  }
+  .artist-tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 12px;
+  }
+}
+@media (max-width: 650px) {
+  .song-index {
+    display: none;
+  }
+  .song-art {
+    height: 44px;
+  }
+  .song-project, .song-year {
+    font-size: 12px;
+  }
+  .song-year {
+    opacity: 0.8;
+  }
+  .song-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .filter-button {
+    padding: 10px;
+  }
+  .artist-panel {
+    min-height: 0;
+  }
+  .artist-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .artist-tabs button {
+    font-size: 12px;
+  }
+  .empty-state {
+    padding: 25px 18px;
+  }
+  html:not(.js) .site-header {
+    position: relative;
+  }
+  html:not(.js) .header-inner {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 18px;
+    gap: 12px;
+  }
+  html:not(.js) #navigation {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    gap: 8px 18px;
+  }
+  html:not(.js) .nav-link {
+    padding-block: 10px;
+  }
+}
+/* Photographs retain their original files; the page controls only their framing. */
+.hero-portraits {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 58% 42%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #171019;
+}
+.hero-portraits figure {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.hero-portraits figure + figure {
+  border-left: 3px solid var(--paper);
+}
+.hero-portraits img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-portraits .hero-carti {
+  object-position: 48% center;
+}
+.hero-portraits .hero-cochise {
+  object-position: 62% center;
+}
+.hero-art:has(.hero-portraits)::after {
+  inset: 0;
+  background: linear-gradient(180deg, #100c1555, transparent 30%, #100c15cc);
+  border-radius: inherit;
+}
+.art-top {
+  text-shadow: 0 1px 6px #000;
+}
+.art-artists a {
+  font-size: 12px;
+  border: 1px solid #f4f1ea88;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #100c1533;
+}
+.art-artists a:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.artist-visual.photo-visual {
+  height: 390px;
+  color: var(--paper);
+}
+.photo-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #100c1544, transparent 35%, #100c15cc);
+  pointer-events: none;
+}
+.photo-visual > img {
+  object-position: center 30%;
+}
+.gallery-section {
+  border-top: 1px solid var(--line);
+}
+.gallery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.gallery-filter {
+  font-size: 12px;
+  min-height: 44px;
+  border: 1px solid #c7c2ba;
+  border-radius: 5px;
+  padding: 10px 17px;
+  background: transparent;
+}
+.gallery-filter.selected {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.gallery-filter:not(.selected):hover {
+  background: #e8dff8;
+}
+#gallery-count {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.photo-card {
+  min-width: 0;
+  margin: 0;
+}
+.photo-card.feature-photo {
+  grid-column: span 2;
+}
+.photo-link {
+  display: block;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 8px;
+  color: var(--paper);
+  background: var(--ink);
+}
+.feature-photo .photo-link {
+  aspect-ratio: 3 / 2;
+}
+.photo-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.5s;
+}
+.photo-link:hover img {
+  transform: scale(1.035);
+}
+.photo-link::after {
+  content: '';
+  position: absolute;
+  inset: 40% 0 0;
+  pointer-events: none;
+  background: linear-gradient(transparent, #100c15dd);
+}
+.photo-caption {
+  position: absolute;
+  z-index: 1;
+  left: 18px;
+  bottom: 18px;
+  right: 58px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.photo-caption small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+.photo-open {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 20px;
+  font-size: 23px;
+}
+.gallery-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 22px;
+}
+html:not(.js) .gallery-filters {
+  display: none;
+}
+#photo-dialog {
+  width: min(1060px, calc(100% - 40px));
+  max-height: calc(100dvh - 40px);
+  padding: 18px;
+  border: 1px solid #ffffff33;
+  border-radius: 12px;
+  background: #171419;
+  color: var(--paper);
+  overflow: auto;
+}
+#photo-dialog::backdrop {
+  background: #100c15e6;
+  backdrop-filter: blur(8px);
+}
+.photo-dialog-top, .photo-dialog-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.photo-dialog-top {
+  margin-bottom: 14px;
+}
+.photo-dialog-top .eyebrow {
+  color: var(--lime);
+}
+.photo-dialog-bottom {
+  margin-top: 14px;
+}
+#photo-dialog button {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid #ffffff55;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--paper);
+  font-size: 22px;
+}
+#photo-dialog button:hover {
+  color: var(--ink);
+  background: var(--lime);
+}
+#photo-full {
+  width: 100%;
+  height: min(66dvh, 700px);
+  object-fit: contain;
+  border-radius: 6px;
+}
+#photo-dialog-title {
+  font-size: 17px;
+  line-height: 1.5;
+}
+#photo-position {
+  color: #bbb6c0;
+  font-size: 12px;
+}
+.photo-navigation {
+  display: flex;
+  gap: 8px;
+}
+@media (max-width: 900px) {
+  .artist-visual.photo-visual {
+    height: 310px;
+  }
+  .photo-grid {
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .feature-photo .photo-link {
+    aspect-ratio: 16 / 9;
+  }
+  .photo-link {
+    aspect-ratio: 1;
+  }
+}
+@media (max-width: 650px) {
+  .artist-visual.photo-visual {
+    height: auto;
+    aspect-ratio: 1.15;
+  }
+  .photo-visual .artist-wordmark h3 {
+    font-size: clamp(59px, 17vw, 81px);
+  }
+  .gallery-toolbar {
+    flex-wrap: wrap;
+  }
+  .gallery-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+  .gallery-filter {
+    padding: 10px 6px;
+  }
+  .photo-grid {
+    gap: 12px;
+  }
+  .photo-card.feature-photo {
+    grid-column: span 2;
+  }
+  .photo-caption {
+    font-size: 12px;
+    left: 12px;
+    bottom: 12px;
+    right: 25px;
+  }
+  .photo-caption small {
+    display: none;
+  }
+  .feature-photo .photo-caption {
+    font-size: 17px;
+  }
+  .photo-open {
+    right: 9px;
+    bottom: 12px;
+    font-size: 18px;
+  }
+  #photo-dialog {
+    width: calc(100% - 24px);
+    padding: 12px;
+    max-height: calc(100dvh - 24px);
+  }
+  #photo-full {
+    height: 57dvh;
+  }
+  #photo-dialog-title {
+    font-size: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1766,7 +2300,7 @@ tbody th {
     display: block;
   }
   .listen-link {
-    font-size: 9px;
+    font-size: 12px;
   }
   .closing {
     padding: 20px 0;

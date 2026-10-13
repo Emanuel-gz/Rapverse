@@ -46,3 +46,11 @@ Las pestañas «Estilo y actitud» son invitaciones propias a escuchar fraseos, 
 | Audio y vídeo | No se alojan, incrustan ni reproducen grabaciones. Los botones abren búsquedas externas en Spotify. |
 
 Los recursos visuales y tipográficos se sirven localmente; la página no carga CDNs, analítica, cookies ni APIs al abrirse. Los nombres de artistas y canciones se usan para informar, sin sugerir afiliación. Las licencias de fuentes no se extienden al resto del repositorio.
+
+## Selección fotográfica y colección local
+
+Los catorce enlaces fotográficos facilitados para esta revisión están registrados en [tools/photos.json](../tools/photos.json), con artista, descripción y nombre de archivo. Proceden de miniaturas de Google, The Masquerade, Tidal e IMDb/Amazon. El registro identifica la URL de procedencia; no atribuye una autoría ni una licencia fotográfica que no haya sido facilitada.
+
+`tools/import-photos.py` conserva los bytes JPEG descargados, verifica el formato y utiliza las dimensiones del archivo. Tras una importación completa genera `assets/photos/SOURCES.md` con fecha, origen y huella SHA-256 de cada fotografía, y activa sus rutas locales en la portada, las fichas y la galería. Los SVG y las licencias tipográficas se conservan. El proyecto no depende de los servidores de origen para mostrar las imágenes una vez importadas.
+
+Las canciones guardadas se almacenan en el navegador bajo `rapverse:saved-songs`; no se envían a ningún servicio. Si ese almacenamiento está bloqueado, la selección funciona durante la visita.

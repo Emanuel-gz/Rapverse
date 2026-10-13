@@ -1,95 +1,106 @@
 # Rapverse
 
-🎧 RapVerse is an interactive web platform dedicated exclusively to Playboi Carti and Cochise. Explore their stories, musical evolution, most popular songs, personalities, influences, similarities, and differences through a modern and immersive Hip-Hop, Rap, and Trap experience.
+Una web editorial en español dedicada a Playboi Carti y Cochise: sus recorridos, su evolución musical y una selección de canciones para explorar ambos universos.
 
-## Desarrollo
+El proyecto conserva HTML, CSS y JavaScript sin framework, dependencias de aplicación ni compilación. Las fuentes y los recursos gráficos se sirven desde el proyecto.
 
-Página estática en español, con HTML, CSS y JavaScript sin framework, dependencias de aplicación ni proceso de compilación. Se implementó en la raíz porque el repositorio original solo tenía este README.
+## Abrir el proyecto
 
-Desde la terminal de Codex:
+Desde la carpeta `Rapverse`:
 
 ```bash
-cd /workspace/Rapverse
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-El servidor sirve la página y todos sus recursos locales. Detenlo con `Ctrl+C`. En este entorno la validación se realiza mediante Chromium y peticiones locales; no se presupone que la interfaz de Codex exponga una vista previa pública. Para verla en tu equipo, clona el repositorio y ejecuta el mismo comando desde su carpeta; abre la dirección local que indica el servidor en tu navegador.
+Abre http://127.0.0.1:8000 en tu navegador. También puedes abrir `index.html` directamente; se recomienda el servidor local para un comportamiento uniforme de las fuentes y el almacenamiento del navegador. Detén el servidor con `Ctrl+C`.
 
-### Archivos
+## Estructura
 
-- `index.html`: estructura, navegación, secciones, accesibilidad y metadatos.
-- `styles.css`: diseño adaptable, tipografía local, impresión y movimiento reducido.
-- `script.js`: contenido documental y editorial, pestañas accesibles, filtros y menú móvil.
-- `assets/`: ilustraciones SVG originales, fuentes locales y licencias.
-- `docs/SOURCES.md`: registros consultados, criterio editorial y alcance de la investigación.
-- `tests/smoke.py`: pruebas funcionales de navegador.
+- `index.html`: navegación, secciones y contenido inicial accesible sin JavaScript.
+- `styles.css`: diseño editorial adaptable, controles, tipografía local, impresión y movimiento reducido.
+- `script.js`: fichas documentadas, pestañas con teclado, búsqueda de canciones, filtros, guardadas y menú móvil.
+- `gallery.js`: filtros y ampliación de fotografías con teclado y restauración del foco.
+- `assets/`: gráficos, fuentes locales y sus licencias.
+- `docs/SOURCES.md`: fuentes, criterio de selección y alcance editorial.
+- `tools/sync-fallback.mjs`: sincroniza el contenido inicial del HTML con los datos de JavaScript.
+- `tools/import-photos.py` y `tools/photos.json`: descargan e integran las catorce fotografías seleccionadas.
+- `tools/finish.sh`: ejecuta la integración, las comprobaciones y el empaquetado.
+- `tools/package.py`: comprueba los recursos locales y genera un ZIP completo.
+- `tests/smoke.py`: comprobaciones funcionales con Playwright y Chromium.
 
-### Comprobaciones
+## Interacciones
+
+Las fichas ofrecen Historia, Evolución, Estilo y actitud e Influencias. Puedes cambiar de pestaña con las flechas, Inicio y Fin. El catálogo permite combinar una búsqueda por título, crédito o año con un filtro; la búsqueda ignora mayúsculas y acentos. El corazón guarda canciones en este navegador. Si el almacenamiento está bloqueado, la colección sigue funcionando durante la visita.
+
+Las búsquedas de Spotify se abren en una pestaña nueva. La página no reproduce ni aloja audio. Sin JavaScript, las biografías, la selección completa, la comparación y las fuentes siguen disponibles, con navegación móvil visible.
+
+## Ejecutar la integración completa en Codex
+
+Dentro del proyecto, ejecuta:
+
+```bash
+bash tools/finish.sh
+```
+
+Este script descarga las catorce fotos de los enlaces facilitados para el proyecto, valida sus archivos y activa la portada fotográfica, las fichas y la galería. Después comprueba JavaScript, ejecuta las pruebas y genera `../Rapverse-mejorado.zip`. Se detiene si un paso falla.
+
+La configuración de red de Codex debe permitir `encrypted-tbn0.gstatic.com`, `www.masqueradeatlanta.com`, `resources.tidal.com` y `m.media-amazon.com`. Un error 403 del proxy se resuelve en la configuración del entorno; editar archivos del proyecto no cambia ese permiso. Si la descarga falla, el importador conserva la página actual y sus recursos.
+
+Puedes revisar el plan sin descargar ni modificar nada:
+
+```bash
+python3 tools/import-photos.py --dry-run
+```
+
+Si ya tienes los originales guardados, nómbralos según `tools/photos.json` y usa:
+
+```bash
+python3 tools/import-photos.py --from-directory /ruta/a/las/fotos
+```
+
+Las fotografías se instalan en `assets/photos/`, junto con su registro de procedencia y huellas SHA-256. La galería ofrece filtros, ampliación, flechas y cierre con Escape; sin JavaScript sus enlaces abren el archivo local original. Los SVG originales se conservan.
+
+## Mantener y comprobar
+
+Cuando cambies los datos de `artistContent`, `songs`, `comparisons` o las fuentes en `script.js`, sincroniza el HTML inicial:
+
+```bash
+node tools/sync-fallback.mjs
+```
+
+El sincronizador modifica únicamente los bloques identificados como `fallback` y el contador inicial. Es una herramienta opcional de mantenimiento; la web no requiere ejecutarlo para abrirse.
 
 ```bash
 node --check script.js
+node --check gallery.js
 python3 tests/smoke.py -v
 git diff --check
 ```
 
-Las pruebas de navegador usan Playwright y Chromium ya disponibles en el entorno de Codex. Inician su propio servidor en un puerto local libre y lo detienen al terminar. Comprueban carga de recursos sin solicitudes externas, pestañas con teclado, filtros, créditos de colaboradores, menú móvil, enlaces internos, semántica y ausencia de desbordamiento en siete tamaños de pantalla. La aplicación funciona sin Playwright; solo las pruebas lo necesitan.
+Las pruebas inician y detienen su propio servidor local. Comprueban recursos, pestañas, enlaces, menú, búsqueda, guardadas, almacenamiento bloqueado y corrupto, contenido sin JavaScript y ausencia de desbordamiento en siete anchos de pantalla.
 
-En otra máquina instala las herramientas de prueba en un entorno de Python y usa un Chromium local, o instala el navegador de Playwright:
+Para instalar las herramientas de prueba en otra máquina:
 
 ```bash
 python3 -m venv .venv
+# Linux/macOS:
 . .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
 python3 -m pip install playwright==1.62.0
 python3 -m playwright install chromium
 python3 tests/smoke.py -v
 ```
 
-Si usas otro ejecutable de Chromium, indica su ruta mediante `RAPVERSE_BROWSER_PATH`. No es necesario instalar Node para servir la página; se utiliza para comprobar la sintaxis de JavaScript.
+Si tienes Chromium instalado, puedes indicar su ruta con `RAPVERSE_BROWSER_PATH`. Playwright y Node son herramientas de desarrollo; no son dependencias de la página.
 
-## Contenido y licencias
+## Contenido y recursos
 
-Las fichas reúnen hitos biográficos y de discografía hasta 2026 con enlaces a Apple Music, Pitchfork, Billboard y un archivo histórico de listas. Las influencias se presentan según el alcance de cada fuente: mentoría, colaboraciones, antecedentes señalados por crítica o referencias culturales. Ninguna semejanza vocal se convierte en influencia personal atribuida. La tabla y las pestañas identifican por separado datos e interpretaciones; consulta [las fuentes y el criterio editorial](docs/SOURCES.md).
+Las biografías y los catálogos enlazan Apple Music, Pitchfork y Billboard. Los puestos del Hot 100 corresponden a semanas concretas de un archivo independiente; las otras canciones estaban en «Top Songs» de Apple Music al consultar la selección. No es un ranking actual de reproducciones. Los datos y las interpretaciones están identificados por separado; consulta [las fuentes](docs/SOURCES.md).
 
-La selección ofrece cuatro canciones por artista. Los puestos del Hot 100 corresponden a semanas concretas; las otras canciones aparecen en «Top Songs» de Apple Music al momento de la consulta. No es un ranking actual de reproducciones.
+Anton y Space Grotesk incluyen sus licencias SIL Open Font License 1.1. Los SVG originales se conservan. La página no carga fuentes remotas, analítica ni APIs al abrirse. Es un proyecto independiente, sin afiliación con los artistas.
 
-Las imágenes son ilustraciones originales; no hay audio ni vídeo alojado o incrustado. Anton y Space Grotesk incluyen sus licencias SIL Open Font License 1.1. La página no carga fuentes remotas, analítica ni APIs. Los enlaces de Spotify abren búsquedas en otra pestaña y se identifican como tales.
+## Cambios en GitHub y distribución
 
-## Revisar y subir desde Codex
+La revisión se prepara en `feat/rapverse-visual-refresh`. Un Pull Request permite revisar los cambios antes de incorporarlos a `main`.
 
-El trabajo continúa en la rama `feat/rapverse-page`. Estos comandos se ejecutan en la terminal del entorno de Codex, dentro de `/workspace/Rapverse`. **No fusionan el Pull Request con `main`**.
-
-1. Revisa el estado y las diferencias de esta ampliación:
-
-   ```bash
-   cd /workspace/Rapverse
-   git branch --show-current
-   git status --short
-   git diff --check
-   git diff --stat
-   git diff
-   ```
-
-2. Ejecuta las comprobaciones:
-
-   ```bash
-   node --check script.js
-   python3 tests/smoke.py -v
-   ```
-
-3. Si las diferencias son correctas, prepara solo los archivos modificados y revisa el contenido del commit:
-
-   ```bash
-   git add README.md index.html styles.css script.js docs/SOURCES.md tests/smoke.py
-   git diff --cached --check
-   git diff --cached --stat
-   git diff --cached
-   ```
-
-4. Sube el nuevo commit a la **misma rama**:
-
-   ```bash
-   git commit -m "feat: complete sourced artist profiles and influences"
-   git push origin feat/rapverse-page
-   ```
-
-5. Abre el Pull Request existente en GitHub y consulta **Files changed**. El nuevo commit aparecerá allí automáticamente. Revisa las fuentes y los límites de las influencias antes de decidir si fusionas el PR; este paso no es automático.
+El ZIP de distribución conserva la carpeta `Rapverse` con código, documentación, pruebas, herramientas y todos los recursos locales. No necesita `node_modules`, un archivo de configuración secreto ni un proceso de instalación para mostrar la web. El directorio `.git` y las cachés de prueba no forman parte de la distribución.

@@ -1,0 +1,107 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="760"
+  height="880"
+  viewBox="0 0 760 880"
+  fill="none"
+>
+  <defs>
+    <linearGradient id="bg" x2="760" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19151c" />
+      <stop offset="1" stop-color="#30233c" />
+    </linearGradient>
+    <linearGradient
+      id="chrome"
+      x1="250"
+      y1="120"
+      x2="610"
+      y2="700"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#f7efff" />
+      <stop offset=".16" stop-color="#83708f" />
+      <stop offset=".29" stop-color="#e4d6f7" />
+      <stop offset=".43" stop-color="#372544" />
+      <stop offset=".57" stop-color="#f8eeff" />
+      <stop offset=".7" stop-color="#856c9a" />
+      <stop offset=".84" stop-color="#d0b4e3" />
+      <stop offset="1" stop-color="#463250" />
+    </linearGradient>
+    <radialGradient id="purple">
+      <stop stop-color="#d2a9ff" />
+      <stop offset=".5" stop-color="#8751ff" />
+      <stop offset="1" stop-color="#441799" />
+    </radialGradient>
+    <linearGradient id="lime" x2="0" y2="1">
+      <stop stop-color="#eeffba" />
+      <stop offset="1" stop-color="#b8ee68" />
+    </linearGradient>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r=".7" fill="#e9dfef" opacity=".17" />
+    </pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="43" /></filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h760v880H0z" />
+  <path fill="url(#dots)" d="M0 0h760v880H0z" />
+  <ellipse
+    cx="432"
+    cy="576"
+    rx="217"
+    ry="199"
+    fill="#a350ff"
+    opacity=".3"
+    filter="url(#glow)"
+  />
+  <g stroke="#d5c5ea" stroke-width="1.2" opacity=".4">
+    <ellipse
+      cx="390"
+      cy="424"
+      rx="331"
+      ry="141"
+      transform="rotate(-33 390 424)"
+    />
+    <ellipse
+      cx="390"
+      cy="424"
+      rx="333"
+      ry="230"
+      transform="rotate(-33 390 424)"
+    />
+    <ellipse
+      cx="390"
+      cy="424"
+      rx="342"
+      ry="327"
+      transform="rotate(-33 390 424)"
+    />
+  </g>
+  <path
+    d="M92 560c-38-43-6-107 50-114l52-7c25-3 47-21 53-46l15-64c13-56 82-75 121-34l42 43c18 19 46 25 70 14l55-24c53-23 109 26 93 82l-17 59c-7 25 2 52 23 67l47 35c48 36 28 110-31 117l-61 8c-26 3-47 21-53 46l-14 56c-13 56-82 76-122 34l-40-42c-18-19-46-25-70-14l-57 25c-54 23-108-28-91-83l17-54c8-25-1-53-22-69z"
+    fill="url(#chrome)"
+    transform="rotate(-12 390 500)"
+  />
+  <circle cx="392" cy="503" r="119" fill="#251b30" />
+  <circle cx="392" cy="503" r="102" fill="url(#purple)" />
+  <g stroke="#e8d3ff" opacity=".4">
+    <circle cx="392" cy="503" r="87" />
+    <circle cx="392" cy="503" r="77" />
+    <circle cx="392" cy="503" r="67" />
+  </g>
+  <circle cx="392" cy="503" r="26" fill="#d2ff83" />
+  <circle cx="392" cy="503" r="8" fill="#281632" />
+  <path
+    d="m587 143 17 64 61-27-43 52 61 28-67-1 2 66-31-59-47 45 22-64-64-14 65-13-25-62 50 43z"
+    fill="url(#lime)"
+  />
+  <path
+    d="m139 697 7 23 24-4-18 16 11 21-22-10-16 19 4-25-23-7 24-7z"
+    fill="#d8bcff"
+  />
+  <circle cx="157" cy="275" r="7" fill="#d2ff83" />
+  <circle cx="663" cy="561" r="5" fill="#d2ff83" />
+  <path
+    d="M51 163h36m-18-18v36M661 748h36m-18-18v36"
+    stroke="#ddd2e9"
+    stroke-width="1.3"
+  />
+</svg>

@@ -303,8 +303,8 @@ def gallery_markup(by_name):
     lines = [
         '<section class="gallery-section container section" id="galeria" aria-labelledby="gallery-title">',
         '  <div class="section-heading">',
-        '    <div><p class="eyebrow">04 / EN IMÁGENES</p><h2 id="gallery-title">OTRAS MIRADAS.<br /><span class=\"outline\">MISMA ENERGÍA.</span></h2></div>',
-        '    <p class="section-description">Del escenario al retrato.<br />Dos universos en catorce<br />fotografías.</p>',
+        '    <div><p class="eyebrow">04 / EN IMÁGENES</p><h2 id="gallery-title">EL ESTILO TAMBIÉN<br /><span class=\"outline\">ENTRA POR LOS OJOS.</span></h2></div>',
+        '    <p class="section-description">Catorce encuadres para cambiar de perspectiva.<br />Del micrófono a la ropa, cada imagen<br />añade otra pista al recorrido.</p>',
         '  </div>',
         '  <div class="gallery-toolbar">',
         '    <div class="gallery-filters" role="group" aria-label="Filtrar fotografías por artista">',
@@ -332,7 +332,7 @@ def gallery_markup(by_name):
         ])
     lines.extend([
         '  </div>',
-        '  <p class="gallery-note">Una selección de fotografías de ambos artistas. Consulta su procedencia en <a href="assets/photos/SOURCES.md">el registro de imágenes</a>.</p>',
+        '  <p class="gallery-note">El recorrido también se mira. Amplía las fotos y encuentra sus archivos de origen en <a href="assets/photos/SOURCES.md">el registro de imágenes</a>.</p>',
         '</section>',
         '<dialog id="photo-dialog" aria-labelledby="photo-dialog-title">',
         '  <div class="photo-dialog-top"><p class="eyebrow">EN IMÁGENES</p><button id="photo-close" type="button" aria-label="Cerrar fotografía">×</button></div>',
@@ -360,10 +360,10 @@ def render_html(document, photos):
     document = replace_block(document, "cochise", image(by_name["cochise-trench.jpg"]))
     document = replace_block(document, "gallery", gallery_markup(by_name))
     license_note = (
-        '<p>Las fotografías forman parte de la selección facilitada para Rapverse. '
-        'Su procedencia figura en <a href="assets/photos/SOURCES.md">el registro de imágenes</a> '
-        'junto con los archivos originales utilizados. '
-        'Las ilustraciones SVG originales y las composiciones gráficas creadas para Rapverse '
+        '<p>Catorce imágenes acompañan este recorrido, del escenario al retrato. '
+        'Encontrarás sus archivos de origen en <a href="assets/photos/SOURCES.md">el registro de imágenes</a> '
+        'junto a las versiones originales. '
+        'Las ilustraciones y composiciones propias de Rapverse '
         'se conservan en el proyecto.</p>'
     )
     document = replace_block(document, "license", license_note)

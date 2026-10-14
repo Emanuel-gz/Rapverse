@@ -48,18 +48,18 @@ function renderArtist(content) {
   )).join('');
   return `<span class="content-kind ${escapeHtml(content.kind)}">${escapeHtml(content.label)}</span>`
     + `<h4>${escapeHtml(content.title)}</h4>${paragraphs}`
-    + (sources ? `<div class="artist-sources">${sources}</div>` : '');
+    + (sources ? `<details class="artist-sources source-disclosures"><summary>Créditos de este lado</summary><div class="source-links">${sources}</div></details>` : '');
 }
 
 function renderSongs(songs, chartBase) {
   return songs.map((song, index) => {
     const chartUrl = song.chart ? `${chartBase}${song.chart}.json` : song.catalog;
-    const chartText = song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'APPLE MUSIC · DESTACADA');
+    const chartText = song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'EN LA SELECCIÓN');
     const chartLabel = song.chart
       ? `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`
       : song.catalogLabel
         ? `${song.title}: catálogo de Playboi Carti, consultar fuente en nueva pestaña`
-        : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`;
+        : `${song.title}: consultar ficha de catálogo en nueva pestaña`;
     const query = encodeURIComponent(`${song.title} ${song.credit}`);
     const listenLabel = `Buscar ${song.title}, ${song.credit}, en Spotify (nueva pestaña)`;
     return '<article class="song-row">'
@@ -83,10 +83,10 @@ function renderComparisons(comparisons) {
 }
 
 function renderSources({ appleCarti, appleCochise, pitchforkCarti, pitchforkFreshmen }) {
-  const overview = 'Biografías y catálogos de Apple Music, reseñas de Pitchfork, notas de Billboard y una selección histórica del Hot 100. Las fichas enlazan los textos consultados.';
-  const archiveNote = 'Archivo de terceros consultado el 12 de octubre de 2026; las listas originales pertenecen a Billboard. Cada posición mostrada enlaza su registro semanal.';
-  const scope = '«Top Songs» de Apple Music es una selección editorial de la plataforma; el puesto del Hot 100 pertenece a una semana concreta. Ninguno es un ranking actual de toda la música de ambos artistas.';
-  const status = 'Las biografías cubren los hitos documentados hasta 2026. «Influencia» se usa con precisión: mentoría, antecedentes descritos por críticos o referencias culturales verificadas; no se presenta una lista de inspiraciones musicales declaradas sin entrevista directa.';
+  const overview = 'Detrás de cada recorrido hay fechas, discos y colaboraciones que puedes seguir por tu cuenta. Aquí reúno los perfiles, las reseñas y los archivos que me sirven de punto de partida.';
+  const archiveNote = 'Archivo independiente consultado el 12 de octubre de 2026. Cada puesto enlaza la semana correspondiente de las listas de Billboard.';
+  const scope = 'Los puestos del Hot 100 son una foto de una semana concreta. Las otras fichas te llevan al catálogo: esta selección está pensada para descubrir canciones, no para ordenar carreras por números.';
+  const status = 'El recorrido llega hasta los lanzamientos de 2026. En las fichas encontrarás más referencias para tirar del hilo; las notas de escucha son mi forma de entrar en la música.';
   const links = [
     ['02 / Apple Music · Playboi Carti ↗', appleCarti],
     ['03 / Apple Music · Cochise ↗', appleCochise],
@@ -141,7 +141,7 @@ function updateSongCount(html, count) {
   const textStart = opening.index + opening[0].length;
   const contents = html.slice(textStart).match(new RegExp(`^([^<]*)(</${opening[1]}\\s*>)`, 'i'));
   if (!contents) throw new Error('#song-count debe contener solamente texto en index.html.');
-  const text = `${count} ${count === 1 ? 'CANCIÓN DOCUMENTADA' : 'CANCIONES DOCUMENTADAS'}`;
+  const text = `${count} ${count === 1 ? 'CANCIÓN EN ROTACIÓN' : 'CANCIONES EN ROTACIÓN'}`;
   return html.slice(0, textStart) + escapeHtml(text) + html.slice(textStart + contents[1].length);
 }
 

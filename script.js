@@ -21,85 +21,85 @@ const artistContent = {
   carti: {
     history: {
       kind: 'fact',
-      label: 'BIOGRAFÍA DOCUMENTADA',
-      title: 'De Atlanta a una voz propia.',
+      label: 'LADO A / LOS ORÍGENES',
+      title: 'Atlanta fue el punto de partida.',
       paragraphs: [
-        'Jordan Carter nació en 1996. Según la biografía editorial de Apple Music, arrancó en el circuito underground de Atlanta y conoció a A$AP Rocky en un festival en 2015; esa relación impulsó su proyección pública.',
-        'Pitchfork sitúa «Broke Boi» entre sus primeros temas destacados de 2015. Su mixtape homónima llegó en 2017 con «Magnolia» y «wokeuplikethis*», junto a Lil Uzi Vert. Luego soltó Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
+        'Antes de Playboi Carti estuvo Jordan Carter, abriéndose camino en el underground de Atlanta. En 2015, «Broke Boi» llamó la atención sobre su música. Ese mismo año conoció a A$AP Rocky en un festival: una conexión que ayudaría a ampliar su alcance.',
+        'La mixtape Playboi Carti llegó en 2017 con «Magnolia» y «wokeuplikethis*», esta última junto a Lil Uzi Vert. Escuchar ese comienzo es volver al momento en que las frases cortas, las repeticiones y la voz ya empezaban a dejar una firma propia.',
       ],
-      sources: [source('Apple Music · biografía', appleCarti), source('Pitchfork · debut', pitchforkDebut), source('Pitchfork · discografía', pitchforkCarti)],
+      sources: [source('Los primeros años', appleCarti), source('La mixtape de 2017', pitchforkDebut), source('Más sobre su recorrido', pitchforkCarti)],
     },
     evolution: {
       kind: 'fact',
-      label: 'EVOLUCIÓN · CRÍTICA IDENTIFICADA',
-      title: 'Minimalismo, tensión y voces nuevas.',
+      label: 'LADO B / CAMBIO DE FRECUENCIA',
+      title: 'Cada etapa cambia la temperatura.',
       paragraphs: [
-        'Pitchfork describe la mixtape de 2017 mediante la repetición, las intervenciones vocales y las producciones de Pi’erre Bourne. En Die Lit (2018) observa un tratamiento más extremo de esas ideas; «Shoota» muestra además su colaboración con Lil Uzi Vert.',
-        'La misma publicación sitúa Whole Lotta Red (2020) en un sonido más áspero y acelerado, con registros vocales variados. Su reseña de MUSIC (2025) presenta un proyecto extenso que reúne varias de esas etapas. Son lecturas críticas del sonido, no datos sobre su carácter.',
+        'En Playboi Carti (2017), las producciones de Pi’erre Bourne dejan espacio para que una repetición o una entrada vocal se queden contigo. Die Lit (2018) lleva esa fórmula más lejos: basta pasar por «Shoota», con Lil Uzi Vert, para reconocer el pulso de esa etapa.',
+        'Whole Lotta Red (2020) cambia la temperatura con un sonido más áspero, acelerado y lleno de registros vocales. MUSIC (2025) reúne varias de esas caras en un proyecto extenso. La gracia está en recorrerlos en orden y escuchar cuánto cambia la voz sobre el beat.',
       ],
-      sources: [source('Pitchfork · debut', pitchforkDebut), source('Die Lit', pitchforkDieLit), source('Whole Lotta Red', pitchforkRed), source('MUSIC', pitchforkMusic)],
+      sources: [source('El primer proyecto', pitchforkDebut), source('Die Lit', pitchforkDieLit), source('Whole Lotta Red', pitchforkRed), source('MUSIC', pitchforkMusic)],
     },
     style: {
       kind: 'editorial',
-      label: 'LECTURA EDITORIAL',
-      title: 'La voz como parte del ritmo.',
+      label: 'EN EL BEAT / ESTILO',
+      title: 'La voz también es percusión.',
       paragraphs: [
-        'Escucha «Magnolia», «Shoota» y «FE!N» fijándote en cómo las repeticiones y los cambios de voz chocan con cada beat. Esa sensación de intensidad describe el resultado musical; no pretende explicar su personalidad privada.',
-        'Apple Music habla de minimalismo trap y energía punk para caracterizar su obra. Son términos editoriales sobre la música y la imagen pública, no declaraciones del artista sobre sus fuentes de inspiración.',
+        'Pon «Magnolia», sigue con «Shoota» y salta a «FE!N». Fíjate en las repeticiones, los cambios de registro y esas entradas que parecen empujar el beat. En Carti, la voz puede funcionar como otro instrumento: importa lo que dice, pero también cómo lo hace sonar.',
+        'El espacio del trap más minimalista y la descarga de energía punk conviven en su música. A veces una frase se queda dando vueltas; otras, una textura vocal ocupa toda la atención. Prueba a seguir solo la voz durante un fragmento y después vuelve al conjunto.',
       ],
-      sources: [source('Apple Music · lectura editorial', appleCarti)],
+      sources: [source('Claves de su sonido', appleCarti)],
     },
     influences: {
       kind: 'fact',
-      label: 'INFLUENCIAS · ALCANCE VERIFICADO',
-      title: 'Mentores y raíces sonoras.',
+      label: 'CRÉDITOS / RAÍCES',
+      title: 'Las conexiones detrás del sonido.',
       paragraphs: [
-        'A$AP Rocky figura como mentor en la reseña de Pitchfork de 2017; Apple Music documenta su encuentro en 2015. Es una influencia en la trayectoria y la imagen pública, sin atribuirle una enseñanza musical concreta que las fuentes no detallan.',
-        'Pi’erre Bourne es un colaborador decisivo en las producciones de sus primeros proyectos, según Pitchfork. La reseña de Die Lit sitúa a Travis Porter y Rich Kidz como antecedentes de un estilo cercano. Esa genealogía la propone la crítica: no es una lista de ídolos declarada por Carti.',
+        'A$AP Rocky ocupa un lugar de mentor en su recorrido desde aquel encuentro de 2015. Pi’erre Bourne aparece en otra parte esencial de la historia: la producción de sus primeros proyectos. Volver a esos beats ayuda a escuchar cómo se construyó el espacio para la voz de Carti.',
+        'Para ampliar el mapa, vale la pena acercarse a Travis Porter y Rich Kidz, antecedentes de la escena de Atlanta con los que se pueden trazar parentescos sonoros. Entre esas raíces, sus colaboradores y sus propios cambios, el recorrido tiene varias puertas de entrada.',
       ],
-      sources: [source('Pitchfork · debut', pitchforkDebut), source('Pitchfork · Die Lit', pitchforkDieLit), source('Apple Music', appleCarti)],
+      sources: [source('Mentores y colaboradores', pitchforkDebut), source('Las raíces de Die Lit', pitchforkDieLit), source('El encuentro con Rocky', appleCarti)],
     },
   },
   cochise: {
     history: {
       kind: 'fact',
-      label: 'BIOGRAFÍA DOCUMENTADA',
-      title: 'De Palm Bay al alcance global.',
+      label: 'LADO A / LOS ORÍGENES',
+      title: 'Palm Bay, fútbol y música en internet.',
       paragraphs: [
-        'Cochise creció en Palm Bay, Florida, con padres caribeños. Apple Music cuenta que, tras el instituto, recibió ofertas para jugar al fútbol universitario, pero se quedó cerca de casa y subía música a internet mientras estudiaba en un community college.',
-        '«Moshi Moshi» obtuvo atención en 2017; «Hatchback» amplió su visibilidad en 2019. En 2020 firmó con Columbia Records, según la biografía de Apple Music. «Tell Em», junto a $NOT, entró en el Hot 100 en 2021; Pitchfork informó de su inclusión en la promoción XXL Freshman de 2022.',
+        'Cochise creció en Palm Bay, Florida, con padres caribeños. Tras el instituto tuvo ofertas para jugar al fútbol universitario, pero se quedó cerca de casa. Mientras estudiaba en un community college, iba subiendo música a internet: ahí empezó a tomar forma su recorrido.',
+        '«Moshi Moshi» atrajo atención en 2017 y «Hatchback» amplió su visibilidad en 2019. En 2020 firmó con Columbia Records; al año siguiente, «Tell Em», junto a $NOT, entró en el Hot 100. Su selección para XXL Freshman en 2022 sumó otro hito a una carrera que ya iba ganando alcance.',
       ],
-      sources: [source('Apple Music · biografía', appleCochise), source('Hot 100 · 12 jun 2021', `${chartBase}2021-06-12.json`), source('Pitchfork · XXL 2022', pitchforkFreshmen)],
+      sources: [source('Los primeros años', appleCochise), source('El salto de Tell Em · 2021', `${chartBase}2021-06-12.json`), source('La clase XXL de 2022', pitchforkFreshmen)],
     },
     evolution: {
       kind: 'fact',
-      label: 'DISCOGRAFÍA DOCUMENTADA',
-      title: 'Más allá de un solo viral.',
+      label: 'LADO B / CAMBIO DE FRECUENCIA',
+      title: 'Una canción abre la puerta a otra.',
       paragraphs: [
-        'Apple Music lista Pulp (2018), «Hatchback» (2019), Benbow Crescent y «POCKET ROCKET» (2021), y «TURN IT UP» en THE INSPECTION (2022). El catálogo continúa con NO ONE’S NICE TO ME (2023), WHY ALWAYS ME? (2024) y TRENCH TOWN (2026).',
-        'Billboard describe «TURN IT UP» como una producción compartida por Cochise, Nonbruh y Ransom. Su reseña de «Hydroplane» (2023) observa una dicción distinta a la habitual. Son ejemplos concretos de su trabajo y de la lectura crítica de su evolución, no una jerarquía definitiva de sus discos.',
+        'El camino pasa por Pulp (2018), «Hatchback» (2019) y Benbow Crescent (2021), año de «POCKET ROCKET». En THE INSPECTION (2022) aparece «TURN IT UP», producida por Cochise, Nonbruh y Ransom: además de la voz, él también participa en la construcción del beat.',
+        'El catálogo sigue con NO ONE’S NICE TO ME (2023), WHY ALWAYS ME? (2024) y TRENCH TOWN (2026). Entre esos lanzamientos, «Hydroplane» (2023) ofrece otra pista para seguirlo: una dicción diferente que invita a prestar atención a cómo cambia su manera de entrar en cada canción.',
       ],
-      sources: [source('Apple Music · catálogo', appleCochise), source('Billboard · TURN IT UP', billboardTurnItUp), source('Billboard · Hydroplane', billboardHydroplane)],
+      sources: [source('Su discografía', appleCochise), source('Dentro de TURN IT UP', billboardTurnItUp), source('Otra cara en Hydroplane', billboardHydroplane)],
     },
     style: {
       kind: 'editorial',
-      label: 'LECTURA EDITORIAL',
-      title: 'Una energía que cambia de forma.',
+      label: 'EN EL BEAT / ESTILO',
+      title: 'Una voz que rebota sobre el beat.',
       paragraphs: [
-        'En «Tell Em», «Hatchback» y «TURN IT UP» proponemos escuchar el fraseo, la voz aguda y el ritmo de cada entrada. Apple Music destaca su variedad de registros y Billboard describe la energía de «TURN IT UP».',
-        '«Juguetón» puede describir una impresión de escucha, no su personalidad fuera de la música. Tampoco presentamos un parecido vocal con Carti como prueba de una influencia directa.',
+        'En «Tell Em», «Hatchback» y «TURN IT UP», la voz aguda y el fraseo hacen que cada entrada tenga su propio movimiento. Hay algo juguetón en cómo se acomoda al ritmo: escucha dónde acelera, dónde repite y cómo una variación pequeña cambia la sensación del fragmento.',
+        'Su variedad de registros deja espacio para comparar canciones sin quedarte con una sola impresión. Prueba a pasar de un tema a otro siguiendo la voz; después vuelve a escuchar el beat. Ese intercambio entre ambos es una buena forma de entrar en su música.',
       ],
-      sources: [source('Apple Music · biografía', appleCochise), source('Billboard · TURN IT UP', billboardTurnItUp)],
+      sources: [source('Claves de su voz', appleCochise), source('La energía de TURN IT UP', billboardTurnItUp)],
     },
     influences: {
       kind: 'fact',
-      label: 'INFLUENCIAS · ALCANCE VERIFICADO',
-      title: 'Cine, gaming y cultura pop.',
+      label: 'CRÉDITOS / RAÍCES',
+      title: 'Un nombre con historia de película.',
       paragraphs: [
-        'La biografía de Apple Music explica que su nombre artístico rinde homenaje a The Warriors, película de 1979, y al videojuego basado en ella. Esa es una referencia cultural documentada, no una hipótesis construida a partir de su sonido.',
-        'Apple Music describe referencias a la cultura popular en «Hatchback» y documenta su crianza en una familia caribeña. Esos datos dan contexto a su obra; la fuente no afirma qué músicos lo inspiraron ni que Carti sea una influencia declarada.',
+        'El nombre Cochise conecta con The Warriors, la película de 1979, y con el videojuego basado en ella. Es un detalle que abre otra puerta a su universo: antes de entrar en una lista de canciones, ya hay una referencia al cine y al gaming.',
+        'Esa conversación con la cultura pop también aparece en «Hatchback». Su crianza en una familia caribeña forma parte de la historia personal que acompaña a la música. Cine, videojuegos y referencias compartidas ofrecen contexto para descubrirlo, mientras los temas dejan escuchar cómo da forma a su propia voz.',
       ],
-      sources: [source('Apple Music · biografía', appleCochise)],
+      sources: [source('El nombre y sus referencias', appleCochise)],
     },
   },
 };
@@ -213,24 +213,24 @@ const songs = [
 
 const comparisons = [
   [
-    'Trayectoria · dato',
-    'Atlanta: mixtape Playboi Carti (2017), Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
-    'Palm Bay: «Moshi Moshi» (2017), «Hatchback» (2019), «Tell Em» (2021) y TRENCH TOWN (2026).',
+    'El recorrido',
+    'Del underground de Atlanta a Playboi Carti (2017), Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
+    'De subir música en Palm Bay a «Hatchback» (2019), «Tell Em» (2021) y TRENCH TOWN (2026).',
   ],
   [
-    'Sonido · lectura crítica',
-    'Pitchfork destaca el minimalismo y las intervenciones vocales; luego describe la intensidad de Whole Lotta Red.',
-    'Apple Music describe una voz aguda y múltiples registros; Billboard destaca la energía de «TURN IT UP».',
+    'La voz',
+    'Escucha cómo las repeticiones y los cambios de registro pasan del espacio del minimalismo a la aspereza de Whole Lotta Red.',
+    'Sigue la voz aguda, el fraseo y los cambios de registro: cada entrada puede darle otro movimiento al beat.',
   ],
   [
-    'Influencias · alcance',
-    'Pitchfork llama mentor a A$AP Rocky y sitúa a Travis Porter y Rich Kidz como antecedentes sonoros.',
-    'Apple Music documenta el homenaje de su nombre a The Warriors y su videojuego; no confirma una influencia musical de Carti.',
+    'Las raíces',
+    'A$AP Rocky como mentor, Pi’erre Bourne en la producción y la escena de Atlanta como contexto para escuchar sus comienzos.',
+    'The Warriors y su videojuego están detrás del nombre; las referencias a la cultura pop también asoman en «Hatchback».',
   ],
   [
-    'Actitud · interpretación',
-    'La intensidad puede ser una lectura del sonido; no describe su carácter privado.',
-    'Lo juguetón puede ser una lectura del sonido; no describe su carácter privado.',
+    'La energía',
+    'Prueba a seguir una frase repetida: la tensión crece por cómo la voz se cruza con el ritmo.',
+    'Prueba a seguir las entradas de voz: ese rebote juguetón es parte del movimiento que se siente al escucharlo.',
   ],
 ];
 
@@ -259,13 +259,16 @@ function renderArtist(card, view) {
   panel.append(element('h4', '', content.title));
   content.paragraphs.forEach((text) => panel.append(element('p', '', text)));
   if (content.sources) {
-    const links = element('div', 'artist-sources');
+    const credits = element('details', 'artist-sources source-disclosures');
+    credits.append(element('summary', '', 'Créditos de este lado'));
+    const links = element('div', 'source-links');
     content.sources.forEach(({ label, url }) => {
       const link = externalLink(url, `${label} ↗`, 'inline-source');
       link.setAttribute('aria-label', `${label}, abrir fuente en nueva pestaña`);
       links.append(link);
     });
-    panel.append(links);
+    credits.append(links);
+    panel.append(credits);
   }
   card.querySelectorAll('[role="tab"]').forEach((tab) => {
     const selected = tab.dataset.view === view;
@@ -541,7 +544,7 @@ function renderSongs(filter = activeSongFilter) {
     row.append(title);
     const chart = externalLink(
       song.chart ? `${chartBase}${song.chart}.json` : song.catalog,
-      song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'APPLE MUSIC · DESTACADA'),
+      song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'EN LA SELECCIÓN'),
       'song-project',
     );
     chart.setAttribute(
@@ -550,7 +553,7 @@ function renderSongs(filter = activeSongFilter) {
         ? `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`
         : song.catalogLabel
           ? `${song.title}: catálogo de Playboi Carti, consultar fuente en nueva pestaña`
-          : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`,
+          : `${song.title}: consultar ficha de catálogo en nueva pestaña`,
     );
     row.append(chart, element('span', 'song-year', song.year));
     const query = encodeURIComponent(`${song.title} ${song.credit}`);
@@ -593,7 +596,7 @@ function renderSongs(filter = activeSongFilter) {
     list.append(row);
   });
   document.querySelector('#song-count').textContent =
-    `${selection.length} ${selection.length === 1 ? 'CANCIÓN DOCUMENTADA' : 'CANCIONES DOCUMENTADAS'}`;
+    `${selection.length} ${selection.length === 1 ? 'CANCIÓN EN ROTACIÓN' : 'CANCIONES EN ROTACIÓN'}`;
   document.querySelectorAll('.filter-button').forEach((button) => {
     const selected = button.dataset.filter === filter;
     button.classList.toggle('selected', selected);
@@ -680,7 +683,7 @@ sourceList.append(
   element(
     'p',
     '',
-    'Biografías y catálogos de Apple Music, reseñas de Pitchfork, notas de Billboard y una selección histórica del Hot 100. Las fichas enlazan los textos consultados.',
+    'Detrás de cada recorrido hay fechas, discos y colaboraciones que puedes seguir por tu cuenta. Aquí reúno los perfiles, las reseñas y los archivos que me sirven de punto de partida.',
   ),
 );
 const archive = element('div', 'source-item');
@@ -694,7 +697,7 @@ archive.append(
   element(
     'small',
     '',
-    'Archivo de terceros consultado el 12 de octubre de 2026; las listas originales pertenecen a Billboard. Cada posición mostrada enlaza su registro semanal.',
+    'Archivo independiente consultado el 12 de octubre de 2026. Cada puesto enlaza la semana correspondiente de las listas de Billboard.',
   ),
 );
 sourceList.append(archive);
@@ -710,11 +713,11 @@ sourceList.append(archive);
 });
 const scope = element('p', 'source-item');
 scope.textContent =
-  '«Top Songs» de Apple Music es una selección editorial de la plataforma; el puesto del Hot 100 pertenece a una semana concreta. Ninguno es un ranking actual de toda la música de ambos artistas.';
+  'Los puestos del Hot 100 son una foto de una semana concreta. Las otras fichas te llevan al catálogo: esta selección está pensada para descubrir canciones, no para ordenar carreras por números.';
 sourceList.append(scope);
 const status = element('p', 'source-item research-status');
 status.textContent =
-  'Las biografías cubren los hitos documentados hasta 2026. «Influencia» se usa con precisión: mentoría, antecedentes descritos por críticos o referencias culturales verificadas; no se presenta una lista de inspiraciones musicales declaradas sin entrevista directa.';
+  'El recorrido llega hasta los lanzamientos de 2026. En las fichas encontrarás más referencias para tirar del hilo; las notas de escucha son mi forma de entrar en la música.';
 sourceList.append(status);
 
 const menuButton = document.querySelector('.menu-toggle');

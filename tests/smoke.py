@@ -24,6 +24,14 @@ MUSIC_TRACKS = MUSIC_MANIFEST['tracks']
 SERVER_SPEC = spec_from_file_location('rapverse_serve', ROOT / 'tools/serve.py')
 SERVER_MODULE = module_from_spec(SERVER_SPEC)
 SERVER_SPEC.loader.exec_module(SERVER_MODULE)
+HERO_HEADLINE = 'DOS VOCES. NINGÚN MOLDE.'
+NARRATIVE_ATTRIBUTION = re.compile(
+    r'\b(?:Apple\s+Music|Pitchfork|Billboard)\s+(?:(?:nos|también|lo)\s+)?'
+    r'(?:dice|dicen|cuenta|describe|sitúa|menciona|explica|destaca|documenta|habla|'
+    r'señala|informa|informó|presenta|afirma|recoge|atribuye|llama)\b'
+    r'|\bsegún\b[^.!?;\n]{0,90}\b(?:Apple\s+Music|Pitchfork|Billboard)\b',
+    re.IGNORECASE,
+)
 
 
 class QuietHandler(SERVER_MODULE.RangeRequestHandler):
@@ -85,6 +93,11 @@ class RapverseBrowserTests(unittest.TestCase):
             return !audio.paused && audio.currentTime > 0.05 && audio.readyState >= 2
                 && (!source || new URL(audio.currentSrc).pathname === '/' + source);
         }''', arg=source, timeout=15000)
+
+    def assert_direct_editorial_voice(self, page):
+        for text in page.locator('main p, main h4, #comparison-body td').all_text_contents():
+            self.assertIsNone(NARRATIVE_ATTRIBUTION.search(text),
+                              f'Narrative still attributes its voice to a publisher: {text}')
 
     def test_song_assets_match_verified_archive_manifest(self):
         self.assertEqual(len(MUSIC_TRACKS), 9)
@@ -294,40 +307,91 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#preview-audio').count(), 1)
         self.assertEqual(self.page.locator('video, iframe').count(), 0)
         self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.paused'))
-        self.assertIn('Archivo de terceros', self.page.locator('#source-list').inner_text())
+        expect(self.page.locator(
+            '#source-list a[href="https://github.com/mhollingshead/billboard-hot-100"]'
+        )).to_have_count(1)
 
     def test_artist_tabs_and_keyboard(self):
         for name in ('carti', 'cochise'):
-            card = self.page.locator(f'[data-artist="{name}"]')
-            history = card.get_by_role('tab', name='Historia', exact=True)
+            card = self.page.locator(f'.artist-card[data-artist="{name}"]')
+            history = card.locator(f'#{name}-history-tab')
             history.focus()
             self.page.keyboard.press('ArrowRight')
-            evolution = card.get_by_role('tab', name='Evolución', exact=True)
+            evolution = card.locator(f'#{name}-evolution-tab')
             self.assertEqual(evolution.get_attribute('aria-selected'), 'true')
             self.assertEqual(self.page.locator(f'#{name}-panel').get_attribute(
                 'aria-labelledby'), f'{name}-evolution-tab')
             self.page.keyboard.press('End')
-            self.assertEqual(card.get_by_role('tab', name='Influencias').get_attribute(
+            self.assertEqual(card.locator(f'#{name}-influences-tab').get_attribute(
                 'aria-selected'), 'true')
-            self.assertIn('INFLUENCIAS', card.get_by_role('tabpanel').inner_text())
+            expect(card.get_by_role('tabpanel').locator('h4')).to_have_count(1)
             self.assertGreater(card.locator('.artist-sources a').count(), 0)
             self.page.keyboard.press('ArrowRight')
             self.assertEqual(history.get_attribute('aria-selected'), 'true')
             self.page.keyboard.press('ArrowLeft')
-            self.assertEqual(card.get_by_role('tab', name='Influencias').get_attribute(
+            self.assertEqual(card.locator(f'#{name}-influences-tab').get_attribute(
                 'aria-selected'), 'true')
-            card.get_by_role('tab', name='Estilo y actitud').click()
-            self.assertIn('LECTURA EDITORIAL', card.get_by_role('tabpanel').inner_text())
+            card.locator(f'#{name}-style-tab').click()
+            self.assertEqual(card.get_by_role('tabpanel').get_attribute(
+                'aria-labelledby'), f'{name}-style-tab')
             self.page.keyboard.press('Home')
             self.assertEqual(card.locator('[tabindex="0"][role="tab"]').count(), 1)
             self.assertEqual(history.get_attribute('aria-selected'), 'true')
+
+    def test_artist_editorials_have_substance_sources_and_distinct_perspectives(self):
+        # Protect the facts and reading experience without freezing whole paragraphs.
+        important_facts = {
+            ('carti', 'history'): ('Jordan Carter', 'Atlanta', '2015', '2017', 'Lil Uzi Vert'),
+            ('carti', 'evolution'): ('Die Lit', '2018', 'Whole Lotta Red', '2020', 'MUSIC', '2025'),
+            ('cochise', 'history'): ('Palm Bay', 'Columbia', '2020', 'Tell Em', '$NOT', '2022'),
+            ('cochise', 'influences'): ('The Warriors', '1979', 'videojuego'),
+        }
+        headings = set()
+        stories = set()
+        for artist in ('carti', 'cochise'):
+            card = self.page.locator(f'.artist-card[data-artist="{artist}"]')
+            for view in ('history', 'evolution', 'style', 'influences'):
+                with self.subTest(artist=artist, view=view):
+                    tab = card.locator(f'#{artist}-{view}-tab')
+                    self.assertTrue(tab.inner_text().strip())
+                    tab.click()
+                    panel = card.get_by_role('tabpanel')
+                    heading = panel.locator('h4').inner_text().strip()
+                    self.assertGreaterEqual(len(heading.split()), 3)
+                    paragraphs = panel.locator(':scope > p').all_text_contents()
+                    self.assertGreaterEqual(len(paragraphs), 2)
+                    story = ' '.join(paragraphs)
+                    self.assertGreaterEqual(len(story.split()), 65)
+                    self.assertIsNone(NARRATIVE_ATTRIBUTION.search(story))
+                    for fact in important_facts.get((artist, view), ()):
+                        self.assertIn(fact, story)
+                    if (artist, view) == ('cochise', 'history'):
+                        self.assertRegex(story, r'\b(?:2021|al año siguiente)\b')
+                    headings.add(heading)
+                    stories.add(story)
+                    credits = panel.locator('details.artist-sources')
+                    expect(credits).to_have_count(1)
+                    expect(credits.locator('a')).not_to_have_count(0)
+                    credits.locator('summary').click()
+                    expect(credits).to_have_attribute('open', '')
+                    for link in credits.locator('a').all():
+                        expect(link).to_be_visible()
+                        self.assertGreater(len(link.inner_text().strip()), 5)
+                        self.assertTrue(link.get_attribute('href').startswith('https://'))
+                        self.assertEqual(link.get_attribute('target'), '_blank')
+                        self.assertIn('noopener', link.get_attribute('rel'))
+        self.assertEqual(len(headings), 8)
+        self.assertEqual(len(stories), 8)
+        expect(self.page.locator('#comparison-body th')).to_have_text(
+            ['El recorrido', 'La voz', 'Las raíces', 'La energía'])
+        self.assert_direct_editorial_voice(self.page)
 
     def test_filters_and_track_credits(self):
         filters = self.page.get_by_role('group', name='Filtrar canciones por artista')
         filters.get_by_role('button', name='Cochise', exact=True).click()
         self.assertEqual(self.page.locator('.song-row').count(), 4)
         self.assertIn('Cochise & $NOT', self.page.locator('.song-credit').all_inner_texts())
-        self.assertIn('4 CANCIONES DOCUMENTADAS', self.page.locator('#song-count').inner_text())
+        self.assertIn('4 CANCIONES EN ROTACIÓN', self.page.locator('#song-count').inner_text())
         filters.get_by_role('button', name='Playboi Carti', exact=True).click()
         self.assertEqual(self.page.locator('.song-row').count(), 5)
         self.assertIn('Travis Scott', self.page.locator(
@@ -352,7 +416,7 @@ class RapverseBrowserTests(unittest.TestCase):
         self.page.locator('.song-filters [data-filter="cochise"]').click()
         search.fill('  rOcKeT  ')
         expect(self.page.locator('.song-title')).to_have_text(['POCKET ROCKET'])
-        self.assertIn('1 CANCIÓN DOCUMENTADA', self.page.locator('#song-count').inner_text())
+        self.assertIn('1 CANCIÓN EN ROTACIÓN', self.page.locator('#song-count').inner_text())
         self.page.locator('.song-filters [data-filter="carti"]').click()
         expect(self.page.locator('.song-row')).to_have_count(0)
         expect(self.page.locator('#song-empty')).to_be_visible()
@@ -376,7 +440,7 @@ class RapverseBrowserTests(unittest.TestCase):
         self.page.locator('#song-search').fill('Magnolia')
         expect(self.page.locator('.song-row')).to_have_count(0)
         expect(self.page.locator('#song-empty')).to_be_visible()
-        self.assertIn('0 CANCIONES DOCUMENTADAS', self.page.locator('#song-count').inner_text())
+        self.assertIn('0 CANCIONES EN ROTACIÓN', self.page.locator('#song-count').inner_text())
         self.page.locator('#reset-songs').click()
         expect(self.page.locator('#song-search')).to_have_value('')
         expect(self.page.locator('.song-filters [data-filter="all"]')).to_have_attribute(
@@ -502,14 +566,32 @@ class RapverseBrowserTests(unittest.TestCase):
                 self.assertTrue(row.locator('.listen-link').get_attribute('href').startswith(
                     'https://open.spotify.com/search/'))
             expect(page.locator('.artist-panel')).to_have_count(2)
-            for panel in page.locator('.artist-panel').all():
-                self.assertIn('BIOGRAFÍA DOCUMENTADA', panel.inner_text())
-                self.assertGreater(panel.locator('p').count(), 0)
-                self.assertGreater(panel.locator('.artist-sources a').count(), 0)
+            for artist in ('carti', 'cochise'):
+                panel = page.locator(f'#{artist}-panel')
+                live_panel = self.page.locator(f'#{artist}-panel')
+                self.assertEqual(panel.locator('h4').inner_text(), live_panel.locator('h4').inner_text())
+                self.assertEqual(panel.locator(':scope > p').all_text_contents(),
+                                 live_panel.locator(':scope > p').all_text_contents(),
+                                 f'{artist}: fallback must preserve the current introduction')
+                self.assertGreaterEqual(len(' '.join(
+                    panel.locator(':scope > p').all_text_contents()).split()), 65)
+                sources = panel.locator('details.artist-sources')
+                sources.locator('summary').click()
+                expect(sources.locator('a').first).to_be_visible()
+                self.assertEqual(sources.locator('a').evaluate_all('(links) => links.map(link => link.href)'),
+                                 live_panel.locator('.artist-sources a').evaluate_all(
+                                     '(links) => links.map(link => link.href)'))
             expect(page.locator('#comparison-body tr')).to_have_count(4)
+            self.assertEqual(page.locator('#comparison-body th, #comparison-body td').all_text_contents(),
+                             self.page.locator('#comparison-body th, #comparison-body td').all_text_contents(),
+                             'Fallback comparison must match the interactive version')
+            self.assertEqual(page.locator('#source-list p').all_text_contents(),
+                             self.page.locator('#source-list p').all_text_contents(),
+                             'Fallback credits must match the interactive version')
+            self.assert_direct_editorial_voice(page)
             expect(page.locator('#navigation')).to_be_visible()
             expect(page.locator('.menu-toggle')).not_to_be_visible()
-            page.locator('#navigation').get_by_role('link', name='Los artistas').click()
+            page.locator('#navigation a[href="#artistas"]').click()
             self.assertEqual(page.url.split('#')[-1], 'artistas')
             self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), 390)
         finally:
@@ -610,7 +692,7 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertFalse(self.page.locator('#navigation').is_visible())
         self.assertEqual(button.get_attribute('aria-expanded'), 'false')
         button.click()
-        self.page.locator('#navigation').get_by_role('link', name='Los artistas').click()
+        self.page.locator('#navigation a[href="#artistas"]').click()
         self.assertEqual(self.page.url.split('#')[-1], 'artistas')
         self.assertFalse(self.page.locator('#navigation').is_visible())
         button.click()
@@ -635,11 +717,12 @@ class RapverseBrowserTests(unittest.TestCase):
         for link in self.page.locator('a[href^="#"]').all():
             target = link.get_attribute('href')[1:]
             self.assertEqual(self.page.locator(f'[id="{target}"]').count(), 1)
-        summary = self.page.get_by_text('Imágenes, audio y licencias', exact=False)
-        summary.click()
+        licensing = self.page.locator('.sources-details details').filter(
+            has=self.page.locator('a[href="assets/fonts/Anton-OFL.txt"]'))
+        licensing.locator('summary').click()
         self.assertTrue(self.page.get_by_role('link', name='Anton', exact=True).is_visible())
         self.assertTrue(self.page.get_by_role('link', name='Space Grotesk', exact=True).is_visible())
-        self.page.locator('#navigation').get_by_role('link', name='El sonido').click()
+        self.page.locator('#navigation a[href="#sonido"]').click()
         self.assertEqual(self.page.url.split('#')[-1], 'sonido')
 
     def test_reduced_motion_and_skip_link(self):
@@ -671,7 +754,7 @@ class RapverseBrowserTests(unittest.TestCase):
         # El titular termina con su texto original y sin aria-label temporal.
         self.page.wait_for_function("!document.querySelector('.hero h1').hasAttribute('aria-label')", timeout=5000)
         self.assertEqual(' '.join(self.page.locator('.hero h1').inner_text().split()),
-                         'DOS VOCES. OTRA DIMENSIÓN.')
+                         HERO_HEADLINE)
         # Al guardar una canción aparece una ráfaga que desaparece sola.
         button = self.page.locator('.song-row[data-song-id="carti:magnolia"] .save-song')
         button.scroll_into_view_if_needed()
@@ -687,7 +770,7 @@ class RapverseBrowserTests(unittest.TestCase):
         try:
             page.goto(self.url, wait_until='networkidle')
             self.assertEqual(' '.join(page.locator('.hero h1').inner_text().split()),
-                             'DOS VOCES. OTRA DIMENSIÓN.')
+                             HERO_HEADLINE)
             page.locator('.song-row[data-song-id="carti:magnolia"] .save-song').click()
             expect(page.locator('.fx-burst')).to_have_count(0)
             expect(page.locator('.outline').first).to_have_css('color', 'rgb(255, 58, 46)')

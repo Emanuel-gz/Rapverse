@@ -363,7 +363,9 @@ nav {
   max-width: 46ch;
   margin-top: 28px;
   font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.7;
   color: var(--muted);
+  text-wrap: pretty;
 }
 .hero-description strong {
   color: var(--bone);
@@ -656,7 +658,9 @@ nav {
   max-width: 36ch;
   color: var(--muted);
   font-size: 16px;
+  line-height: 1.7;
   padding-bottom: 8px;
+  text-wrap: pretty;
 }
 
 /* ───────── Artistas ───────── */
@@ -667,10 +671,16 @@ nav {
   align-items: stretch;
 }
 .artist-card {
+  --artist-accent: var(--red-hot);
+  --artist-rule: var(--red);
   position: relative;
   min-width: 0;
   background: var(--coal);
   border: 1px solid var(--line);
+}
+.artist-card[data-artist='cochise'] {
+  --artist-accent: var(--bone);
+  --artist-rule: #b8b4ae;
 }
 .artist-visual {
   --mx: 50%;
@@ -758,6 +768,7 @@ nav {
 }
 .artist-content {
   padding: clamp(20px, 2.4vw, 32px);
+  border-top: 4px solid var(--artist-rule);
 }
 .artist-meta {
   display: flex;
@@ -778,8 +789,10 @@ nav {
   color: var(--black);
 }
 .artist-index {
-  font-weight: 700;
-  color: var(--muted);
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--artist-accent);
   letter-spacing: 0.1em;
 }
 .artist-tabs {
@@ -808,7 +821,7 @@ nav {
   right: 0;
   bottom: -1px;
   height: 3px;
-  background: var(--red);
+  background: var(--artist-rule);
   transform: scaleX(0);
   transition: transform 0.25s var(--ease);
 }
@@ -822,21 +835,33 @@ nav {
   transform: scaleX(1);
 }
 .artist-panel {
-  min-height: 340px;
-  padding-top: 24px;
+  min-height: 310px;
+  padding-top: 28px;
 }
 .artist-panel h4 {
-  margin-top: 14px;
+  max-width: 22ch;
+  margin-top: 18px;
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(26px, 2.6vw, 36px);
-  line-height: 1.08;
+  font-size: clamp(28px, 2.7vw, 38px);
+  line-height: 1.15;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 .artist-panel p {
-  margin-top: 14px;
-  max-width: 62ch;
+  margin-top: 18px;
+  max-width: 60ch;
+  line-height: 1.75;
   color: #d8d4ce;
+  text-wrap: pretty;
+}
+.artist-panel h4 + p {
+  margin-top: 22px;
+  padding-left: 16px;
+  border-left: 3px solid var(--artist-rule);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone);
 }
 .content-kind {
   display: inline-block;
@@ -844,6 +869,7 @@ nav {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
+  line-height: 1.5;
 }
 .content-kind.fact {
   background: var(--bone);
@@ -853,22 +879,72 @@ nav {
   background: var(--red);
   color: #fff;
 }
+.artist-panel .content-kind {
+  padding: 0 0 7px;
+  border-bottom: 2px solid var(--artist-rule);
+  background: transparent;
+  color: var(--artist-accent);
+  letter-spacing: 0.13em;
+}
 .artist-sources {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
+  gap: 8px;
+  margin-top: 16px;
 }
 .inline-source {
+  display: inline-flex;
+  align-items: center;
   padding: 7px 12px;
   border: 1px solid var(--line);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.5;
   color: var(--muted);
   transition: border-color 0.2s, color 0.2s;
 }
 .inline-source:hover {
   border-color: var(--red-hot);
   color: var(--bone);
+}
+.source-disclosures {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.source-disclosures summary {
+  justify-content: flex-start;
+  gap: 10px;
+  padding-block: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.source-disclosures summary::before {
+  content: '+';
+  color: var(--artist-accent);
+  font-size: 18px;
+  line-height: 1;
+}
+.source-disclosures[open] summary::before {
+  content: '−';
+}
+.source-disclosures summary:hover {
+  color: var(--bone);
+}
+.source-disclosures .artist-sources {
+  margin-top: 0;
+}
+details.artist-sources {
+  display: block;
+}
+details.artist-sources .inline-source {
+  margin: 0 5px 8px 0;
+}
+.editorial-note {
+  max-width: 64ch;
+  padding-left: 18px;
+  border-left: 3px solid var(--red);
+  color: var(--muted);
+  line-height: 1.7;
 }
 .notice {
   margin-top: 24px;
@@ -1272,6 +1348,12 @@ nav {
 .comparison-banner p {
   margin-top: 8px;
   max-width: 62ch;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.comparison-banner .editorial-note {
+  border-left-color: #fff;
+  color: inherit;
 }
 .comparison-scroll {
   overflow-x: auto;
@@ -1291,6 +1373,7 @@ thead th {
   font-weight: 400;
   font-size: 20px;
   letter-spacing: 0.04em;
+  background: var(--ash);
 }
 tbody th,
 tbody td {
@@ -1298,18 +1381,28 @@ tbody td {
   border-bottom: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
+  line-height: 1.75;
 }
 tbody tr:last-child th,
 tbody tr:last-child td {
   border-bottom: 0;
 }
 tbody th {
-  width: 22%;
+  width: 20%;
   color: var(--red-hot);
+  font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 tbody td {
+  width: 40%;
+  border-left: 1px solid var(--line);
   color: #d8d4ce;
+  text-wrap: pretty;
+}
+tbody tr:nth-child(even) {
+  background: #141414;
 }
 .table-dot {
   display: inline-block;
@@ -1339,6 +1432,8 @@ tbody td {
 .shared-note p {
   max-width: 70ch;
   color: var(--muted);
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 .shared-note strong {
   color: var(--bone);
@@ -1560,10 +1655,13 @@ tbody td {
 }
 .sources-layout h2 {
   margin: 18px 0 20px;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.03;
 }
 .sources-layout > div:first-child > p:not(.eyebrow) {
   max-width: 44ch;
   color: var(--muted);
+  line-height: 1.75;
 }
 .source-legend {
   display: flex;
@@ -1623,6 +1721,7 @@ details[open] summary > span::after {
 .sources-details details > div {
   padding-bottom: 24px;
   color: var(--muted);
+  line-height: 1.75;
 }
 .sources-details details p + p,
 #source-list > * + * {
@@ -1642,6 +1741,7 @@ details[open] summary > span::after {
   display: block;
   margin-top: 4px;
   font-size: 13px;
+  line-height: 1.65;
 }
 .research-status {
   font-size: 14px;
@@ -1869,6 +1969,10 @@ details[open] summary > span::after {
   #preview-status { grid-column: 1 / -1; grid-row: 3; }
 }
 @media (max-width: 520px) {
+  .visual-label {
+    top: 48px;
+    bottom: auto;
+  }
   .artist-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1878,6 +1982,12 @@ details[open] summary > span::after {
   .artist-tabs [role='tab'] {
     padding: 13px 10px;
     border-bottom: 1px solid var(--line);
+  }
+  .artist-panel h4 {
+    max-width: 24ch;
+  }
+  .artist-panel h4 + p {
+    padding-left: 12px;
   }
   .photo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1981,7 +2091,11 @@ details[open] summary > span::after {
   }
   .hero h1,
   h2,
-  .artist-panel h4 {
+  .artist-panel h4,
+  .artist-index,
+  .artist-panel .content-kind,
+  .source-disclosures summary,
+  .source-disclosures summary::before {
     color: #000;
     text-shadow: none;
   }
@@ -2001,6 +2115,12 @@ details[open] summary > span::after {
   .artist-panel {
     min-height: 0;
   }
+  .artist-content,
+  .artist-panel .content-kind,
+  .artist-panel h4 + p,
+  .editorial-note {
+    border-color: #000;
+  }
   .artist-card {
     break-inside: avoid;
   }
@@ -2008,13 +2128,34 @@ details[open] summary > span::after {
     display: block;
   }
   .sources-details a,
+  .inline-source,
   .section-description,
   .artist-panel p,
+  .artist-panel h4 + p,
   tbody td,
   .song-credit,
   .song-year,
   .song-project {
     color: #000;
+  }
+  .comparison-banner,
+  .comparison-banner .label,
+  thead th,
+  tbody tr:nth-child(even) {
+    background: #fff;
+    color: #000;
+  }
+  .comparison-banner {
+    border: 1px solid #000;
+  }
+  table {
+    min-width: 0;
+    font-size: 12px;
+  }
+  tbody th,
+  tbody td,
+  thead th {
+    padding: 12px;
   }
   .photo-grid {
     --row: 220px;

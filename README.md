@@ -1,4 +1,4 @@
-# Rapverse - web interactiva Hecha por Emanuel-gz
+[# Rapverse - web interactiva Hecha por Emanuel-gz
 
 🎧 RapVerse is an interactive web platform dedicated exclusively to Playboi Carti and Cochise. Explore their stories, musical evolution, most popular songs, personalities, influences, similarities, and differences through a modern and immersive Hip-Hop, Rap, and Trap experience.
 
@@ -93,3 +93,4 @@ El trabajo continúa en la rama `feat/rapverse-page`. Estos comandos se ejecutan
    ```
 
 5. Abre el Pull Request existente en GitHub y consulta **Files changed**. El nuevo commit aparecerá allí automáticamente. Revisa las fuentes y los límites de las influencias antes de decidir si fusionas el PR; este paso no es automático.
+](http://127.0.0.1:8000/)

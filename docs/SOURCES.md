@@ -32,6 +32,8 @@ Los otros cuatro títulos enlazan registros semanales del archivo independiente 
 
 Cada puesto corresponde a **una semana concreta**, no necesariamente al máximo histórico ni a un ranking actual. «FE!N» acredita a Carti como colaborador, «Tell Em» a Cochise y $NOT conjuntamente. Los años de la selección siguen las fichas de Apple Music o las listas semanales, según el tipo de enlace. No se redistribuyen los archivos de listas ni artículos periodísticos.
 
+«Location», de Playboi Carti (2017), se incorpora a petición del usuario desde la carpeta `LOCATION` del ZIP de canciones y covers. Su ficha enlaza el catálogo de Carti y no le atribuye un puesto de listas ni la etiqueta «Top Songs». La selección local contiene ahora nueve canciones.
+
 ## Interpretación y personalidad
 
 Las pestañas «Estilo y actitud» son invitaciones propias a escuchar fraseos, producción y energía. «Intenso» y «juguetón» describen impresiones musicales, no rasgos psicológicos ni hechos de la vida privada. En las demás pestañas se indica cuándo una observación procede de crítica musical y se enlaza el texto correspondiente. La tabla comparativa marca cada fila como dato o interpretación.
@@ -44,9 +46,29 @@ Las pestañas «Estilo y actitud» son invitaciones propias a escuchar fraseos, 
 | `assets/photos/*.jpg` | Catorce fotografías aportadas en `imagenes.zip`, conservadas con sus bytes originales. Consulta [su procedencia y huellas SHA-256](../assets/photos/SOURCES.md). |
 | Anton | [Google Fonts, Anton](https://github.com/google/fonts/tree/main/ofl/anton). SIL Open Font License 1.1, incluida en `assets/fonts/Anton-OFL.txt`. Archivo sin modificar. |
 | Space Grotesk | [Google Fonts, Space Grotesk](https://github.com/google/fonts/tree/main/ofl/spacegrotesk). SIL Open Font License 1.1, incluida en `assets/fonts/SpaceGrotesk-OFL.txt`. Archivo sin modificar. |
-| Audio y vídeo | No se alojan, incrustan ni reproducen grabaciones. Los botones abren búsquedas externas en Spotify. |
+| `assets/music/*.jpg`, `*.mp3` y `*.m4a` | Nueve parejas de portada y fragmento aportadas en `canciones y covers playboi carti, cochise.zip`, conservadas sin recodificación. [El manifiesto](../assets/music/manifest.json) registra archivos fuente, rutas locales, formato real, duración y SHA-256. El ZIP no proporciona una licencia de las grabaciones o portadas. |
 
-Los recursos visuales y tipográficos se sirven localmente; la página no carga CDNs, analítica, cookies ni APIs al abrirse. Los nombres de artistas y canciones se usan para informar, sin sugerir afiliación. Las licencias de fuentes no se extienden al resto del repositorio.
+Los recursos visuales, tipográficos y de audio se sirven localmente; la página no carga CDNs, analítica, cookies ni APIs al abrirse. Los nombres de artistas y canciones se usan para informar, sin sugerir afiliación. Las licencias de fuentes no se extienden al resto del repositorio.
+
+## Portadas y fragmentos locales
+
+Cada asociación procede de la pareja de archivos incluida en la misma carpeta del ZIP. Se respetaron sus nombres de carpeta al identificar los títulos; los audios no contienen etiquetas de título o artista que permitan una confirmación independiente por metadatos. Las portadas se inspeccionaron visualmente, se verificó el formato con `ffprobe` y se decodificaron los nueve fragmentos con FFmpeg. Las huellas SHA-256 de los archivos locales coinciden con las de sus originales dentro del ZIP.
+
+| Carpeta fuente | Canción y crédito | Portada local | Fragmento local | Duración del fragmento |
+| --- | --- | --- | --- | --- |
+| `magnolia` | Magnolia · Playboi Carti | `assets/music/magnolia.jpg` | `assets/music/magnolia.mp3` | 14,994 s |
+| `HATCHBACK` | Hatchback · Cochise | `assets/music/hatchback.jpg` | `assets/music/hatchback.mp3` | 20,323 s |
+| `SHOOTA` | Shoota · Playboi Carti feat. Lil Uzi Vert | `assets/music/shoota.jpg` | `assets/music/shoota.mp3` | 13,113 s |
+| `TELL EM` | Tell Em · Cochise & $NOT | `assets/music/tell-em.jpg` | `assets/music/tell-em.mp3` | 15,073 s |
+| `SKY` | Sky · Playboi Carti | `assets/music/sky.jpg` | `assets/music/sky.mp3` | 14,054 s |
+| `pocket rocket` | POCKET ROCKET · Cochise | `assets/music/pocket-rocket.jpg` | `assets/music/pocket-rocket.mp3` | 7,158 s |
+| `FEIN` | FE!N · Travis Scott feat. Playboi Carti | `assets/music/fein.jpg` | `assets/music/fein.mp3` | 60,082 s |
+| `TURN IT UP` | TURN IT UP · Cochise | `assets/music/turn-it-up.jpg` | `assets/music/turn-it-up.m4a` | 60,000 s |
+| `LOCATION` | Location · Playboi Carti | `assets/music/location.jpg` | `assets/music/location.mp3` | 25,887 s |
+
+Los ocho originales `.mpeg` contienen audio MP3 a 128 kbps, 44,1 kHz y dos canales; solo se corrigió la extensión a `.mp3` y se sirven como `audio/mpeg`. `TURN IT UP/turn it up.mp4` contiene únicamente audio AAC a 44,1 kHz y dos canales en un contenedor M4A, sin pista de vídeo; se conserva como `.m4a` con tipo `audio/mp4`. Todas las portadas originales son JPEG; sus nombres locales usan `.jpg`. La portada de `HATCHBACK` procede de `hachtback).jpeg`, y la de `TURN IT UP`, de `Turn it upp.jpeg`: se respetaron sus carpetas pese a esas diferencias en los nombres. Magnolia y Location muestran la misma composición de portada de la mixtape de 2017, pero sus JPEG son distintos y cada ficha mantiene el archivo de su carpeta.
+
+Las duraciones describen los fragmentos aportados, no las grabaciones completas. Los controles de la página reproducen estos archivos locales; los enlaces a Spotify se conservan como búsquedas externas. Todas las rutas que usa el sitio son relativas a la raíz del proyecto y permiten publicarlo en GitHub Pages bajo un subdirectorio sin cambiar los recursos. Las comprobaciones funcionales del sitio se documentan por separado en [VALIDATION.md](VALIDATION.md).
 
 ## Selección fotográfica y colección local
 

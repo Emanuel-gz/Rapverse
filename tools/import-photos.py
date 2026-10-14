@@ -303,8 +303,8 @@ def gallery_markup(by_name):
     lines = [
         '<section class="gallery-section container section" id="galeria" aria-labelledby="gallery-title">',
         '  <div class="section-heading">',
-        '    <div><p class="eyebrow">04 / EN IMÁGENES</p><h2 id="gallery-title">OTRAS MIRADAS.<br />MISMA ENERGÍA.</h2></div>',
-        '    <p class="section-description">Del escenario al retrato.<br />Dos universos vistos a través<br />de catorce fotografías.</p>',
+        '    <div><p class="eyebrow">04 / EN IMÁGENES</p><h2 id="gallery-title">OTRAS MIRADAS.<br /><span class=\"outline\">MISMA ENERGÍA.</span></h2></div>',
+        '    <p class="section-description">Del escenario al retrato.<br />Dos universos en catorce<br />fotografías.</p>',
         '  </div>',
         '  <div class="gallery-toolbar">',
         '    <div class="gallery-filters" role="group" aria-label="Filtrar fotografías por artista">',
@@ -396,7 +396,8 @@ def render_sources(photos, imported_at, originals):
         "No se conoce una licencia de uso confirmada para estas imágenes. No se atribuyen licencias ni autorías no verificadas.", "",
         f"Fecha de importación (UTC): {imported_at}.",
         "Método: originales locales renombrados; el script no descargó los recursos." if local else "Método: descarga HTTPS desde las URL del manifiesto.",
-        "Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.", "",
+        "Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.",
+        "Las fotografías de baja resolución se ampliaron con `tools/enhance-photos.py` (reducción de ruido, x2 y nitidez moderada, sin añadir ni quitar elementos); los archivos tal como se aportaron se conservan en `assets/photos/originals/`.", "",
     ]
     for filename in GALLERY_ORDER:
         photo = next(photo for photo in photos if photo["filename"] == filename)

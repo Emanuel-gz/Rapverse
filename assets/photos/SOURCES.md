@@ -3,9 +3,10 @@
 Selección de 14 fotografías aportadas por el usuario; las URL de procedencia se conservan en `tools/photos.json`.
 No se conoce una licencia de uso confirmada para estas imágenes. No se atribuyen licencias ni autorías no verificadas.
 
-Fecha de importación (UTC): 2026-10-13T20:29:51+00:00.
+Fecha de importación (UTC): 2026-10-14T10:50:07+00:00.
 Método: originales locales renombrados; el script no descargó los recursos.
 Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
+Las fotografías de baja resolución se ampliaron con `tools/enhance-photos.py` (reducción de ruido, x2 y nitidez moderada, sin añadir ni quitar elementos); los archivos tal como se aportaron se conservan en `assets/photos/originals/`.
 
 ## carti-red-stage.jpg
 
@@ -18,9 +19,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-red-stage.jpg`
-- Dimensiones JPEG: 466 × 658 px
-- Tamaño: 34595 bytes
-- SHA-256: `364f6da94427426ed1e0504d994fdf35fe5fc8fba9734223d0fae2d01207db14`
+- Dimensiones JPEG: 932 × 1316 px
+- Tamaño: 172544 bytes
+- SHA-256: `9920c98ad38bc9eed6c2b9c1ff53322995a370fb235b7b4ba451c3226fc43015`
 
 ## cochise-feature.jpg
 
@@ -34,8 +35,8 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-feature.jpg`
 - Dimensiones JPEG: 2048 × 1152 px
-- Tamaño: 1233384 bytes
-- SHA-256: `e23e8f8cbb3ae3bdc17ced868012bb2a2e512655a8f7ac2ebf298426dda66a9b`
+- Tamaño: 401942 bytes
+- SHA-256: `2f52e7512fcafdb1fa8796bb50d6a4220f88a6b8840a588f034db5745abca4b0`
 
 ## carti-beanie.jpg
 
@@ -48,9 +49,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-beanie.jpg`
-- Dimensiones JPEG: 500 × 613 px
-- Tamaño: 29452 bytes
-- SHA-256: `7827382bc863168b290e26653c1e1306814c3a88514380a73daf26436fc7319e`
+- Dimensiones JPEG: 1000 × 1226 px
+- Tamaño: 151054 bytes
+- SHA-256: `01c29e21d77d89ca95710fb86f390e7ea514ee326abf499c94e357596f0a2f80`
 
 ## cochise-trench.jpg
 
@@ -63,9 +64,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-trench.jpg`
-- Dimensiones JPEG: 447 × 447 px
-- Tamaño: 20565 bytes
-- SHA-256: `4c63d33e2d7e3218e4b035aef69ae82d52b4358abe6ffd0e40000fdea8710ccb`
+- Dimensiones JPEG: 894 × 894 px
+- Tamaño: 97790 bytes
+- SHA-256: `9b92b22cbf1da26a6ce5f6a3476cd9fb1ac4034c48ab6980de7358234f2cf8fe`
 
 ## carti-blue-portrait.jpg
 
@@ -79,8 +80,8 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-blue-portrait.jpg`
 - Dimensiones JPEG: 1365 × 2048 px
-- Tamaño: 1301642 bytes
-- SHA-256: `7c10bb4bf9e6c05e3fc631231d653a0b989fc40d8980d8266b8730e5ef875794`
+- Tamaño: 705089 bytes
+- SHA-256: `1a32a7e04241970db85585841ab3bc428950c18a905d8df940f5401692f70381`
 
 ## cochise-blue-portrait.jpg
 
@@ -93,9 +94,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: resources.tidal.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-blue-portrait.jpg`
-- Dimensiones JPEG: 480 × 480 px
-- Tamaño: 60188 bytes
-- SHA-256: `c221322a90f87eebeef99c23399be692036c8677203792260971fe4539a69bb0`
+- Dimensiones JPEG: 960 × 960 px
+- Tamaño: 117816 bytes
+- SHA-256: `4296625af55690d20765fba39ed5cb3c0bf01b793cfe33d01b770d068a99cdd4`
 
 ## carti-jersey.jpg
 
@@ -108,9 +109,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-jersey.jpg`
-- Dimensiones JPEG: 447 × 447 px
-- Tamaño: 19780 bytes
-- SHA-256: `7188db06213eefa75fc3fdf3261f9b45abe6fa46de3d08b0a80353c88170875c`
+- Dimensiones JPEG: 894 × 894 px
+- Tamaño: 95742 bytes
+- SHA-256: `4496e3c27d959d5a47d8324ba5f4e6baacc12691ec56dafe778aa9ee7b8673de`
 
 ## cochise-red-jacket.jpg
 
@@ -123,9 +124,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-red-jacket.jpg`
-- Dimensiones JPEG: 378 × 529 px
-- Tamaño: 33768 bytes
-- SHA-256: `27a060a4c2d6fccb9490e7095db711b4bf0c8ffcf97b16e6daa4730e0ad28d80`
+- Dimensiones JPEG: 756 × 1058 px
+- Tamaño: 102698 bytes
+- SHA-256: `76e72dad42f12a02371afc64763fc8d53cd96a12f378562133db853836d07346`
 
 ## carti-lounge.jpg
 
@@ -138,9 +139,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-lounge.jpg`
-- Dimensiones JPEG: 640 × 480 px
-- Tamaño: 44380 bytes
-- SHA-256: `5864d370744d63023cb7b0dcb488effef46524eccd00acab799d56d68526d15e`
+- Dimensiones JPEG: 1280 × 960 px
+- Tamaño: 198981 bytes
+- SHA-256: `68b875e1f985885e52322dd22574278ffa8e9271dc7696e4da8051f41c1dbb92`
 
 ## cochise-point.jpg
 
@@ -153,9 +154,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-point.jpg`
-- Dimensiones JPEG: 447 × 447 px
-- Tamaño: 32810 bytes
-- SHA-256: `26711d48c0e664359d72fa9c6497f7b917518a42c280335dbf1171673f8d8952`
+- Dimensiones JPEG: 894 × 894 px
+- Tamaño: 120389 bytes
+- SHA-256: `109a27a1de440645bac51d5052e161e1afb1c631fe8d040f482cd6b58ff8e619`
 
 ## carti-green-jacket.jpg
 
@@ -168,9 +169,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-green-jacket.jpg`
-- Dimensiones JPEG: 454 × 676 px
-- Tamaño: 21027 bytes
-- SHA-256: `41ebf00cedc6a8b0fafb9db14be148dcb579b8ca05da1fb7ae163526940b49f2`
+- Dimensiones JPEG: 908 × 1352 px
+- Tamaño: 121309 bytes
+- SHA-256: `43f53d227ea8958abc100a066165e12f8cd80702d75c1afebf857045846fb3b5`
 
 ## cochise-suit.jpg
 
@@ -183,9 +184,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-suit.jpg`
-- Dimensiones JPEG: 554 × 554 px
-- Tamaño: 24375 bytes
-- SHA-256: `340a2a632bbf54aacaee363be5e01ebb93b0f1ffd2d0aff2860f38932baca1be`
+- Dimensiones JPEG: 1108 × 1108 px
+- Tamaño: 112517 bytes
+- SHA-256: `bfe91a78ec42a4ee4634a3a21e7268dae760a48919826a066842ccb01437386b`
 
 ## carti-camo.jpg
 
@@ -198,9 +199,9 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/carti-camo.jpg`
-- Dimensiones JPEG: 451 × 680 px
-- Tamaño: 40175 bytes
-- SHA-256: `95e1bd7f5509a251782bc048a142b5577bbaadd5b77f0a93fd6c656acf03659d`
+- Dimensiones JPEG: 902 × 1360 px
+- Tamaño: 181334 bytes
+- SHA-256: `ed8672c6515e9c418da66331f3b5fa81a8e92c58bd41067715306d6a0aa451f7`
 
 ## cochise-microphone.jpg
 
@@ -213,6 +214,6 @@ Las dimensiones y SHA-256 siguientes corresponden a los bytes JPEG instalados.
 - Dominio de origen: encrypted-tbn0.gstatic.com
 - Fecha de descarga: no verificada; archivo aportado localmente.
 - Archivo local: `assets/photos/cochise-microphone.jpg`
-- Dimensiones JPEG: 399 × 501 px
-- Tamaño: 18921 bytes
-- SHA-256: `4ef92ac8b68df1dc6893e1ae6b703b42e77771e74398422618cd618c246ff4ae`
+- Dimensiones JPEG: 798 × 1002 px
+- Tamaño: 90832 bytes
+- SHA-256: `1bc95ac28ce2527383120579801f67d69d9da3523bde18a5e79f7ef96a42e40b`

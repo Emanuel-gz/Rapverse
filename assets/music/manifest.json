@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "sourceArchive": "canciones y covers playboi carti, cochise.zip",
+  "associationMethod": "Cada pareja procede de la misma carpeta del ZIP. Identificación de las canciones por el nombre de su carpeta; metadatos de títulos y artistas no están incorporados a los audios. Portadas inspeccionadas visualmente y todos los audios comprobados con ffprobe y decodificación FFmpeg.",
+  "notes": [
+    "Los ocho archivos .mpeg son MP3 reales. Se han copiado y renombrado a .mp3 sin recodificación.",
+    "TURN IT UP/turn it up.mp4 contiene solamente audio AAC en contenedor M4A, sin vídeo. Se ha copiado byte por byte a turn-it-up.m4a.",
+    "Magnolia y Location muestran la misma composición de portada en sus carpetas del ZIP (mixtape Playboi Carti de 2017), aunque son archivos JPEG distintos; se conserva la asignación original de cada uno.",
+    "Las duraciones corresponden a fragmentos suministrados, no a la duración de las canciones completas."
+  ],
+  "tracks": [
+    {
+      "id": "magnolia",
+      "title": "Magnolia",
+      "artist": "Playboi Carti",
+      "sourceFolder": "magnolia",
+      "sourceCover": "magnolia/magnolia.jpeg",
+      "sourceAudio": "magnolia/Magnolia.mpeg",
+      "cover": "assets/music/magnolia.jpg",
+      "audio": "assets/music/magnolia.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 14.994286,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 447,
+        "height": 447
+      },
+      "sourceCoverSha256": "3a515fe00b60e81f56d3ce32df2079fa9939408b9341303bb42cd6d0af2dd771",
+      "coverSha256": "3a515fe00b60e81f56d3ce32df2079fa9939408b9341303bb42cd6d0af2dd771",
+      "sourceAudioSha256": "fbd670004e5aa60147291cf30e6a3ea306f2a261b02dc897d06c20ebc2d2eb1a",
+      "audioSha256": "fbd670004e5aa60147291cf30e6a3ea306f2a261b02dc897d06c20ebc2d2eb1a",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "hatchback",
+      "title": "Hatchback",
+      "artist": "Cochise",
+      "sourceFolder": "HATCHBACK",
+      "sourceCover": "HATCHBACK/hachtback).jpeg",
+      "sourceAudio": "HATCHBACK/hatchback.mpeg",
+      "cover": "assets/music/hatchback.jpg",
+      "audio": "assets/music/hatchback.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 20.32325,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 225,
+        "height": 225
+      },
+      "sourceCoverSha256": "cc0971ad181bcce1a97ba4aa04373cb6990583696995046bbf3bf7b4b0dfcbc8",
+      "coverSha256": "cc0971ad181bcce1a97ba4aa04373cb6990583696995046bbf3bf7b4b0dfcbc8",
+      "sourceAudioSha256": "c93da14ecd74cbf50ea9028e8f3c1c5d9228685c9cc23edef88098f0838db718",
+      "audioSha256": "c93da14ecd74cbf50ea9028e8f3c1c5d9228685c9cc23edef88098f0838db718",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "shoota",
+      "title": "Shoota",
+      "artist": "Playboi Carti feat. Lil Uzi Vert",
+      "sourceFolder": "SHOOTA",
+      "sourceCover": "SHOOTA/shoota.jpeg",
+      "sourceAudio": "SHOOTA/Shoota.mpeg",
+      "cover": "assets/music/shoota.jpg",
+      "audio": "assets/music/shoota.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 13.113438,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 640,
+        "height": 640
+      },
+      "sourceCoverSha256": "a883f1785247c971c54efef9cad979c78fea2e60bdf7acd48e20b83edf86c087",
+      "coverSha256": "a883f1785247c971c54efef9cad979c78fea2e60bdf7acd48e20b83edf86c087",
+      "sourceAudioSha256": "306db244e637ee7bd13db8c607d09553562e10ef11b9f72301cf4bf83b5cc997",
+      "audioSha256": "306db244e637ee7bd13db8c607d09553562e10ef11b9f72301cf4bf83b5cc997",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "tell-em",
+      "title": "Tell Em",
+      "artist": "Cochise & $NOT",
+      "sourceFolder": "TELL EM",
+      "sourceCover": "TELL EM/tell em.jpeg",
+      "sourceAudio": "TELL EM/Tell em.mpeg",
+      "cover": "assets/music/tell-em.jpg",
+      "audio": "assets/music/tell-em.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 15.072625,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 640,
+        "height": 640
+      },
+      "sourceCoverSha256": "795fa63b5c5c4df65ec3abf583cb4a13cf308ae05516c01033d7c156715506f0",
+      "coverSha256": "795fa63b5c5c4df65ec3abf583cb4a13cf308ae05516c01033d7c156715506f0",
+      "sourceAudioSha256": "73495c684e8516d0d99161d081c2d27d7ec71ec34a765badb08aff926a57cbc3",
+      "audioSha256": "73495c684e8516d0d99161d081c2d27d7ec71ec34a765badb08aff926a57cbc3",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "sky",
+      "title": "Sky",
+      "artist": "Playboi Carti",
+      "sourceFolder": "SKY",
+      "sourceCover": "SKY/sky.jpg",
+      "sourceAudio": "SKY/SKY.mpeg",
+      "cover": "assets/music/sky.jpg",
+      "audio": "assets/music/sky.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 14.053875,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 500,
+        "height": 500
+      },
+      "sourceCoverSha256": "abfca8bdbde3b8bb30a3c131bae38ab84f6f4a6025cef60d7b99ade9548a433f",
+      "coverSha256": "abfca8bdbde3b8bb30a3c131bae38ab84f6f4a6025cef60d7b99ade9548a433f",
+      "sourceAudioSha256": "582045fb7b5bb8699088aafdb46d5512c400a061b85c7dc2f550c9359a94c00d",
+      "audioSha256": "582045fb7b5bb8699088aafdb46d5512c400a061b85c7dc2f550c9359a94c00d",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "pocket-rocket",
+      "title": "POCKET ROCKET",
+      "artist": "Cochise",
+      "sourceFolder": "pocket rocket",
+      "sourceCover": "pocket rocket/pocket rocket.jpeg",
+      "sourceAudio": "pocket rocket/Pocket rocket.mpeg",
+      "cover": "assets/music/pocket-rocket.jpg",
+      "audio": "assets/music/pocket-rocket.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 7.1575,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 225,
+        "height": 225
+      },
+      "sourceCoverSha256": "700f1ad435f7607c83e604339f014f96d79380d3c2696b89f4b893fa24382ef7",
+      "coverSha256": "700f1ad435f7607c83e604339f014f96d79380d3c2696b89f4b893fa24382ef7",
+      "sourceAudioSha256": "80a28d06ef3516ad2682b1ee0989b2b8f917ff0e89ab87ac973c6519137ba713",
+      "audioSha256": "80a28d06ef3516ad2682b1ee0989b2b8f917ff0e89ab87ac973c6519137ba713",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "fein",
+      "title": "FE!N",
+      "artist": "Travis Scott feat. Playboi Carti",
+      "sourceFolder": "FEIN",
+      "sourceCover": "FEIN/fein.jpg",
+      "sourceAudio": "FEIN/Fein.mpeg",
+      "cover": "assets/music/fein.jpg",
+      "audio": "assets/music/fein.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 60.081625,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 1200,
+        "height": 1200
+      },
+      "sourceCoverSha256": "a7935ec903df1c6edb0b5569ca9b319b4e7d0e96845acbcc0a6677f19396e990",
+      "coverSha256": "a7935ec903df1c6edb0b5569ca9b319b4e7d0e96845acbcc0a6677f19396e990",
+      "sourceAudioSha256": "92935d090531b731a4eeb16f83528f7de71e5a5d3f7a1c6d53ebb4925aba1bb5",
+      "audioSha256": "92935d090531b731a4eeb16f83528f7de71e5a5d3f7a1c6d53ebb4925aba1bb5",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "turn-it-up",
+      "title": "TURN IT UP",
+      "artist": "Cochise",
+      "sourceFolder": "TURN IT UP",
+      "sourceCover": "TURN IT UP/Turn it upp.jpeg",
+      "sourceAudio": "TURN IT UP/turn it up.mp4",
+      "cover": "assets/music/turn-it-up.jpg",
+      "audio": "assets/music/turn-it-up.m4a",
+      "mimeType": "audio/mp4",
+      "durationSeconds": 60.0,
+      "codec": "aac",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 640,
+        "height": 640
+      },
+      "sourceCoverSha256": "9886194e1311bf8d29bb67d09ef4a682f578dd6b62586166fd9d169399022a47",
+      "coverSha256": "9886194e1311bf8d29bb67d09ef4a682f578dd6b62586166fd9d169399022a47",
+      "sourceAudioSha256": "16ad48c66faf226163a53425e72e59f9c527ee8b91d6fe8528aa2152f2ac3b7d",
+      "audioSha256": "16ad48c66faf226163a53425e72e59f9c527ee8b91d6fe8528aa2152f2ac3b7d",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    },
+    {
+      "id": "location",
+      "title": "Location",
+      "artist": "Playboi Carti",
+      "sourceFolder": "LOCATION",
+      "sourceCover": "LOCATION/location.jpeg",
+      "sourceAudio": "LOCATION/LOCATION.mpeg",
+      "cover": "assets/music/location.jpg",
+      "audio": "assets/music/location.mp3",
+      "mimeType": "audio/mpeg",
+      "durationSeconds": 25.887313,
+      "codec": "mp3",
+      "sampleRate": 44100,
+      "channels": 2,
+      "coverDimensions": {
+        "width": 447,
+        "height": 447
+      },
+      "sourceCoverSha256": "c190033d384aaf455777f7f9020e7214094103f1b278135ab8fd64dff6fbebef",
+      "coverSha256": "c190033d384aaf455777f7f9020e7214094103f1b278135ab8fd64dff6fbebef",
+      "sourceAudioSha256": "8ab515b0804c5eb034adeb4c3a1e0bb9d7ad8bbf329ce8b2c184a7a0ddb605b0",
+      "audioSha256": "8ab515b0804c5eb034adeb4c3a1e0bb9d7ad8bbf329ce8b2c184a7a0ddb605b0",
+      "processing": "Copia binaria íntegra; extensión corregida según formato real.",
+      "verified": {
+        "sourceArchiveBytes": true,
+        "imageDecoded": true,
+        "audioDecoded": true,
+        "visualCoverReview": true
+      }
+    }
+  ]
+}

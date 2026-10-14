@@ -54,21 +54,24 @@ function renderArtist(content) {
 function renderSongs(songs, chartBase) {
   return songs.map((song, index) => {
     const chartUrl = song.chart ? `${chartBase}${song.chart}.json` : song.catalog;
-    const chartText = song.chart ? `HOT 100 · #${song.position}` : 'APPLE MUSIC · DESTACADA';
+    const chartText = song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'APPLE MUSIC · DESTACADA');
     const chartLabel = song.chart
       ? `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`
-      : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`;
+      : song.catalogLabel
+        ? `${song.title}: catálogo de Playboi Carti, consultar fuente en nueva pestaña`
+        : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`;
     const query = encodeURIComponent(`${song.title} ${song.credit}`);
     const listenLabel = `Buscar ${song.title}, ${song.credit}, en Spotify (nueva pestaña)`;
     return '<article class="song-row">'
       + `<span class="song-index">${escapeHtml(String(index + 1).padStart(2, '0'))}</span>`
-      + `<div class="song-art ${escapeHtml(song.artist)}" aria-hidden="true"></div>`
+      + `<div class="song-art ${escapeHtml(song.artist)}" aria-hidden="true"><img class="song-cover" src="${escapeHtml(song.cover)}" alt="" width="76" height="76" /></div>`
       + `<div class="song-info"><h3 class="song-title">${escapeHtml(song.title)}</h3>`
-      + `<p class="song-credit">${escapeHtml(song.credit)}</p></div>`
+      + `<p class="song-credit">${escapeHtml(song.credit)}</p>`
+      + `<a class="listen-link" href="${escapeHtml(`https://open.spotify.com/search/${query}`)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(listenLabel)}">`
+      + '<span>Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a></div>'
       + externalLink(chartUrl, chartText, 'song-project', chartLabel)
       + `<span class="song-year">${escapeHtml(song.year)}</span>`
-      + `<a class="listen-link" href="${escapeHtml(`https://open.spotify.com/search/${query}`)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(listenLabel)}">`
-      + '<span>Buscar en Spotify</span><span class="play-icon" aria-hidden="true">↗</span></a>'
+      + `<audio class="native-preview" controls preload="none" src="${escapeHtml(song.audio)}" aria-label="Fragmento de ${escapeHtml(song.title)}, ${escapeHtml(song.credit)}"></audio>`
       + '</article>';
   }).join('');
 }

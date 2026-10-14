@@ -24,15 +24,15 @@ const artistContent = {
       label: 'BIOGRAFÍA DOCUMENTADA',
       title: 'De Atlanta a una voz propia.',
       paragraphs: [
-        'Jordan Carter nació en 1996. Según la biografía editorial de Apple Music, comenzó en el circuito underground de Atlanta y conoció a A$AP Rocky en un festival en 2015; aquella relación impulsó su proyección pública.',
-        'Pitchfork sitúa «Broke Boi» entre sus primeros temas destacados de 2015. Su mixtape homónima llegó en 2017 con «Magnolia» y «wokeuplikethis*», junto a Lil Uzi Vert. Después publicó Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
+        'Jordan Carter nació en 1996. Según la biografía editorial de Apple Music, arrancó en el circuito underground de Atlanta y conoció a A$AP Rocky en un festival en 2015; esa relación impulsó su proyección pública.',
+        'Pitchfork sitúa «Broke Boi» entre sus primeros temas destacados de 2015. Su mixtape homónima llegó en 2017 con «Magnolia» y «wokeuplikethis*», junto a Lil Uzi Vert. Luego soltó Die Lit (2018), Whole Lotta Red (2020) y MUSIC (2025).',
       ],
       sources: [source('Apple Music · biografía', appleCarti), source('Pitchfork · debut', pitchforkDebut), source('Pitchfork · discografía', pitchforkCarti)],
     },
     evolution: {
       kind: 'fact',
       label: 'EVOLUCIÓN · CRÍTICA IDENTIFICADA',
-      title: 'Minimalismo, tensión y nuevas voces.',
+      title: 'Minimalismo, tensión y voces nuevas.',
       paragraphs: [
         'Pitchfork describe la mixtape de 2017 mediante la repetición, las intervenciones vocales y las producciones de Pi’erre Bourne. En Die Lit (2018) observa un tratamiento más extremo de esas ideas; «Shoota» muestra además su colaboración con Lil Uzi Vert.',
         'La misma publicación sitúa Whole Lotta Red (2020) en un sonido más áspero y acelerado, con registros vocales variados. Su reseña de MUSIC (2025) presenta un proyecto extenso que reúne varias de esas etapas. Son lecturas críticas del sonido, no datos sobre su carácter.',
@@ -44,7 +44,7 @@ const artistContent = {
       label: 'LECTURA EDITORIAL',
       title: 'La voz como parte del ritmo.',
       paragraphs: [
-        'Escucha «Magnolia», «Shoota» y «FE!N» atendiendo a cómo las repeticiones y los cambios de voz dialogan con cada producción. Nuestra impresión de intensidad describe el resultado musical; no pretende explicar su personalidad privada.',
+        'Escucha «Magnolia», «Shoota» y «FE!N» fijándote en cómo las repeticiones y los cambios de voz chocan con cada beat. Esa sensación de intensidad describe el resultado musical; no pretende explicar su personalidad privada.',
         'Apple Music habla de minimalismo trap y energía punk para caracterizar su obra. Son términos editoriales sobre la música y la imagen pública, no declaraciones del artista sobre sus fuentes de inspiración.',
       ],
       sources: [source('Apple Music · lectura editorial', appleCarti)],
@@ -52,7 +52,7 @@ const artistContent = {
     influences: {
       kind: 'fact',
       label: 'INFLUENCIAS · ALCANCE VERIFICADO',
-      title: 'Mentoría y antecedentes sonoros.',
+      title: 'Mentores y raíces sonoras.',
       paragraphs: [
         'A$AP Rocky figura como mentor en la reseña de Pitchfork de 2017; Apple Music documenta su encuentro en 2015. Es una influencia en la trayectoria y la imagen pública, sin atribuirle una enseñanza musical concreta que las fuentes no detallan.',
         'Pi’erre Bourne es un colaborador decisivo en las producciones de sus primeros proyectos, según Pitchfork. La reseña de Die Lit sitúa a Travis Porter y Rich Kidz como antecedentes de un estilo cercano. Esa genealogía la propone la crítica: no es una lista de ídolos declarada por Carti.',
@@ -66,7 +66,7 @@ const artistContent = {
       label: 'BIOGRAFÍA DOCUMENTADA',
       title: 'De Palm Bay al alcance global.',
       paragraphs: [
-        'Cochise creció en Palm Bay, Florida, con padres caribeños. Apple Music cuenta que, tras el instituto, recibió ofertas para jugar al fútbol universitario, pero siguió cerca de casa y publicaba música en línea mientras estudiaba en un community college.',
+        'Cochise creció en Palm Bay, Florida, con padres caribeños. Apple Music cuenta que, tras el instituto, recibió ofertas para jugar al fútbol universitario, pero se quedó cerca de casa y subía música a internet mientras estudiaba en un community college.',
         '«Moshi Moshi» obtuvo atención en 2017; «Hatchback» amplió su visibilidad en 2019. En 2020 firmó con Columbia Records, según la biografía de Apple Music. «Tell Em», junto a $NOT, entró en el Hot 100 en 2021; Pitchfork informó de su inclusión en la promoción XXL Freshman de 2022.',
       ],
       sources: [source('Apple Music · biografía', appleCochise), source('Hot 100 · 12 jun 2021', `${chartBase}2021-06-12.json`), source('Pitchfork · XXL 2022', pitchforkFreshmen)],
@@ -86,7 +86,7 @@ const artistContent = {
       label: 'LECTURA EDITORIAL',
       title: 'Una energía que cambia de forma.',
       paragraphs: [
-        'En «Tell Em», «Hatchback» y «TURN IT UP» proponemos escuchar el fraseo, la voz aguda y el ritmo de las intervenciones. Apple Music destaca su variedad de registros y Billboard describe la energía de «TURN IT UP».',
+        'En «Tell Em», «Hatchback» y «TURN IT UP» proponemos escuchar el fraseo, la voz aguda y el ritmo de cada entrada. Apple Music destaca su variedad de registros y Billboard describe la energía de «TURN IT UP».',
         '«Juguetón» puede describir una impresión de escucha, no su personalidad fuera de la música. Tampoco presentamos un parecido vocal con Carti como prueba de una influencia directa.',
       ],
       sources: [source('Apple Music · biografía', appleCochise), source('Billboard · TURN IT UP', billboardTurnItUp)],
@@ -94,7 +94,7 @@ const artistContent = {
     influences: {
       kind: 'fact',
       label: 'INFLUENCIAS · ALCANCE VERIFICADO',
-      title: 'Cine, videojuegos y referencias pop.',
+      title: 'Cine, gaming y cultura pop.',
       paragraphs: [
         'La biografía de Apple Music explica que su nombre artístico rinde homenaje a The Warriors, película de 1979, y al videojuego basado en ella. Esa es una referencia cultural documentada, no una hipótesis construida a partir de su sonido.',
         'Apple Music describe referencias a la cultura popular en «Hatchback» y documenta su crianza en una familia caribeña. Esos datos dan contexto a su obra; la fuente no afirma qué músicos lo inspiraron ni que Carti sea una influencia declarada.',
@@ -107,6 +107,10 @@ const artistContent = {
 const songs = [
   {
     title: 'Magnolia',
+    cover: 'assets/music/magnolia.jpg',
+    audio: 'assets/music/magnolia.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 14.994286,
     artist: 'carti',
     credit: 'Playboi Carti',
     year: '2017',
@@ -115,6 +119,10 @@ const songs = [
   },
   {
     title: 'Hatchback',
+    cover: 'assets/music/hatchback.jpg',
+    audio: 'assets/music/hatchback.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 20.32325,
     artist: 'cochise',
     credit: 'Cochise',
     year: '2019',
@@ -122,6 +130,10 @@ const songs = [
   },
   {
     title: 'Shoota',
+    cover: 'assets/music/shoota.jpg',
+    audio: 'assets/music/shoota.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 13.113438,
     artist: 'carti',
     credit: 'Playboi Carti feat. Lil Uzi Vert',
     year: '2018',
@@ -130,6 +142,10 @@ const songs = [
   },
   {
     title: 'Tell Em',
+    cover: 'assets/music/tell-em.jpg',
+    audio: 'assets/music/tell-em.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 15.072625,
     artist: 'cochise',
     credit: 'Cochise & $NOT',
     year: '2021',
@@ -138,6 +154,10 @@ const songs = [
   },
   {
     title: 'Sky',
+    cover: 'assets/music/sky.jpg',
+    audio: 'assets/music/sky.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 14.053875,
     artist: 'carti',
     credit: 'Playboi Carti',
     year: '2020',
@@ -145,6 +165,10 @@ const songs = [
   },
   {
     title: 'POCKET ROCKET',
+    cover: 'assets/music/pocket-rocket.jpg',
+    audio: 'assets/music/pocket-rocket.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 7.1575,
     artist: 'cochise',
     credit: 'Cochise',
     year: '2021',
@@ -152,6 +176,10 @@ const songs = [
   },
   {
     title: 'FE!N',
+    cover: 'assets/music/fein.jpg',
+    audio: 'assets/music/fein.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 60.081625,
     artist: 'carti',
     credit: 'Travis Scott feat. Playboi Carti',
     year: '2023',
@@ -160,10 +188,26 @@ const songs = [
   },
   {
     title: 'TURN IT UP',
+    cover: 'assets/music/turn-it-up.jpg',
+    audio: 'assets/music/turn-it-up.m4a',
+    mimeType: 'audio/mp4',
+    duration: 60.0,
     artist: 'cochise',
     credit: 'Cochise',
     year: '2022',
     catalog: appleCochise,
+  },
+  {
+    title: 'Location',
+    artist: 'carti',
+    credit: 'Playboi Carti',
+    year: '2017',
+    catalog: appleCarti,
+    catalogLabel: 'PLAYBOI CARTI · 2017',
+    cover: 'assets/music/location.jpg',
+    audio: 'assets/music/location.mp3',
+    mimeType: 'audio/mpeg',
+    duration: 25.887313,
   },
 ];
 
@@ -287,6 +331,175 @@ const clearSearch = document.querySelector('#clear-search');
 const songEmpty = document.querySelector('#song-empty');
 const savedCount = document.querySelector('#saved-count');
 
+// One persistent media element keeps playback independent of filtered list renders.
+const previewAudio = document.querySelector('#preview-audio');
+const previewDeck = document.querySelector('#preview-deck');
+const previewToggle = document.querySelector('#preview-toggle');
+const previewSeek = document.querySelector('#preview-seek');
+const previewVolume = document.querySelector('#preview-volume');
+const previewMute = document.querySelector('#preview-mute');
+const previewStatus = document.querySelector('#preview-status');
+let previewSong = null;
+let previewPlaying = false;
+let previewLoading = false;
+let previewFailed = false;
+let previewStopped = false;
+let previewRequest = 0;
+
+function formatPreviewTime(seconds) {
+  const time = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  return `${Math.floor(time / 60)}:${String(time % 60).padStart(2, '0')}`;
+}
+
+function updatePreviewUI() {
+  const id = previewSong ? songId(previewSong) : null;
+  const duration = Number.isFinite(previewAudio.duration) ? previewAudio.duration : (previewSong?.duration || 0);
+  const current = previewAudio.currentTime || 0;
+  previewDeck.classList.toggle('is-playing', previewPlaying);
+  previewDeck.classList.toggle('is-loading', previewLoading);
+  previewToggle.disabled = !previewSong;
+  document.querySelector('#preview-stop').disabled = !previewSong;
+  previewToggle.textContent = '';
+  previewToggle.setAttribute('aria-pressed', String(previewPlaying));
+  previewToggle.setAttribute('aria-label', `${previewPlaying ? 'Pausar' : previewFailed ? 'Reintentar' : 'Reproducir'} fragmento${previewSong ? ` de ${previewSong.title}` : ''}`);
+  previewSeek.disabled = !previewSong || previewAudio.readyState < 1 || previewFailed;
+  previewSeek.max = String(duration || 1);
+  previewSeek.value = String(Math.min(current, duration));
+  previewSeek.style.setProperty('--progress', `${duration ? current / duration * 100 : 0}%`);
+  previewSeek.setAttribute('aria-valuetext', `${formatPreviewTime(current)} de ${formatPreviewTime(duration)}`);
+  document.querySelector('#preview-current').textContent = formatPreviewTime(current);
+  document.querySelector('#preview-duration').textContent = formatPreviewTime(duration);
+  previewMute.setAttribute('aria-pressed', String(previewAudio.muted));
+  previewMute.setAttribute('aria-label', previewAudio.muted ? 'Activar sonido' : 'Silenciar');
+  previewMute.textContent = previewAudio.muted ? '×' : '♪';
+  previewVolume.value = String(previewAudio.volume);
+  songList.querySelectorAll('.song-row').forEach((row) => {
+    const selected = row.dataset.songId === id;
+    const playing = selected && previewPlaying;
+    const loading = selected && previewLoading;
+    row.classList.toggle('is-playing', playing);
+    row.classList.toggle('is-current', selected);
+    const button = row.querySelector('.preview-toggle');
+    if (!button) return;
+    button.setAttribute('aria-pressed', String(playing));
+    button.setAttribute('aria-busy', String(loading));
+    const song = songs.find((candidate) => songId(candidate) === row.dataset.songId);
+    const action = playing ? 'Pausar' : selected && previewFailed ? 'Reintentar' : 'Escuchar';
+    button.setAttribute('aria-label', `${action} fragmento de ${song.title}, ${song.credit}`);
+    button.querySelector('.preview-label').textContent = loading ? 'Cargando…' : action;
+    button.querySelector('.preview-icon').textContent = '';
+  });
+}
+
+function previewError() {
+  previewPlaying = false;
+  previewLoading = false;
+  previewFailed = true;
+  previewStatus.textContent = `No se pudo reproducir ${previewSong?.title || 'el fragmento'}. Vuelve a intentarlo.`;
+  updatePreviewUI();
+}
+
+async function playPreview(song) {
+  const request = ++previewRequest;
+  previewStopped = false;
+  const sameSong = previewSong && songId(previewSong) === songId(song);
+  if (sameSong && (!previewAudio.paused || previewLoading)) {
+    previewAudio.pause();
+    previewPlaying = false;
+    previewLoading = false;
+    previewStatus.textContent = `Reproducción pausada: ${song.title}.`;
+    updatePreviewUI();
+    return;
+  }
+  if (!sameSong) {
+    previewAudio.pause();
+    previewSong = song;
+    previewAudio.src = song.audio;
+    document.querySelector('#now-title').textContent = song.title;
+    document.querySelector('#now-index').textContent = String(songs.indexOf(song) + 1).padStart(2, '0');
+    document.querySelector('#now-credit').textContent = song.credit;
+    const cover = document.querySelector('#now-cover');
+    cover.src = song.cover;
+    cover.hidden = false;
+  } else if (previewFailed) {
+    previewAudio.load();
+  }
+  previewFailed = false;
+  previewPlaying = false;
+  previewLoading = true;
+  previewStatus.textContent = `Cargando fragmento de ${song.title}…`;
+  updatePreviewUI();
+  try {
+    await previewAudio.play();
+  } catch (error) {
+    // A newer selection, pause or stop can cancel a pending play promise.
+    if (request === previewRequest && error.name !== 'AbortError') previewError();
+  }
+}
+
+songList.addEventListener('click', (event) => {
+  const button = event.target.closest('.preview-toggle');
+  if (!button || !songList.contains(button)) return;
+  const song = songs.find((candidate) => songId(candidate) === button.dataset.songId);
+  if (song) playPreview(song);
+});
+previewToggle.addEventListener('click', () => {
+  if (previewSong) playPreview(previewSong);
+});
+document.querySelector('#preview-stop').addEventListener('click', () => {
+  ++previewRequest;
+  previewStopped = true;
+  previewAudio.pause();
+  previewAudio.currentTime = 0;
+  previewPlaying = false;
+  previewLoading = false;
+  previewStatus.textContent = 'Reproducción detenida.';
+  updatePreviewUI();
+});
+previewSeek.addEventListener('input', () => {
+  if (Number.isFinite(previewAudio.duration)) previewAudio.currentTime = Number(previewSeek.value);
+  updatePreviewUI();
+});
+previewVolume.addEventListener('input', () => {
+  previewAudio.volume = Number(previewVolume.value);
+  if (previewAudio.volume > 0) previewAudio.muted = false;
+  updatePreviewUI();
+});
+previewMute.addEventListener('click', () => {
+  previewAudio.muted = !previewAudio.muted;
+});
+previewAudio.addEventListener('playing', () => {
+  previewPlaying = true;
+  previewLoading = false;
+  previewFailed = false;
+  previewStatus.textContent = `Reproduciendo ${previewSong.title}, ${previewSong.credit}.`;
+  updatePreviewUI();
+});
+previewAudio.addEventListener('pause', () => {
+  previewPlaying = false;
+  previewLoading = false;
+  if (previewSong && !previewFailed && !previewStopped && !previewAudio.ended) {
+    previewStatus.textContent = `Reproducción pausada: ${previewSong.title}.`;
+  }
+  updatePreviewUI();
+});
+previewAudio.addEventListener('waiting', () => {
+  previewPlaying = false;
+  previewLoading = !previewAudio.paused;
+  updatePreviewUI();
+});
+previewAudio.addEventListener('ended', () => {
+  previewPlaying = false;
+  previewLoading = false;
+  previewAudio.currentTime = 0;
+  previewStatus.textContent = `Fragmento de ${previewSong.title} finalizado. Vuelve a darle play.`;
+  updatePreviewUI();
+});
+previewAudio.addEventListener('error', previewError);
+['loadedmetadata', 'durationchange', 'timeupdate', 'volumechange'].forEach((event) => {
+  previewAudio.addEventListener(event, updatePreviewUI);
+});
+
 function persistSavedSongs() {
   try {
     window.localStorage.setItem(savedSongsKey, JSON.stringify([...savedSongIds]));
@@ -315,6 +528,12 @@ function renderSongs(filter = activeSongFilter) {
     );
     const artwork = element('div', `song-art ${song.artist}`);
     artwork.setAttribute('aria-hidden', 'true');
+    const cover = element('img', 'song-cover');
+    cover.src = song.cover;
+    cover.alt = '';
+    cover.width = 76;
+    cover.height = 76;
+    artwork.append(cover);
     row.append(artwork);
     const title = element('div', 'song-info');
     title.append(element('h3', 'song-title', song.title));
@@ -322,14 +541,16 @@ function renderSongs(filter = activeSongFilter) {
     row.append(title);
     const chart = externalLink(
       song.chart ? `${chartBase}${song.chart}.json` : song.catalog,
-      song.chart ? `HOT 100 · #${song.position}` : 'APPLE MUSIC · DESTACADA',
+      song.chart ? `HOT 100 · #${song.position}` : (song.catalogLabel || 'APPLE MUSIC · DESTACADA'),
       'song-project',
     );
     chart.setAttribute(
       'aria-label',
       song.chart
         ? `${song.title}: puesto ${song.position} en la lista del ${song.chart}, consultar fuente en nueva pestaña`
-        : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`,
+        : song.catalogLabel
+          ? `${song.title}: catálogo de Playboi Carti, consultar fuente en nueva pestaña`
+          : `${song.title}: aparece en Top Songs de Apple Music, consultar fuente en nueva pestaña`,
     );
     row.append(chart, element('span', 'song-year', song.year));
     const query = encodeURIComponent(`${song.title} ${song.credit}`);
@@ -342,11 +563,19 @@ function renderSongs(filter = activeSongFilter) {
       'aria-label',
       `Buscar ${song.title}, ${song.credit}, en Spotify (nueva pestaña)`,
     );
-    listen.append(element('span', '', 'Buscar en Spotify'));
+    listen.append(element('span', '', 'Spotify'));
     const play = element('span', 'play-icon', '↗');
     play.setAttribute('aria-hidden', 'true');
     listen.append(play);
-    row.append(listen);
+    title.append(listen);
+    const preview = element('button', 'preview-toggle');
+    preview.type = 'button';
+    preview.dataset.songId = id;
+    const icon = element('span', 'preview-icon');
+    icon.setAttribute('aria-hidden', 'true');
+    preview.append(icon, element('span', 'preview-label', 'Escuchar'),
+      element('span', 'preview-length', formatPreviewTime(song.duration)));
+    row.append(preview);
     const saved = savedSongIds.has(id);
     const save = element('button', 'save-song');
     save.type = 'button';
@@ -373,6 +602,7 @@ function renderSongs(filter = activeSongFilter) {
   if (savedCount) savedCount.textContent = String(savedSongIds.size);
   if (clearSearch) clearSearch.hidden = songQuery.length === 0;
   if (songEmpty) songEmpty.hidden = selection.length !== 0;
+  updatePreviewUI();
 }
 
 document.querySelectorAll('.filter-button').forEach((button) => {
@@ -416,7 +646,7 @@ window.addEventListener('storage', (event) => {
   if (event.key !== savedSongsKey && event.key !== null) return;
   const focused = document.activeElement;
   const focusedRow = songList.contains(focused) ? focused.closest('.song-row') : null;
-  const focusSelector = ['.listen-link', '.save-song', '.song-project']
+  const focusSelector = ['.listen-link', '.save-song', '.song-project', '.preview-toggle']
     .find((selector) => focused?.matches(selector));
   const previousIndex = focusedRow
     ? [...songList.querySelectorAll('.song-row')].indexOf(focusedRow)
@@ -519,7 +749,7 @@ document.addEventListener('click', (event) => {
 document.addEventListener('focusin', (event) => {
   if (!siteHeader.contains(event.target)) closeMenu();
 });
-const mobileBreakpoint = window.matchMedia('(max-width: 650px)');
+const mobileBreakpoint = window.matchMedia('(max-width: 900px)');
 mobileBreakpoint.addEventListener('change', () => closeMenu());
 
 const navLinks = [...navigation.querySelectorAll('.nav-link')];

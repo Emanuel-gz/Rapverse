@@ -3,9 +3,13 @@
 Uses the environment's Playwright and Chromium; application has no dependencies.
 """
 from functools import partial
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from http.server import ThreadingHTTPServer
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+import hashlib
+import json
 import os
+import re
 import shutil
 import threading
 import unittest
@@ -15,9 +19,14 @@ from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 SAVED_SONGS_KEY = 'rapverse:saved-songs'
+MUSIC_MANIFEST = json.loads((ROOT / 'assets/music/manifest.json').read_text())
+MUSIC_TRACKS = MUSIC_MANIFEST['tracks']
+SERVER_SPEC = spec_from_file_location('rapverse_serve', ROOT / 'tools/serve.py')
+SERVER_MODULE = module_from_spec(SERVER_SPEC)
+SERVER_SPEC.loader.exec_module(SERVER_MODULE)
 
 
-class QuietHandler(SimpleHTTPRequestHandler):
+class QuietHandler(SERVER_MODULE.RangeRequestHandler):
     def log_message(self, *_args):
         pass
 
@@ -51,10 +60,12 @@ class RapverseBrowserTests(unittest.TestCase):
         self.page = self.context.new_page()
         self.errors = []
         self.failed_resources = []
+        self.expected_failed_resources = set()
         self.requests = []
         self.page.on('pageerror', lambda error: self.errors.append(str(error)))
         self.page.on('response', lambda response: self.failed_resources.append(
-            response.url) if response.status >= 400 else None)
+            response.url) if response.status >= 400
+            and response.url not in self.expected_failed_resources else None)
         self.page.on('request', lambda request: self.requests.append(request.url))
         self.page.goto(self.url, wait_until='networkidle')
         self.page.evaluate('document.fonts.ready')
@@ -64,15 +75,225 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertEqual(self.failed_resources, [], 'Failed local resources')
         self.context.close()
 
+    def song_row(self, title):
+        return self.page.locator('.song-row').filter(
+            has=self.page.get_by_role('heading', name=title, exact=True))
+
+    def wait_for_playback(self, source=None):
+        self.page.wait_for_function('''(source) => {
+            const audio = document.querySelector('#preview-audio');
+            return !audio.paused && audio.currentTime > 0.05 && audio.readyState >= 2
+                && (!source || new URL(audio.currentSrc).pathname === '/' + source);
+        }''', arg=source, timeout=15000)
+
+    def test_song_assets_match_verified_archive_manifest(self):
+        self.assertEqual(len(MUSIC_TRACKS), 9)
+        self.assertEqual(len({track['id'] for track in MUSIC_TRACKS}), 9)
+        rendered = self.page.evaluate('''songs.map(song => ({
+            title: song.title, credit: song.credit, cover: song.cover, audio: song.audio
+        }))''')
+        self.assertEqual(len(rendered), 9)
+        self.assertEqual({song['title'] for song in rendered},
+                         {track['title'] for track in MUSIC_TRACKS})
+        for track in MUSIC_TRACKS:
+            with self.subTest(song=track['title']):
+                song = next(song for song in rendered if song['title'] == track['title'])
+                self.assertEqual(song['credit'], track['artist'])
+                row = self.song_row(track['title'])
+                expect(row).to_have_count(1)
+                expect(row.locator('.song-credit')).to_have_text(track['artist'])
+                cover = row.locator('.song-art img.song-cover')
+                expect(cover).to_have_count(1)
+                self.assertEqual(cover.get_attribute('src'), track['cover'])
+                cover.scroll_into_view_if_needed()
+                self.page.wait_for_function(
+                    '(image) => image.complete && image.naturalWidth > 0',
+                    arg=cover.element_handle(), timeout=10000)
+                for resource in ('cover', 'audio'):
+                    self.assertEqual(song[resource], track[resource])
+                    path = ROOT / track[resource]
+                    self.assertTrue(path.is_file(), f'Missing {resource}: {path}')
+                    self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+                                     track[f'{resource}Sha256'])
+                expect(row.locator('.preview-toggle')).to_have_attribute(
+                    'data-song-id', row.get_attribute('data-song-id'))
+
+    def test_every_preview_really_plays_and_pauses_with_correct_artwork(self):
+        audio = self.page.locator('#preview-audio')
+        self.assertEqual(self.page.locator('audio').count(), 1)
+        for track in MUSIC_TRACKS:
+            with self.subTest(song=track['title']):
+                row = self.song_row(track['title'])
+                toggle = row.locator('.preview-toggle')
+                toggle.click()
+                self.wait_for_playback(track['audio'])
+                expect(row).to_have_class(re.compile(r'\bis-playing\b'))
+                expect(row.locator('.song-art')).to_have_css('animation-play-state', 'running')
+                expect(toggle).to_have_attribute('aria-pressed', 'true')
+                expect(self.page.locator('#preview-toggle')).to_have_attribute('aria-pressed', 'true')
+                expect(self.page.locator('#now-title')).to_have_text(track['title'])
+                expect(self.page.locator('#now-credit')).to_have_text(track['artist'])
+                expect(self.page.locator('#now-cover')).to_have_attribute('src', track['cover'])
+                self.assertAlmostEqual(audio.evaluate('(audio) => audio.duration'),
+                                       track['durationSeconds'], delta=0.5)
+                self.assertEqual(self.page.locator('.song-row.is-playing').count(), 1)
+                toggle.click()
+                self.assertTrue(audio.evaluate('(audio) => audio.paused'))
+                expect(toggle).to_have_attribute('aria-pressed', 'false')
+                expect(self.page.locator('.song-row.is-playing')).to_have_count(0)
+                expect(row.locator('.song-art')).to_have_css('animation-play-state', 'paused')
+
+    def test_preview_switching_uses_one_audio_and_replaces_track(self):
+        first = self.song_row('Magnolia')
+        second = self.song_row('Location')
+        first.locator('.preview-toggle').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        second.locator('.preview-toggle').click()
+        self.wait_for_playback('assets/music/location.mp3')
+        self.assertEqual(self.page.locator('audio').count(), 1)
+        expect(first.locator('.preview-toggle')).to_have_attribute('aria-pressed', 'false')
+        expect(second.locator('.preview-toggle')).to_have_attribute('aria-pressed', 'true')
+        expect(self.page.locator('.song-row.is-playing')).to_have_count(1)
+        self.assertLess(self.page.locator('#preview-audio').evaluate('(audio) => audio.currentTime'), 5)
+        self.page.locator('#preview-stop').click()
+        self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.paused'))
+        self.assertEqual(self.page.locator('#preview-audio').evaluate('(audio) => audio.currentTime'), 0)
+        expect(self.page.locator('.song-row.is-playing')).to_have_count(0)
+
+    def test_preview_controls_seek_volume_mute_and_keyboard(self):
+        self.song_row('Location').locator('.preview-toggle').focus()
+        self.page.keyboard.press('Enter')
+        self.wait_for_playback('assets/music/location.mp3')
+        toggle = self.page.locator('#preview-toggle')
+        toggle.focus()
+        self.page.keyboard.press('Space')
+        self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.paused'))
+        seek = self.page.locator('#preview-seek')
+        seek.evaluate('''(input) => {
+            input.value = '8';
+            input.dispatchEvent(new Event('input', {bubbles: true}));
+        }''')
+        self.assertAlmostEqual(self.page.locator('#preview-audio').evaluate(
+            '(audio) => audio.currentTime'), 8, delta=0.3)
+        self.assertIn('0:08', self.page.locator('#preview-current').inner_text())
+        self.assertNotEqual(self.page.locator('#preview-duration').inner_text(), '0:00')
+        self.assertTrue(seek.get_attribute('aria-valuetext'))
+        seek.focus()
+        self.page.keyboard.press('ArrowRight')
+        self.assertGreater(self.page.locator('#preview-audio').evaluate('(audio) => audio.currentTime'), 8)
+        volume = self.page.locator('#preview-volume')
+        volume.evaluate('''(input) => {
+            input.value = '0.35';
+            input.dispatchEvent(new Event('input', {bubbles: true}));
+        }''')
+        self.assertAlmostEqual(self.page.locator('#preview-audio').evaluate('(audio) => audio.volume'), .35)
+        mute = self.page.locator('#preview-mute')
+        mute.click()
+        self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.muted'))
+        expect(mute).to_have_attribute('aria-pressed', 'true')
+        mute.click()
+        self.assertFalse(self.page.locator('#preview-audio').evaluate('(audio) => audio.muted'))
+        expect(mute).to_have_attribute('aria-pressed', 'false')
+        toggle.focus()
+        self.page.keyboard.press('Enter')
+        self.wait_for_playback('assets/music/location.mp3')
+        self.assertGreater(self.page.locator('#preview-audio').evaluate('(audio) => audio.currentTime'), 8)
+
+    def test_preview_survives_filters_search_and_saving(self):
+        self.song_row('Magnolia').locator('.preview-toggle').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        audio = self.page.locator('#preview-audio')
+        initial_time = audio.evaluate('(audio) => audio.currentTime')
+        self.page.locator('.song-filters [data-filter="cochise"]').click()
+        expect(self.song_row('Magnolia')).to_have_count(0)
+        expect(self.page.locator('#now-title')).to_have_text('Magnolia')
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        self.page.locator('#song-search').fill('Hatchback')
+        self.song_row('Hatchback').locator('.save-song').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        self.assertGreaterEqual(audio.evaluate('(audio) => audio.currentTime'), initial_time)
+        self.page.locator('#preview-toggle').click()
+        self.assertTrue(audio.evaluate('(audio) => audio.paused'))
+        self.page.locator('#preview-toggle').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        self.page.locator('#clear-search').click()
+        self.page.locator('.song-filters [data-filter="all"]').click()
+        magnolia = self.song_row('Magnolia')
+        expect(magnolia.locator('.preview-toggle')).to_have_attribute('aria-pressed', 'true')
+        magnolia.locator('.save-song').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        expect(magnolia.locator('.preview-toggle')).to_have_attribute('aria-pressed', 'true')
+
+    def test_preview_error_is_announced_and_can_retry(self):
+        resource_url = f'{self.url}/assets/music/magnolia.mp3'
+        self.expected_failed_resources.add(resource_url)
+        self.page.route(resource_url, lambda route: route.fulfill(status=404, body='Missing test preview'))
+        toggle = self.song_row('Magnolia').locator('.preview-toggle')
+        toggle.click()
+        expect(self.page.locator('#preview-status')).to_contain_text('No se pudo reproducir')
+        expect(self.page.locator('#preview-status')).to_have_attribute('role', 'status')
+        self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.paused'))
+        expect(toggle).to_have_attribute('aria-pressed', 'false')
+        expect(self.page.locator('.song-row.is-playing')).to_have_count(0)
+        self.page.unroute(resource_url)
+        self.page.locator('#preview-toggle').click()
+        self.wait_for_playback('assets/music/magnolia.mp3')
+        expect(toggle).to_have_attribute('aria-pressed', 'true')
+
+    def test_preview_waits_for_real_playback_before_spinning(self):
+        resource_url = f'{self.url}/assets/music/location.mp3'
+        pending = []
+        self.page.route(resource_url, lambda route: pending.append(route))
+        row = self.song_row('Location')
+        toggle = row.locator('.preview-toggle')
+        try:
+            toggle.click()
+            expect(toggle).to_have_attribute('aria-busy', 'true')
+            expect(toggle).to_have_attribute('aria-pressed', 'false')
+            expect(self.page.locator('#preview-status')).to_contain_text('Cargando')
+            expect(self.page.locator('.song-row.is-playing')).to_have_count(0)
+            expect(row.locator('.song-art')).to_have_css('animation-play-state', 'paused')
+            initial_transform = row.locator('.song-art').evaluate('(art) => getComputedStyle(art).transform')
+            self.assertTrue(pending, 'The audio request must actually be pending')
+            pending.pop().continue_()
+            self.wait_for_playback('assets/music/location.mp3')
+            expect(toggle).to_have_attribute('aria-busy', 'false')
+            expect(toggle).to_have_attribute('aria-pressed', 'true')
+            self.page.wait_for_function('''([art, initial]) =>
+                getComputedStyle(art).transform !== initial''',
+                arg=[row.locator('.song-art').element_handle(), initial_transform])
+        finally:
+            for route in pending:
+                route.continue_()
+            self.page.unroute(resource_url)
+
+    def test_preview_ends_resets_and_can_replay(self):
+        self.song_row('POCKET ROCKET').locator('.preview-toggle').click()
+        self.wait_for_playback('assets/music/pocket-rocket.mp3')
+        self.page.locator('#preview-audio').evaluate('(audio) => { audio.currentTime = audio.duration - 0.15; }')
+        self.page.wait_for_function('''() => {
+            const audio = document.querySelector('#preview-audio');
+            return audio.paused && audio.currentTime === 0;
+        }''', timeout=5000)
+        expect(self.page.locator('.song-row.is-playing')).to_have_count(0)
+        expect(self.page.locator('#preview-toggle')).to_have_attribute('aria-pressed', 'false')
+        expect(self.page.locator('#preview-status')).to_contain_text('finalizado')
+        expect(self.page.locator('#preview-current')).to_have_text('0:00')
+        self.page.locator('#preview-toggle').click()
+        self.wait_for_playback('assets/music/pocket-rocket.mp3')
+
     def test_local_resources_and_document(self):
         self.assertEqual(self.page.locator('html').get_attribute('lang'), 'es')
         self.assertEqual(self.page.locator('h1').count(), 1)
         self.assertEqual(self.page.locator('.artist-card').count(), 2)
-        self.assertEqual(self.page.locator('.song-row').count(), 8)
+        self.assertEqual(self.page.locator('.song-row').count(), 9)
         self.assertTrue(self.page.evaluate("document.fonts.check('16px Anton')"))
         self.assertTrue(self.page.evaluate("document.fonts.check('16px \"Space Grotesk\"')"))
         self.assertTrue(all(url.startswith(self.url) for url in self.requests))
-        self.assertEqual(self.page.locator('audio, video, iframe').count(), 0)
+        self.assertEqual(self.page.locator('audio').count(), 1)
+        self.assertEqual(self.page.locator('#preview-audio').count(), 1)
+        self.assertEqual(self.page.locator('video, iframe').count(), 0)
+        self.assertTrue(self.page.locator('#preview-audio').evaluate('(audio) => audio.paused'))
         self.assertIn('Archivo de terceros', self.page.locator('#source-list').inner_text())
 
     def test_artist_tabs_and_keyboard(self):
@@ -108,11 +329,16 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertIn('Cochise & $NOT', self.page.locator('.song-credit').all_inner_texts())
         self.assertIn('4 CANCIONES DOCUMENTADAS', self.page.locator('#song-count').inner_text())
         filters.get_by_role('button', name='Playboi Carti', exact=True).click()
-        self.assertEqual(self.page.locator('.song-row').count(), 4)
-        self.assertIn('Travis Scott', self.page.locator('.song-credit').all_inner_texts()[-1])
+        self.assertEqual(self.page.locator('.song-row').count(), 5)
+        self.assertIn('Travis Scott', self.page.locator(
+            '.song-row[data-song-id="carti:fe!n"] .song-credit').inner_text())
+        location = self.page.locator('.song-row[data-song-id="carti:location"]')
+        self.assertEqual(location.locator('.song-credit').inner_text(), 'Playboi Carti')
+        self.assertEqual(location.locator('.song-project').inner_text(), 'PLAYBOI CARTI · 2017')
+        self.assertNotIn('Top Songs', location.locator('.song-project').get_attribute('aria-label'))
         filters.get_by_role('button', name='Todos').click()
-        self.assertEqual(self.page.locator('.song-row').count(), 8)
-        self.assertEqual(self.page.locator('.song-project[href^="https://music.apple.com/"]').count(), 4)
+        self.assertEqual(self.page.locator('.song-row').count(), 9)
+        self.assertEqual(self.page.locator('.song-project[href^="https://music.apple.com/"]').count(), 5)
         self.assertEqual(self.page.locator('.song-project[href^="https://github.com/"]').count(), 4)
         self.assertEqual(self.page.locator('.filter-button[aria-pressed="true"]').count(), 1)
         for link in self.page.locator('.listen-link').all():
@@ -134,7 +360,7 @@ class RapverseBrowserTests(unittest.TestCase):
         expect(self.page.locator('.song-title')).to_have_text(['POCKET ROCKET'])
         self.page.locator('#clear-search').click()
         expect(search).to_have_value('')
-        expect(self.page.locator('.song-row')).to_have_count(8)
+        expect(self.page.locator('.song-row')).to_have_count(9)
         search.fill('lil uzi')
         expect(self.page.locator('.song-title')).to_have_text(['Shoota'])
         self.page.locator('#clear-search').click()
@@ -155,7 +381,7 @@ class RapverseBrowserTests(unittest.TestCase):
         expect(self.page.locator('#song-search')).to_have_value('')
         expect(self.page.locator('.song-filters [data-filter="all"]')).to_have_attribute(
             'aria-pressed', 'true')
-        expect(self.page.locator('.song-row')).to_have_count(8)
+        expect(self.page.locator('.song-row')).to_have_count(9)
         expect(self.page.locator('#song-empty')).not_to_be_visible()
 
     def test_saved_songs_persist_and_update_saved_filter(self):
@@ -227,7 +453,7 @@ class RapverseBrowserTests(unittest.TestCase):
                 self.page.evaluate('([key, value]) => localStorage.setItem(key, value)',
                                    [SAVED_SONGS_KEY, value])
                 self.page.reload(wait_until='networkidle')
-                expect(self.page.locator('.song-row')).to_have_count(8)
+                expect(self.page.locator('.song-row')).to_have_count(9)
                 expect(self.page.locator('#saved-count')).to_have_text('0')
                 self.page.locator('.song-row[data-song-id="carti:magnolia"] .save-song').click()
                 self.page.reload(wait_until='networkidle')
@@ -246,7 +472,7 @@ class RapverseBrowserTests(unittest.TestCase):
             }
         ''')
         self.page.reload(wait_until='networkidle')
-        expect(self.page.locator('.song-row')).to_have_count(8)
+        expect(self.page.locator('.song-row')).to_have_count(9)
         self.page.locator('.song-row[data-song-id="carti:magnolia"] .save-song').click()
         expect(self.page.locator('#saved-count')).to_have_text('1')
         self.page.locator('.song-filters [data-filter="saved"]').click()
@@ -264,7 +490,17 @@ class RapverseBrowserTests(unittest.TestCase):
             response.url) if response.status >= 400 else None)
         try:
             page.goto(self.url, wait_until='networkidle')
-            expect(page.locator('.song-row')).to_have_count(8)
+            expect(page.locator('.song-row')).to_have_count(9)
+            expect(page.locator('audio.native-preview[controls][preload="none"]')).to_have_count(9)
+            for track in MUSIC_TRACKS:
+                row = page.locator('.song-row').filter(
+                    has=page.get_by_role('heading', name=track['title'], exact=True))
+                expect(row.locator('.song-art .song-cover')).to_have_attribute('src', track['cover'])
+                audio = row.locator('audio.native-preview')
+                source = audio.get_attribute('src') or audio.locator('source').get_attribute('src')
+                self.assertEqual(source, track['audio'])
+                self.assertTrue(row.locator('.listen-link').get_attribute('href').startswith(
+                    'https://open.spotify.com/search/'))
             expect(page.locator('.artist-panel')).to_have_count(2)
             for panel in page.locator('.artist-panel').all():
                 self.assertIn('BIOGRAFÍA DOCUMENTADA', panel.inner_text())
@@ -383,6 +619,8 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertTrue(self.page.locator('#navigation').is_visible())
 
     def test_responsive_layout(self):
+        self.song_row('Location').locator('.preview-toggle').click()
+        self.wait_for_playback('assets/music/location.mp3')
         for width in (320, 375, 390, 650, 768, 1024, 1440):
             with self.subTest(width=width):
                 self.page.set_viewport_size({'width': width, 'height': 900})
@@ -390,6 +628,8 @@ class RapverseBrowserTests(unittest.TestCase):
                     'document.documentElement.scrollWidth'), width)
                 self.assertTrue(self.page.locator('h1').is_visible())
                 self.assertTrue(self.page.locator('.artist-card').first.is_visible())
+                expect(self.page.locator('#preview-toggle')).to_be_visible()
+                expect(self.page.locator('#preview-seek')).to_be_visible()
 
     def test_anchors_and_disclosures(self):
         for link in self.page.locator('a[href^="#"]').all():
@@ -420,6 +660,48 @@ class RapverseBrowserTests(unittest.TestCase):
         self.assertEqual(self.page.locator('tbody th[scope="row"]').count(), 4)
         for image in self.page.locator('img').all():
             self.assertIsNotNone(image.get_attribute('alt'))
+
+    def test_fx_progress_burst_and_headline(self):
+        # La barra de progreso existe y avanza con el scroll.
+        self.assertEqual(self.page.locator('.fx-progress').count(), 1)
+        self.page.evaluate("document.documentElement.style.scrollBehavior='auto'")
+        self.page.evaluate('window.scrollTo(0, document.documentElement.scrollHeight)')
+        self.page.wait_for_function(
+            "getComputedStyle(document.querySelector('.fx-progress')).transform !== 'matrix(0, 0, 0, 1, 0, 0)'")
+        # El titular termina con su texto original y sin aria-label temporal.
+        self.page.wait_for_function("!document.querySelector('.hero h1').hasAttribute('aria-label')", timeout=5000)
+        self.assertEqual(' '.join(self.page.locator('.hero h1').inner_text().split()),
+                         'DOS VOCES. OTRA DIMENSIÓN.')
+        # Al guardar una canción aparece una ráfaga que desaparece sola.
+        button = self.page.locator('.song-row[data-song-id="carti:magnolia"] .save-song')
+        button.scroll_into_view_if_needed()
+        button.click()
+        expect(self.page.locator('.fx-burst')).to_have_count(1)
+        expect(self.page.locator('.fx-burst')).to_have_count(0, timeout=3000)
+        expect(button).to_have_attribute('aria-pressed', 'true')
+
+    def test_fx_reduced_motion_keeps_text_and_skips_burst(self):
+        context = self.browser.new_context(reduced_motion='reduce', viewport={'width': 1440, 'height': 1000})
+        page = context.new_page()
+        page.on('pageerror', lambda error: self.errors.append(str(error)))
+        try:
+            page.goto(self.url, wait_until='networkidle')
+            self.assertEqual(' '.join(page.locator('.hero h1').inner_text().split()),
+                             'DOS VOCES. OTRA DIMENSIÓN.')
+            page.locator('.song-row[data-song-id="carti:magnolia"] .save-song').click()
+            expect(page.locator('.fx-burst')).to_have_count(0)
+            expect(page.locator('.outline').first).to_have_css('color', 'rgb(255, 58, 46)')
+            location = page.locator('.song-row[data-song-id="carti:location"]')
+            location.locator('.preview-toggle').click()
+            page.wait_for_function('''() => {
+                const audio = document.querySelector('#preview-audio');
+                return !audio.paused && audio.currentTime > 0.05;
+            }''', timeout=15000)
+            expect(location.locator('.preview-toggle')).to_have_attribute('aria-pressed', 'true')
+            expect(location.locator('.song-art')).to_have_css('animation-name', 'none')
+            expect(page.locator('.deck-record')).to_have_css('animation-name', 'none')
+        finally:
+            context.close()
 
 
 if __name__ == '__main__':
